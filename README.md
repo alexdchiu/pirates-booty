@@ -13,7 +13,6 @@ The people we expect to use this are those of all skill / fitness levels who are
 <!-- will revisit -->
 
 ## Functionality
-<<<<<<< HEAD
 
 - designate amount time you have to workout
 - designate targeted body part(s)
@@ -35,5 +34,3 @@ stretch goals:
 - try to find API that gives random facts about nutrition and workout
 - diet / nutrition
 - food tracker
-=======
->>>>>>> cdc3ae5037de6ff0bec2faec18602d1bededa11e

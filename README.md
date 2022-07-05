@@ -31,6 +31,7 @@ stretch goals:
   - able to join groups
   - able to see other friends activity
   - able to congragulate / give thumbs up or something to friends for workouts completed / goals achieved
+- import videos
 - try to find API that gives random facts about nutrition and workout
 - diet / nutrition
 - food tracker

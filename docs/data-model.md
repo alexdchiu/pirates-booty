@@ -15,6 +15,7 @@
 
 ## Account
 | Name | Type | Unique | Optional |
+|-|-|-|-|
 |username| string | yes | no |
 |password| string | no | no |
 |first_name| string | no | no |
@@ -24,6 +25,7 @@
 
 ## Workout
 | Name | Type | Unique | Optional |
+|-|-|-|-|
 |Bodypart| string | no | no |
 |Name| string | no | no |
 |Target| string | no | no |

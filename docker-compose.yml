@@ -1,0 +1,65 @@
+version: "3.9"
+   
+services:
+  db:
+    image: postgres:14.2-bullseye
+    volumes:
+      - ./database/data:/var/lib/postgresql/data
+      - ./database/setup:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  workouts:
+    build:
+      context: ./workouts
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./workouts:/app
+    depends_on:
+      - rabbitmq
+  accounts:
+    build:
+      context: ./accounts
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./accounts:/app 
+  react:
+    image: node:latest
+    command: npm start
+    working_dir: /app
+    volumes:
+      - ./ghi/app:/app
+    environment:
+      - HOST=0.0.0.0
+      - PORT=3001
+      - NODE_ENV=development
+    ports:
+      - "3001:3001"
+  rabbitmq:
+    image: rabbitmq:3
+
+
+#
+# monolith:
+#     build:
+#       context: ./workouts
+#       dockerfile: ./Dockerfile.dev
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - ./workouts:/app
+#     depends_on:
+#       - rabbitmq
+#   attendees_microservice:
+#     build:
+#       context: ./accounts
+#       dockerfile: ./Dockerfile.dev
+#     ports:
+#       - "8001:8001"
+#     volumes:
+#       - ./accounts:/app    

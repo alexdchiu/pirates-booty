@@ -21,9 +21,10 @@ The people we expect to use this are those of all skill / fitness levels who are
 
 ## Functionality
 
-- designate amount time you have to workout
+- designate amount time you have to workout 
+  - maybe make this a user input feature only to input time needed to complete
 - designate targeted body part(s)
-- intensity / sweat rating
+- intensity / sweat rating (maybe make this a user input feature only)
 - workout roulette
   - does spin to give you workout for the day
 
@@ -38,6 +39,7 @@ The people we expect to use this are those of all skill / fitness levels who are
   - how do we make it so people can't cheat the system (click on workouts pretend like they've done them? maybe this is thinking too far?)
 
 stretch goals:
+- filter out equipment by 
 - social aspect
   - able to join groups
   - able to see other friends activity

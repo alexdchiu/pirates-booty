@@ -1,3 +1,6 @@
+
+
+
 # front-end
 - guest / non-logged in home page
 - sign up form
@@ -44,3 +47,5 @@ project - pirates booty
 
 
 - clarification - how do we structure database / tables? do we start with django? do they want us to start with SQL? 
+
+(docs/wiresframes - is a directory that will contain any images that are used for the ghi file)

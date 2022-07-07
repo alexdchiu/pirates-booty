@@ -1,1 +1,7 @@
-(will list what kinds of data you'll need to integrate with outside of your application using anti-corruption layers (like weather, food, or stock price data)
+(will list what kinds of data you'll need to integrate with outside of your application using anti-corruption layers)
+
+## Title 
+
+(simple list- 
+'workout data by targeted area, etc'
+)

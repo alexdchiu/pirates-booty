@@ -1,3 +1,4 @@
+
 # front-end
 - guest / non-logged in home page
 - sign up form
@@ -16,8 +17,6 @@
   - show ranks / how you stack up 
   - recent activities of other group members
 
-
-
 # back-end
 - collection of workouts sortable by 1) time 2) intensity 3) body part
 - user signups / accounts / logins
@@ -25,22 +24,24 @@
   - ability to like / dislike a workout
   - tracking of booty / points for rewards
 
+
+- Microservice 1 - workouts
+  - models:
+    - time
+    - intensity
+    - body part
+    - workout
+
+- Microservice 2 - accounts
+  - like workout VOs to accounts
+  - if we've done workout before or not
+
 # back-end stretch
 - redemption prize model
 - group rankings
 
 
 
-project - pirates booty
-- application1 - workouts
-  - models:
-    - time
-    - intensity
-    - body part
-    - workout
-- application2 - accounts
-  - like workout VOs to accounts
-  - if we've done workout before or not
-
-
 - clarification - how do we structure database / tables? do we start with django? do they want us to start with SQL? 
+
+(docs/wiresframes - is a directory that will contain any images that are used for the ghi file)

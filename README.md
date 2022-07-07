@@ -8,6 +8,13 @@
 The best workout application for bootys of all types and backgrounds.
 <!-- will revisit -->
 
+## Design
+
+* [API design](docs/apis.md)
+* [Data model](docs/data-model.md)
+* [GHI](docs/ghi.md)
+* [Integrations](docs/integrations.md)
+
 ## Intended market
 The people we expect to use this are those of all skill / fitness levels who are interested in working out with the potential of receiving booty (rewards) for accomplishments.
 <!-- will revisit -->

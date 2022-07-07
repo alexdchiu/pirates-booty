@@ -4,6 +4,7 @@
 
 #second title 
 ( short sentence about it;
-[title of page](route inside of project to page 'wireframes/img-name.pmg')
+[total project photo]('wireframes/png.png')
 )
 
+needs to be updated. 

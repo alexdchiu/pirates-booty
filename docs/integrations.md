@@ -2,6 +2,5 @@
 
 ## Title 
 
-(simple list- 
-'workout data by targeted area, etc'
-)
+- workout data by bodypart
+- GIF_url with example of workout

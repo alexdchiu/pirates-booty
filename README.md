@@ -28,10 +28,14 @@ The people we expect to use this are those of all skill / fitness levels who are
   - does spin to give you workout for the day
 
 - sign up feature
-- sign in to store preferences and workout history and give ability to like workouts to repeat or to dislike to never see again
+- log in to store preferences and workout history and give ability to like workouts to repeat or to dislike to never see again
+  - when signed in users have the ability to filter (time / body part / intensity)
+  - create list / card view for users to peruse workouts w/o needing to spin wheel to randomize
 - two free spins for non logged in users
+  - no ability to filter workout types -> encourage guests to sign up
 - more workouts you do, the more pirates booty you accrue and you can exchange for prizes
-
+  - create personalized tracker for booty based on # of workouts done
+  - how do we make it so people can't cheat the system (click on workouts pretend like they've done them? maybe this is thinking too far?)
 
 stretch goals:
 - social aspect
@@ -39,6 +43,7 @@ stretch goals:
   - able to see other friends activity
   - able to congragulate / give thumbs up or something to friends for workouts completed / goals achieved
 - import videos
+- create prize API
 - try to find API that gives random facts about nutrition and workout
 - diet / nutrition
 - food tracker

@@ -1,3 +1,6 @@
+[excalidraw](.wireframes/png.png)
+
+
 
 # Graphical Human Interface(Main Page)
 This is the main page you first see that will allow you to spin for a workout. Have login and sign up

@@ -1,18 +1,34 @@
 version: "3.9"
    
 volumes:
-  pg-admin:
+  pg-admin2:
+    external: true
+  pirates-booty:
     external: true
 services:
   db:
+    build:
+      context: database/data
+      dockerfile: Dockerfile.dev
     image: postgres:14.2-bullseye
     volumes:
-      - ./database/data:/var/lib/postgresql/data
-      - ./database/setup:/docker-entrypoint-initdb.d
+      - pirates-booty/database/data:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+    ports:
+      - "15432:5432"
+  pg-admin:
+    image: dpage/pgadmin4
+    volumes:
+      - pg-admin2:/var/lib/pgadmin
+    ports:
+      - 8082:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: alexdchiu@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: hello123
+      PGADMIN_DISABLE_POSTFIX: 1
   workouts:
     build:
       context: ./workouts
@@ -28,7 +44,7 @@ services:
       context: ./accounts
       dockerfile: ./Dockerfile.dev
     ports:
-      - "8001:8001"
+      - "8001:8000"
     volumes:
       - ./accounts:/app 
   react:

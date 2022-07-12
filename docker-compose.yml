@@ -1,17 +1,21 @@
 version: "3.9"
-   
+
+
+volumes:
+  postgres-data:
+    external: true   
 services:
   db:
-    image: postgres:14.2-bullseye
+    build:
+      context: ./relational-data
+      dockerfile: ./Dockerfile.dev
     volumes:
-      - ./database/data:/var/lib/postgresql/data
-      - ./database/setup:/docker-entrypoint-initdb.d
+        - postgres-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+        - POSTGRES_MULTIPLE_DATABASES=users,workouts
+        - POSTGRES_PASSWORD=test-databases
     ports:
-      - "15432:5432"
+        - 15432:5432
   workouts:
     build:
       context: ./workouts
@@ -20,8 +24,9 @@ services:
       - "8000:8000"
     volumes:
       - ./workouts:/app
-    depends_on:
-      - rabbitmq
+    environment:
+      DATABASE_URL: postgresql://workouts:password@postgres/workouts
+      WAIT_HOSTS: postgres:5432
   accounts:
     build:
       context: ./accounts
@@ -30,38 +35,21 @@ services:
       - "8001:8001"
     volumes:
       - ./accounts:/app 
-  react:
-    image: node:latest
-    command: npm start
+    environment:
+      DATABASE_URL: postgresql://accounts:password@postgres/accounts
+      WAIT_HOSTS: postgres:5432
+  ghi:
+    image: node:lts-bullseye
+    command: /bin/bash run.sh
     working_dir: /app
     volumes:
-      - ./ghi/app:/app
-    environment:
-      - HOST=0.0.0.0
-      - PORT=3001
-      - NODE_ENV=development
+        - ./ghi:/app
     ports:
-      - "3001:3001"
-  rabbitmq:
-    image: rabbitmq:3
+        - "3000:3000"
+    environment:
+        HOST_OS: ${OS}
+        NODE_ENV: development
+        HOST: "0.0.0.0"
+        REACT_APP_USERS: http://localhost:8000
+        REACT_APP_WORKOUTS: http://localhost:8001
 
-
-#
-# monolith:
-#     build:
-#       context: ./workouts
-#       dockerfile: ./Dockerfile.dev
-#     ports:
-#       - "8000:8000"
-#     volumes:
-#       - ./workouts:/app
-#     depends_on:
-#       - rabbitmq
-#   attendees_microservice:
-#     build:
-#       context: ./accounts
-#       dockerfile: ./Dockerfile.dev
-#     ports:
-#       - "8001:8001"
-#     volumes:
-#       - ./accounts:/app    

@@ -6,6 +6,7 @@ import json
 
 with open("exercises.json") as json_file:
   exercises = json.load(json_file)
+  # slice data 
   json_file.close()
 
 # print(exercises)
@@ -14,7 +15,7 @@ with open("exercises.json") as json_file:
 
 def add_workout(obj):
     # with psycopg2.connect() as conn:
-    db_conn = psycopg2.connect(dbname="postgres", user="alexchiu", password="1234", host="localhost", port="5432")
+    db_conn = psycopg2.connect(dbname="workouts", user="postgres", password="test-databases", host="localhost", port="15432")
     with db_conn.cursor() as cur:
         try:
             # Uses the RETURNING clause to get the data
@@ -24,20 +25,22 @@ def add_workout(obj):
             # print('exercise', exercise)
           cur.execute(
               """
-              INSERT INTO exercises2 (id, bodypart, equipment, gifurl, name, target, intensity, length_of_workout)
-              VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-              RETURNING (id, bodypart, equipment, gifurl, name, target, intensity, length_of_workout);
+              BEGIN;
+              INSERT INTO exercises (id, bodypart, equipment, gifurl, name, target, intensity, length_of_workout)
+              VALUES (
+                    %(id)s
+                    , %(bodyPart)s
+                    , %(equipment)s
+                    , %(gifUrl)s
+                    , %(name)s
+                    , %(target)s
+                    , %(intensity)s
+                    , %(length_of_workout)s
+                    )
+              RETURNING (id, name);
+              COMMIT;
           """,
-              [
-                obj['id'], 
-                obj['bodyPart'],
-                obj['equipment'],
-                obj['gifUrl'],
-                obj['name'],
-                obj['target'],
-                obj['intensity'],
-                obj['length_of_workout']
-              ]
+              obj
           )
         except psycopg2.errors.UniqueViolation:
             # status values at https://github.com/encode/starlette/blob/master/starlette/status.py
@@ -45,13 +48,20 @@ def add_workout(obj):
             return {
               "message": "Could not create duplicate category",
             }
-        row = cur.fetchone()
-        # print(row)
-        record = {}
-        for i, column in enumerate(cur.description):
-          record[column.name] = row[i]
-        print(record)
-        return record
+        print('inputted new row')
+        # row = cur.fetchone()
+        # print('row', row)
+        # record = {}
+        # for i, column in enumerate(cur.description):
+        #   record[column.name] = row[i]
+        # print(record)
+        # return record
+        # return list(row)
 
 for exercise in exercises:
+  # print(exercise)
+  # exercise = exercises[i]
   add_workout(exercise)
+
+# print(exercises[1]['name'])
+# add_workout(exercises[1])

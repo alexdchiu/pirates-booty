@@ -5,6 +5,16 @@ At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
 
+## July 12, 2022
+Today I worked on:
+* Trying to get docker up and running and the workouts db populated.
+
+- We brainstormed as a group why we were having issues getting Docker up and running and looked through our code. We isolated problems one by one (specifically React related). We did google searches and compared against the tips from learn. Ultimately we were able to get it up and running successfully by reinstalling React. For some reason it said it couldn't open the index.html file in the ghi/app/public directory even though index.html was there. However, it is up and running now. Phew.
+- Now that we have services up and running on Docker - I am hoping to get the database populated with the exercises so that we can poll data from it to use with the user services.
+- Finally was able to get the workouts database loaded! With some guidance from Sean, Jason, Yesenia - for some reason my INSERT INTO with postgres only worked when I put it into a transaction. Not sure why, but success!
+- Now I think onto getting the accounts back-end set up.
+
+
 ## July 11, 2022
 Today I worked on:
 * Trying to populate the project database with the exercises we pulled from an online API.

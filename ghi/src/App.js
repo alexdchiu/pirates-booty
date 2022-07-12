@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
       </Routes>
+        <Route path="/" element={<Spinner />} />
     </div>
     
     </BrowserRouter>

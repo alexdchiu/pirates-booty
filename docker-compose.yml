@@ -43,23 +43,3 @@ services:
   rabbitmq:
     image: rabbitmq:3
 
-
-#
-# monolith:
-#     build:
-#       context: ./workouts
-#       dockerfile: ./Dockerfile.dev
-#     ports:
-#       - "8000:8000"
-#     volumes:
-#       - ./workouts:/app
-#     depends_on:
-#       - rabbitmq
-#   attendees_microservice:
-#     build:
-#       context: ./accounts
-#       dockerfile: ./Dockerfile.dev
-#     ports:
-#       - "8001:8001"
-#     volumes:
-#       - ./accounts:/app    

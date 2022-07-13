@@ -7,15 +7,15 @@ import "./styles.css";
 class Spinner extends React.Component {
   state = {
     list: [
-      "Upper Body",
-      "$500",
-      "$9,999",
-      "$1",
-      "$60",
-      "$1,000",
-      "$4.44",
-      "$0",
-      "$333"
+      "back",
+      "chest",
+      "lower arms",
+      "shoulders",
+      "waist",
+      "cardio",
+      "neck",
+      "lower legs",
+      "upper legs"
     ],
     // list: ["$100", "$500", "$9,999", "$1", "$60", "$1,000", "$4.44"],
     // list: ["$100","$500","$9,999","$1","$60"],

@@ -1,4 +1,4 @@
-import React, {useEffect, useState}  from "react"
+import React, {useState}  from "react"
 import validation from "./Validation"
 
 function SignUpForm () {
@@ -22,15 +22,22 @@ function SignUpForm () {
     };
     
     const handleFormSubmit = e => {
-            e.preventDefault()
-            setErrors(validation(values))
-        
-    };
+        e.preventDefault()
+        setValues({ 
+        username: "",
+        password: "",
+        password2: "",
+        first_name:"",
+        last_name: "",
+        email: "",
+        birthday: "",})
+        setErrors(validation(values))
+        };
 
     return (
         <div className="container">
     <div className="form-content-right">
-        <form className="form">
+        <form onSubmit={handleFormSubmit} className="form">
         <img src="https://cdn-icons-png.flaticon.com/512/7470/7470736.png" alt="spinwheel" width="150px"></img>
             <h1>SIGN UP</h1>
             <div className="form-inputs">
@@ -128,7 +135,7 @@ function SignUpForm () {
                 value={values.birthday} />
                         {errors.birthday && <p className="error">{errors.birthday}</p>}
             </div>
-            <button onClick={handleFormSubmit} className="form-input-btn" type="submit">Sign up</button>
+            <button className="form-input-btn" type="submit">Sign up</button>
             <span className="form-input-login">Already have an account? Login <a href="/login/">here</a></span>
         </form>
     </div>

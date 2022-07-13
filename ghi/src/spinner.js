@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./App";
 
 import "./styles.css";
 
-class App extends React.Component {
+class Spinner extends React.Component {
   state = {
     list: [
-      "$100",
+      "Upper Body",
       "$500",
       "$9,999",
       "$1",
@@ -176,7 +177,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="Spinner">
         <h1>Spinning Prize Wheel React</h1>
         <span id="selector">&#9660;</span>
         <canvas
@@ -214,4 +215,4 @@ class App extends React.Component {
 const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 
-export default spinner;
+export default Spinner;

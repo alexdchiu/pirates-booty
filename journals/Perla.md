@@ -1,3 +1,10 @@
+
+## July 13, 2022
+Today I worked on:
+
+* A bug with my react-router-dom. It kept saying the module had not been found. My team helped me work through the issue. Today I also focused on making the spinner wheel work. I initially found code for one I liked and it turned out to be more complicated than I thought. So I looked for a different sample that seems much easier to implement. 
+
+
 ## July 12, 2022
 Today I worked on:
 

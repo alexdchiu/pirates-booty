@@ -1,5 +1,4 @@
 
-import './App.css';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Nav from './Nav';
 import MainPage from './MainPage';
@@ -14,8 +13,9 @@ function App() {
     <div className="container">
       <Routes>
         <Route path="/" element={<MainPage />} />
-      </Routes>
+      
         <Route path="/" element={<Spinner />} />
+        </Routes>
     </div>
     
     </BrowserRouter>

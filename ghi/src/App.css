@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
-.nav-info{
-  background-color: red;
+.bg-new{
+  background:#ffffff;
 }
 
 * {
@@ -18,15 +18,13 @@ body {
 }
 
 .container {
-  /* display:grid; */
-  /* border: 5px dashed black; */
   grid-template-areas: "left right";
   margin: 80px auto;
   width: 30%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
   position: relative;
   border-radius: 10px;
-  height: 900px;
+  height: 850px;
   background-color: rgb(215, 241, 254);
 }
 

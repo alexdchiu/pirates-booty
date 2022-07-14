@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import validation from "./Validation"
+import {Link} from "react-router-dom"
 
 function LoginForm (){
     const [values, setValues] = useState({
@@ -61,6 +62,7 @@ function LoginForm (){
             </div>
            
             <button className="form-input-btn" type="submit">Login</button>
+            <span className="form-input-login">Don't have an account? Sign up <Link to="/signup/new">here</Link></span>
         </form>
     </div>
     </div>

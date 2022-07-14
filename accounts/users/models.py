@@ -1,16 +1,24 @@
 from django.db import models
 
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import AbstractUser, PermissionsMixin
 
+# class Coins(models.Model):
+#     amount = models.IntegerField(default=0)
 
-class User(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(db_index=True, max_length=255, unique=True)
-    email = models.EmailField(db_index=True, unique=True,  null=True, blank=True)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-
-    USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+class User(AbstractUser):
+    email = models.EmailField(unique=True)
 
     def __str__(self):
         return f"{self.email}"
+
+    # @classmethod
+    # def create(cls, **kwargs):
+    # kwargs["coins"] = Coins.objects.get(amount=0)
+    # user = cls(**kwargs)
+    # user.save()
+    # return user
+
+    # def increment(self):
+    # user = Coins.objects.get(amount=[+1])
+    # self.user = user
+    # self.save()

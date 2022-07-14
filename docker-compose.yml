@@ -52,4 +52,3 @@ services:
         HOST: "0.0.0.0"
         REACT_APP_USERS: http://localhost:8000
         REACT_APP_WORKOUTS: http://localhost:8001
-

@@ -4,6 +4,7 @@ import SignUpForm from './SignUpForm';
 import Nav from './Nav';
 import LoginForm from './LoginForm';
 import MainPage from './MainPage';
+import WheelSpinner from './WheelSpinner';
 // import Spinner from './Spinner';
 
 function App(props) {
@@ -13,6 +14,9 @@ function App(props) {
     <div className="container">
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path= "/WheelSpinner">
+          <Route path="" element={<WheelSpinner />} />
+        </Route>
         <Route path="/signup">
           <Route path="new" element={<SignUpForm signup={props.signup} />} />
         </Route>
@@ -26,5 +30,3 @@ function App(props) {
 }
 export default App;
 
-/* <Route path="/">
-          <Route path="" element={<Spinner />} />*/

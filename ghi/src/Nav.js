@@ -18,6 +18,9 @@ function Nav() {
                     <NavLink className="nav-link" aria-current="page" to="/login">Login</NavLink>
                     </li>
                     <li className="nav-item">
+                    <NavLink className="nav-link" to="/WheelSpinner">Wheel Spinner</NavLink>
+                    </li>
+                    <li className="nav-item">
                     <NavLink className="nav-link" to="/MainPage"> 
                     </NavLink>
                     </li>

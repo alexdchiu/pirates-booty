@@ -11,10 +11,10 @@ function App(props) {
         <Nav />
         <div className="main_container">
           <Routes>
-            <Route path="signup">
+            <Route path="/signup">
               <Route path="new" element={<SignUpForm signup={props.signup} />} />
             </Route>
-            <Route path="login">
+            <Route path="/login">
               <Route path="" element={<LoginForm login={props.login} />} />
             </Route>
           </Routes>

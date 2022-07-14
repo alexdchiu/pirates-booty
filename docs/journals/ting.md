@@ -1,3 +1,7 @@
+July 13, 2022
+- modified Excalidraw to have a better idea on how to design frontend
+- added validation codes for sign-up form page and figured out how to clear fields after submit 
+
 July 12, 2022
 - install bootstrap to main branch and Perla and Shelen helped to fix error with git push to main
 - creating login form and sign-up form with app.css 

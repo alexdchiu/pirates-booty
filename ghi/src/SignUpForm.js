@@ -1,5 +1,6 @@
 import React, {useState}  from "react"
 import validation from "./Validation"
+import {Link} from "react-router-dom"
 
 function SignUpForm () {
     const [values, setValues] = useState ({
@@ -136,7 +137,7 @@ function SignUpForm () {
                         {errors.birthday && <p className="error">{errors.birthday}</p>}
             </div>
             <button className="form-input-btn" type="submit">Sign up</button>
-            <span className="form-input-login">Already have an account? Login <a href="/login/">here</a></span>
+            <span className="form-input-login">Already have an account? Login <Link to="/login/">here</Link></span>
         </form>
     </div>
     </div>

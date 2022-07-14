@@ -26,7 +26,7 @@ def add_workout(obj):
           cur.execute(
               """
               BEGIN;
-              INSERT INTO exercises (id, bodypart, equipment, gifurl, name, target, intensity, length_of_workout)
+              INSERT INTO exercises (id, body_part, equipment, gif_url, name, target, intensity, length_of_workout)
               VALUES (
                     %(id)s
                     , %(bodyPart)s

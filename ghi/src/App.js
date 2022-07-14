@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Nav from './Nav';
 import MainPage from './MainPage';
-import Spinner from './Spinner';
+// import Spinner from './Spinner';
 
 
 
@@ -14,16 +14,17 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
       
-        <Route path="spinner">
+        {/* <Route path="/">
           <Route path="" element={<Spinner />} />
-        </Route>
+        </Route> */}
         
         </Routes>
     </div>
     
     </BrowserRouter>
-    
-  );
+     
+
+  )
 }
 
 export default App;

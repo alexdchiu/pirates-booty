@@ -12,11 +12,11 @@ root.render(
   </React.StrictMode>
 );
 
-async function loadWorkouts(){
-  const response = await fetch('http://localhost:8001/api/workouts/');
-  console.log(response);
-}
-loadWorkouts();
+// async function loadWorkouts(){
+//   const response = await fetch('http://localhost:8001/api/workouts/');
+//   console.log(response);
+// }
+// loadWorkouts();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

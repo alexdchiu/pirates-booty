@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 function Nav() {
     return (
-        <nav className='navbar navbar-expand-lg navbar-dark bg-success'>
+        <nav className='navbar navbar-expand-lg navbar-dark bg-info'>
             <div className="container-fluid">
                 <NavLink className="navbar-brand" to="/">Pirates Booty</NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,9 +13,9 @@ function Nav() {
                 <li className="nav-item">
                     <NavLink className="nav-link" to="/MainPage"> </NavLink>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <NavLink className="nav-link" to="/spinner"></NavLink>
-                </li>
+                </li> */}
 
                 
 
@@ -27,6 +27,5 @@ function Nav() {
             </div>
         </nav>
     )
-}
-
+    }
 export default Nav;

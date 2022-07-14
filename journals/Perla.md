@@ -1,3 +1,8 @@
+## July 14, 2022
+Today I worked on:
+
+
+
 
 ## July 13, 2022
 Today I worked on:

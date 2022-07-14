@@ -17,21 +17,20 @@ function Nav() {
                     <li className="nav-item">
                     <NavLink className="nav-link" aria-current="page" to="/login">Login</NavLink>
                     </li>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <li className="nav-item">
-                    <NavLink className="nav-link" to="/MainPage"> </NavLink>
-                    
-                {/* <li className="nav-item">
-                    <NavLink className="nav-link" to="/spinner"></NavLink>
-                </li> */}
-                </li>
+                    <NavLink className="nav-link" to="/MainPage"> 
+                    </NavLink>
+                    </li>
           </ul>
         </div>
-      </div>
+    
       </div>
     </nav>
     )
 }
 
+// {/* <li className="nav-item">
+//                     <NavLink className="nav-link" to="/spinner"></NavLink>
+//                 </li> */}
   export default Nav;
 

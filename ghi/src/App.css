@@ -1,10 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
+.nav-info{
+  background-color: red;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: 'PT Sans', sans-serif;
+}
+
+body {
+  background-image: url("https://img.freepik.com/free-vector/sea-background-video-conferencing_52683-46343.jpg?w=1800&t=st=1657814014~exp=1657814614~hmac=ebb6bc32f13b7d1c9a140f88b81801e3c914bbefd1e722201b9036af7bb233c3");
+  background-size: cover;
+  background-position: center;
 }
 
 .container {
@@ -18,22 +28,21 @@
   border-radius: 10px;
   height: 900px;
   background-color: rgb(215, 241, 254);
-  /* background-image: url("https://cdn-icons.flaticon.com/png/512/1923/premium/1923035.png?token=exp=1657647218~hmac=b1798e2b708beaaa6e6dac9bce917ab8");
-  background-repeat: no-repeat;
-  background-size: 200px;
-  background-position:  80% 50%;  */
-  
 }
 
 .login-container {
   grid-template-areas: "left right";
-  margin: 80px auto;
+  margin: 150px auto;
   width: 30%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
   position: relative;
   border-radius: 10px;
   height: 650px;
   background-color: rgb(215, 241, 254);
+}
+
+.login-container img {
+  margin-top:15px;
 }
 
 .close-btn {
@@ -191,6 +200,7 @@
 
 p.error{
   margin-bottom: -20px;
+  color:rgb(236, 47, 47);
 }
 
 .form-input-btn a {

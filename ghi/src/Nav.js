@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 function Nav() {
     return (
-        return (
+
             <nav className="navbar navbar-expand-lg navbar-light bg-new">
               <div className="container-fluid">
               <img src="https://cdn-icons-png.flaticon.com/512/1355/1355982.png" alt="logo" width="50px"></img>

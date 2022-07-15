@@ -11,6 +11,15 @@ function App(props) {
         <Nav />
         {/* <div className="main_container"> */}
           <Routes>
+          {/* <Route path="/saved-workouts"> 
+              {/* <Route path="/" element={<SavedWorkouts />} />
+            </Route>
+            <Route path="/more-workouts">
+              <Route path="/" element={<MoreWorkouts />} />
+            </Route>
+            <Route path="/leaderboard">
+              <Route path="/" element={<Leaderboard />} />
+            </Route> */}
             <Route path="/signup">
               <Route path="new" element={<SignUpForm />} />
             </Route>

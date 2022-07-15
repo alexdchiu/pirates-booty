@@ -10,11 +10,11 @@ const validation = (values) => {
         errors.password="Password is required"
     }
 
-    if(values.hasOwnProperty("password2") && !values.password2){
-        errors.password2="Password is required";
-    } else if (values.hasOwnProperty("password2") && values.password2 !== values.password){
-        errors.password2 = "Passwords do not match";
-    }
+    // if(values.hasOwnProperty("password2") && !values.password2){
+    //     errors.password2="Password is required";
+    // } else if (values.hasOwnProperty("password2") && values.password2 !== values.password){
+    //     errors.password2 = "Passwords do not match";
+    // }
 
     if(values.hasOwnProperty("first_name") && !values.first_name){
         errors.first_name="First name is required"

@@ -10,7 +10,6 @@ function SignUpForm () {
         first_name:"",
         last_name: "",
         email: "",
-        // birthday: "",
     })
     
     const [errors, setErrors] = useState({})
@@ -57,7 +56,6 @@ function SignUpForm () {
                 first_name:"",
                 last_name: "",
                 email: "",
-                // birthday: "",
             })
         }
     }
@@ -66,7 +64,7 @@ function SignUpForm () {
         <div className="container">
     <div className="form-content-right">
         <form onSubmit={handleFormSubmit} className="form">
-        <img src="https://cdn-icons-png.flaticon.com/512/7470/7470736.png" alt="spinwheel" width="150px"></img>
+            <img src="https://cdn-icons-png.flaticon.com/512/7470/7470736.png" alt="spinwheel" width="150px"></img>
             <h1>SIGN UP</h1>
             <div className="form-inputs">
             <label htmlFor="username" className="form-label">
@@ -94,21 +92,7 @@ function SignUpForm () {
                 value={values.password} />
              {errors.password && <p className="error">{errors.password}</p>}
             </div>
-            <div className="form-inputs">
-            <label htmlFor="confirm_password" className="form-label">
-              
-            </label>
-                <input
-                onChange={handleChange}
-                type="password"
-                name="password2"
-                className="form-input"
-                placeholder="confirm password"
-                value={values.password2} />
-            {errors.password2 && <p className="error">{errors.password2}</p>}
-        
-            
-            </div>
+          
             <div className="form-inputs">
             <label htmlFor="first_name" className="form-label">
               
@@ -150,23 +134,11 @@ function SignUpForm () {
                 value={values.email} />
              {errors.email && <p className="error">{errors.email}</p>}
             </div>
-            {/* <div className="form-inputs">
-            <label htmlFor="birthday" className="form-label">
-
-            </label>
-                <input 
-                onChange={handleChange}
-                type="date"
-                name="birthday"
-                className="form-input"
-                placeholder="birthday"
-                value={values.birthday} />
-                        {errors.birthday && <p className="error">{errors.birthday}</p>}
-            </div> */}
             <button className="form-input-btn" type="submit">Sign up</button>
             <span className="form-input-login">Already have an account? Login <Link to="/login/">here</Link></span>
         </form>
     </div>
+
     </div>
 );
 }

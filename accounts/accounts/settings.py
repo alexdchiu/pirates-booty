@@ -25,8 +25,6 @@ SECRET_KEY = 'django-insecure-z29da*9er00^g6(r!_xqf%+w50*l^6p0h032m$6q^adakd*t9-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost"]
-CORS_ORIGIN_ALLOW_ALL = True
 
 ALLOWED_HOSTS = [
     "localhost"
@@ -34,12 +32,13 @@ ALLOWED_HOSTS = [
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8001",
+    "http://localhost:8001", "http://localhost:8000", "http://localhost:3000"
 ]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +49,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,6 +59,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'accounts.urls'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000", "http://localhost:8000", "http://localhost:8001"
+]
+CORS_ALLOW_CREDENTIALS = True
 
 AUTH_USER_MODEL = 'users.User'
 

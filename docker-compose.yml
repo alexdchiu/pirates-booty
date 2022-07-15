@@ -1,17 +1,16 @@
-version: "3.9"
-
 volumes:
   postgres-data:
     external: true   
+  pgadmin:
+    external: true
 services:
-  db:
-    build:
-      context: ./relational-data
-      dockerfile: ./Dockerfile.dev
+  postgres:
+    image: postgres:14.2-bullseye
     volumes:
         - postgres-data:/var/lib/postgresql/data
+        - ./relational-data:/docker-entrypoint-initdb.d
     environment:
-        - POSTGRES_MULTIPLE_DATABASES=users,workouts
+        - POSTGRES_MULTIPLE_DATABASES=accounts,workouts
         - POSTGRES_PASSWORD=test-databases
     ports:
         - 15432:5432
@@ -23,8 +22,10 @@ services:
       - "8000:8000"
     volumes:
       - ./workouts:/app
+    depends_on:
+      - postgres 
     environment:
-      DATABASE_URL: postgresql://workouts:password@postgres/workouts
+      DATABASE_URL: postgres://workouts:password@postgres:5432/workouts
       WAIT_HOSTS: postgres:5432
   accounts:
     build:
@@ -33,9 +34,11 @@ services:
     ports:
       - "8001:8001"
     volumes:
-      - ./accounts:/app 
+      - ./accounts:/app
+    depends_on:
+      - postgres 
     environment:
-      DATABASE_URL: postgresql://accounts:password@postgres/accounts
+      DATABASE_URL: postgres://accounts:password@postgres:5432/accounts
       WAIT_HOSTS: postgres:5432
   ghi:
     image: node:lts-bullseye
@@ -49,5 +52,14 @@ services:
         HOST_OS: ${OS}
         NODE_ENV: development
         HOST: "0.0.0.0"
-        REACT_APP_USERS: http://localhost:8000
-        REACT_APP_WORKOUTS: http://localhost:8001
+        REACT_APP_USERS: http://localhost:8001
+        REACT_APP_WORKOUTS: http://localhost:8000
+  pgadmin:
+    image: dpage/pgadmin4
+    volumes:
+        - pgadmin/var/lib/pgadmin4
+    ports:
+        - "8060:80"
+    environment:
+        PGADMIN_DEFAULT_EMAIL: 'shelenells@gmail.com'
+        PGADMIN_DEFAULT_PASSWORD: 'password'

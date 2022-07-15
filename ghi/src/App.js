@@ -20,9 +20,6 @@ function App(props) {
         <Route path="/signup">
           <Route path="new" element={<SignUpForm signup={props.signup} />} />
         </Route>
-        <Nav />
-        {/* <div className="main_container"> */}
-          
             <Route path="/signup">
               <Route path="new" element={<SignUpForm />} />
             </Route>
@@ -31,9 +28,6 @@ function App(props) {
             </Route>
           </Routes>
       </div>
-        
-        
-        {/* </div> */}
     </BrowserRouter>
   );
 }

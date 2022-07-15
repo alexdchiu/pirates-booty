@@ -1,6 +1,8 @@
 ## July 14, 2022
 Today I worked on:
 
+* Trying to get my spinning wheel to work. I have been looking through what other people have done and trying to pick a wheel that I can modify. I have started and tried several different ones without success. 
+
 
 
 

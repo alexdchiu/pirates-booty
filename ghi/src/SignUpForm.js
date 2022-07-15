@@ -31,7 +31,7 @@ function SignUpForm () {
         // first_name:"",
         // last_name: "",
         // email: "",
-        // birthday: "",})
+        // })
         setErrors(validation(values))
         callAPI()
         };

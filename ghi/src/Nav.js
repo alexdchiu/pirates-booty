@@ -6,7 +6,7 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-new">
       <div className="container-fluid">
-          <img src="https://cdn-icons-png.flaticon.com/512/1355/1355982.png" alt="logo" width="50px"></img>
+      <img src="https://cdn-icons-png.flaticon.com/512/1355/1355982.png" alt="logo" width="50px"></img>
         <NavLink className="navbar-brand" to="/">Pirates Booty</NavLink>
         
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

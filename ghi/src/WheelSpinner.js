@@ -3,29 +3,26 @@ import React, { Component } from 'react'
 import WheelComponent from './react-wheel-of-prizes'
 import './react-wheel-of-prizes/index.css'
 
-const WheelSpinner = () => {
-  const segments = [
-    'better luck next time',
-    'won 70',
-    'won 10',
-    'better luck next time',
-    'won 2',
-    'won uber pass',
-    'better luck next time',
-    'won a voucher'
-  ]
-  const segColors = [
-    '#EE4040',
-    '#F0CF50',
-    '#815CD1',
-    '#3DA5E0',
-    '#34A24F',
-    '#F9AA1F',
-    '#EC3F3F',
-    '#FF9000'
-  ]
+const WheelSpinner = ({setResult, segments}) => {
+  // const segments = [
+    // 'better luck next time',
+    // 'won 70',
+    // 'won 10',
+    // 'better luck next time',
+    // 'won 2',
+    // 'won uber pass',
+    // 'better luck next time',
+    // 'won a voucher'
+  // ]
+  const palate = [ "#03ecfc", "#034afc", "#fc0318", "#a1fc03"]
+  const colorFromPalate = () => palate[Math.floor(Math.random() * palate.length)]
+
+  const color = () => "#"+Math.floor(Math.random()* 16777215).toString(16)
+  const segColors = new Array(segments.length).fill("").map(colorFromPalate)
+   console.log(segColors)
+  
   const onFinished = (winner) => {
-    console.log(winner)
+    setResult(winner)
   }
   return (
     <WheelComponent

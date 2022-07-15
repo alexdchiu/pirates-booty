@@ -1,3 +1,9 @@
+## Jul 15, 2022
+Today I worked on:
+
+*Walked through the details of our app with the team. We changed the design of the spin wheel so that it only displays treasure chests instead of the individual body parts. We also determined that we want the leader-boards page and pirate booty page to be in the same page instead of separate pages. In addition we are adding a page to display the workout once its clicked. 
+
+
 ## July 14, 2022
 Today I worked on:
 

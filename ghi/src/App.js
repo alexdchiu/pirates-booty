@@ -20,11 +20,20 @@ function App(props) {
         <Route path="/signup">
           <Route path="new" element={<SignUpForm signup={props.signup} />} />
         </Route>
+        <Nav />
+        {/* <div className="main_container"> */}
+          
+            <Route path="/signup">
+              <Route path="new" element={<SignUpForm />} />
+            </Route>
             <Route path="/login">
-              <Route path="" element={<LoginForm login={props.login} />} />
+              <Route path="" element={<LoginForm />} />
             </Route>
           </Routes>
       </div>
+        
+        
+        {/* </div> */}
     </BrowserRouter>
   );
 }

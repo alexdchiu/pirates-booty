@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.db import IntegrityError
 from django.http import HttpResponse, JsonResponse
-
 from django.views.decorators.http import require_http_methods
 from django.utils import timezone
 import json
@@ -10,9 +9,11 @@ import json
 from common.json import ModelEncoder
 from .models import User
 
+
 class AccountModelEncoder(ModelEncoder):
     model = User
     properties = ["username"]
+
 
 class AccountDetailModelEncoder(ModelEncoder):
     model = User
@@ -22,7 +23,6 @@ class AccountDetailModelEncoder(ModelEncoder):
         "first_name",
         "last_name",
     ]
-
 
 
 @require_http_methods(["GET", "POST"])
@@ -42,7 +42,6 @@ def api_user(request):
             encoder=AccountDetailModelEncoder,
             safe=False,
         )
-
 
 
 # @require_http_methods(["PUT"])

@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 function Nav() {
     return (
-            <nav className="navbar navbar-expand-lg navbar-light bg-info">
+            <nav className="navbar navbar-expand-lg navbar-light bg-new">
                 <div className="container-fluid">
                     <img src="https://cdn-icons-png.flaticon.com/512/1355/1355982.png" alt="logo" width="50px"></img>
                     <NavLink className="navbar-brand" to="/">Pirates Booty</NavLink>
@@ -24,16 +24,12 @@ function Nav() {
                     <NavLink className="nav-link" to="/MainPage"> 
                     </NavLink>
                     </li>
-          </ul>
+                </ul>
         </div>
     
-      </div>
+    </div>
     </nav>
     )
-}
-
-// {/* <li className="nav-item">
-//                     <NavLink className="nav-link" to="/spinner"></NavLink>
-//                 </li> */}
+    }
   export default Nav;
 

@@ -30,10 +30,10 @@ const validation = (values) => {
         errors.email = "Email address is invalid"
     }
 
-    if(values.hasOwnProperty("birthday") && !values.birthday){
-        errors.birthday="Birthday is required"
-    }
-    console.log(errors)
+    // if(values.hasOwnProperty("birthday") && !values.birthday){
+    //     errors.birthday="Birthday is required"
+    // }
+
     return errors;
 }
 

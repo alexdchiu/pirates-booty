@@ -10,7 +10,7 @@ function SignUpForm () {
         first_name:"",
         last_name: "",
         email: "",
-        birthday: "",
+        // birthday: "",
     })
     
     const [errors, setErrors] = useState({})
@@ -24,21 +24,43 @@ function SignUpForm () {
     
     const handleFormSubmit = e => {
         e.preventDefault()
-        setValues({ 
-        username: "",
-        password: "",
-        password2: "",
-        first_name:"",
-        last_name: "",
-        email: "",
-        birthday: "",})
+        // setValues({ 
+        // username: "",
+        // password: "",
+        // password2: "",
+        // first_name:"",
+        // last_name: "",
+        // email: "",
+        // })
         setErrors(validation(values))
-        // callAPI()
+        callAPI()
         };
 
-    // const callAPI = () => {
-    //     const url = ""
-    // }
+    const callAPI = async () => {
+        const data = {...values}
+        const url = "http://localhost:8001/users/account/";
+        const fetchConfig = {
+            method: "post",
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }
+        const response = await fetch(url, fetchConfig);
+        if(response.ok){
+            const newAccount = await response.json();
+            console.log(newAccount);
+            setValues({ 
+                username: "",
+                password: "",
+                password2: "",
+                first_name:"",
+                last_name: "",
+                email: "",
+                // birthday: "",
+            })
+        }
+    }
     
     return (
         <div className="container">
@@ -128,7 +150,7 @@ function SignUpForm () {
                 value={values.email} />
              {errors.email && <p className="error">{errors.email}</p>}
             </div>
-            <div className="form-inputs">
+            {/* <div className="form-inputs">
             <label htmlFor="birthday" className="form-label">
 
             </label>
@@ -140,7 +162,7 @@ function SignUpForm () {
                 placeholder="birthday"
                 value={values.birthday} />
                         {errors.birthday && <p className="error">{errors.birthday}</p>}
-            </div>
+            </div> */}
             <button className="form-input-btn" type="submit">Sign up</button>
             <span className="form-input-login">Already have an account? Login <Link to="/login/">here</Link></span>
         </form>

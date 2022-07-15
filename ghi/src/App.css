@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
-.nav-info{
-  background-color: red;
+.bg-new{
+  background:#ffffff;
 }
 
 * {
@@ -15,29 +15,28 @@ body {
   background-image: url("https://img.freepik.com/free-vector/sea-background-video-conferencing_52683-46343.jpg?w=1800&t=st=1657814014~exp=1657814614~hmac=ebb6bc32f13b7d1c9a140f88b81801e3c914bbefd1e722201b9036af7bb233c3");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .container {
-  /* display:grid; */
-  /* border: 5px dashed black; */
   grid-template-areas: "left right";
-  margin: 80px auto;
-  width: 30%;
+  margin: 150px auto;
+  width: 100%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
   position: relative;
   border-radius: 10px;
-  height: 900px;
+  height: 850px;
   background-color: rgb(215, 241, 254);
 }
 
 .login-container {
   grid-template-areas: "left right";
   margin: 150px auto;
-  width: 30%;
+  width: 50%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
   position: relative;
   border-radius: 10px;
-  height: 650px;
+  height: 700px;
   background-color: rgb(215, 241, 254);
 }
 
@@ -55,41 +54,6 @@ body {
   cursor: pointer;
 }
 
-.form-content-left {
-  background: linear-gradient(
-    90deg,
-    rgb(39, 176, 255) 0%,
-    rgb(0, 232, 236) 100%
-  );
-  border-radius: 10px 0 0 10px;
-  position: relative;
-}
-
-.form-img {
-  width: 80%;
-  height: 80%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.form-img-2 {
-  width: 60%;
-  height: 60%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.form-success {
-  text-align: center;
-  font-size: 24px;
-  margin-top: 80px;
-  color: #fff;
-}
-
 .form-content-right {
   border-radius: 0 10px 10px 0;
   position: relative;
@@ -101,7 +65,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
+  width: 70%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -120,12 +84,6 @@ body {
   margin-bottom: 0.5rem;
   width: 80%;
 }
-
-/* .form-inputs p {
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  color: #f00e0e;
-} */
 
 .form-label {
   display: inline-block;

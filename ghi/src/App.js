@@ -1,16 +1,25 @@
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import SignUpForm from './SignUpForm';
 import Nav from './Nav';
 import LoginForm from './LoginForm';
+import MainPage from './MainPage';
+import WheelSpinner from './WheelSpinner';
+
 
 function App(props) {
   return (
     <BrowserRouter>
-        <Nav />
-        {/* <div className="main_container"> */}
-          <Routes>
+    <Nav />
+    <div className="container">
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path= "/WheelSpinner">
+          <Route path="" element={<WheelSpinner />} />
+        </Route>
+        <Route path="/signup">
+          <Route path="new" element={<SignUpForm signup={props.signup} />} />
+        </Route>
             <Route path="/signup">
               <Route path="new" element={<SignUpForm />} />
             </Route>
@@ -18,11 +27,9 @@ function App(props) {
               <Route path="" element={<LoginForm />} />
             </Route>
           </Routes>
-        
-        
-        {/* </div> */}
+      </div>
     </BrowserRouter>
   );
 }
-
 export default App;
+

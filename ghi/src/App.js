@@ -9,7 +9,7 @@ function App(props) {
   return (
     <BrowserRouter>
         <Nav />
-        <div className="main_container">
+        {/* <div className="main_container"> */}
           <Routes>
             <Route path="/signup">
               <Route path="new" element={<SignUpForm />} />
@@ -20,7 +20,7 @@ function App(props) {
           </Routes>
         
         
-        </div>
+        {/* </div> */}
     </BrowserRouter>
   );
 }

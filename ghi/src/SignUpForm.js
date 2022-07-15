@@ -23,14 +23,14 @@ function SignUpForm () {
     
     const handleFormSubmit = e => {
         e.preventDefault()
-        // setValues({ 
-        // username: "",
-        // password: "",
-        // password2: "",
-        // first_name:"",
-        // last_name: "",
-        // email: "",
-        // })
+        setValues({ 
+        username: "",
+        password: "",
+        password2: "",
+        first_name:"",
+        last_name: "",
+        email: "",
+        })
         setErrors(validation(values))
         callAPI()
         };

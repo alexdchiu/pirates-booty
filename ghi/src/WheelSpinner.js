@@ -14,7 +14,7 @@ const WheelSpinner = ({setResult, segments}) => {
     // 'better luck next time',
     // 'won a voucher'
   // ]
-  const palate = [ "#03ecfc", "#034afc", "#fc0318", "#a1fc03"]
+  const palate = [ "#03ecfc", "#03dbfc", "#38a874", "##03fc80", "#fcb103", "#fc03b5"]
   const colorFromPalate = () => palate[Math.floor(Math.random() * palate.length)]
 
   const color = () => "#"+Math.floor(Math.random()* 16777215).toString(16)

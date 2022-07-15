@@ -10,12 +10,6 @@ const validation = (values) => {
         errors.password="Password is required"
     }
 
-    // if(values.hasOwnProperty("password2") && !values.password2){
-    //     errors.password2="Password is required";
-    // } else if (values.hasOwnProperty("password2") && values.password2 !== values.password){
-    //     errors.password2 = "Passwords do not match";
-    // }
-
     if(values.hasOwnProperty("first_name") && !values.first_name){
         errors.first_name="First name is required"
     }
@@ -29,10 +23,6 @@ const validation = (values) => {
     } else if(values.hasOwnProperty("email") && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)){
         errors.email = "Email address is invalid"
     }
-
-    // if(values.hasOwnProperty("birthday") && !values.birthday){
-    //     errors.birthday="Birthday is required"
-    // }
 
     return errors;
 }

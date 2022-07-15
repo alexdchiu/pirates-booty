@@ -23,13 +23,14 @@ function LoginForm (){
         username: "",
         password: "",})
         setErrors(validation(values))
+        console.log(values)
         };
 
     return (
         <div className="login-container">  
         <div className="form-content-right">
         <form onSubmit={handleSubmit} className="form">
-        <img src="https://cdn-icons.flaticon.com/png/512/1923/premium/1923035.png?token=exp=1657736714~hmac=80cae3d0cc89ee93299448495dbd8af1" alt="pirates" width="150px"></img>
+        <img src= "https://cdn-icons.flaticon.com/png/512/1923/premium/1923035.png?token=exp=1657736714~hmac=80cae3d0cc89ee93299448495dbd8af1" alt="pirates" width="150px"></img>
             <h1> ARGH! </h1>
             <h1>WELCOME BACK PIRATE</h1>
             <div className="form-inputs">

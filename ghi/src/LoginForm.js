@@ -23,6 +23,7 @@ function LoginForm (){
         username: "",
         password: "",})
         setErrors(validation(values))
+        console.log(values)
         };
 
     return (

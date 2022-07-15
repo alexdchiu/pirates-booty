@@ -5,7 +5,7 @@ import Nav from './Nav';
 import LoginForm from './LoginForm';
 import MainPage from './MainPage';
 import WheelSpinner from './WheelSpinner';
-// import Spinner from './Spinner';
+
 
 function App(props) {
   return (

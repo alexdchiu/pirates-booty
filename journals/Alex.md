@@ -12,6 +12,7 @@ Today I worked on:
 - I was playing a bit of catch up today since I was out on Friday for a wedding. However, my teammates had made some changes along the way while they were progressing with their respective parts of the project that they were working on and there were some changes to the YML file. I merged with the main branch and had to reconfigure some volume names and also recincorporate the build context and dockerfile for the relational-data / multiple databases.
 - Once this was working, I started working on getting a detailed get for a specific workout by ID and a list of random workouts for users to spin the wheel. However, I realized that since we want to be able to filter workouts by targeted body part / intensity / length of workout (or some combination of these 3), I needed to have a dynamic request that could accomodate 1, 2 or all 3 filters. 
 
+
 ## July 13, 2022
 Today I worked on:
 * Getting FastAPI loaded into the workouts app.

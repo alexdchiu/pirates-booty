@@ -58,22 +58,22 @@ const exercises = [
 
 function MainPage() {
   let [result, setResult] = useState("")
-  // let [exercisedata, setExercisedata] = useState([]);
+  // let [exercises, setExercises] = useState([]);
 
   const segments = exercises.map(exercise => exercise.name )
 
   console.log(segments)
 // using this to pass data, need to update const url 
   // useEffect(() => {
-  //   async function getexerciseData() {
+  //   async function exercises() {
   //     const url = '${process.env.REACT_APP_API}/endpoint';
       // const response = await fetch(url);
   //     if (response.ok) {
   //       const data = await response.json();
-  //       setExercisedata(data);
+  //       setExercises(data);
   //     }
   //   }
-  //   getexerciseData();
+  //   getExercises();
   // }, [])
 
 

@@ -1,21 +1,16 @@
-version: "3.9"
-
-
 volumes:
   postgres-data:
-    external: true  
-  pg-admin: 
-    external: true 
+    external: true   
+  pgadmin:
+    external: true
 services:
-  db:
-    build:
-      context: ./relational-data
-      dockerfile: ./Dockerfile.dev
+  postgres:
+    image: postgres:14.2-bullseye
     volumes:
         - postgres-data:/var/lib/postgresql/data
         - ./workouts/data:/data
     environment:
-        - POSTGRES_MULTIPLE_DATABASES=users,workouts
+        - POSTGRES_MULTIPLE_DATABASES=accounts,workouts
         - POSTGRES_PASSWORD=test-databases
     ports:
         - 15432:5432
@@ -37,10 +32,12 @@ services:
       - "8000:8000"
     volumes:
       - ./workouts:/app
+    depends_on:
+      - postgres 
     environment:
-      DATABASE_URL: postgresql://workouts:password@db/workouts
-      WAIT_HOSTS: db:5432
-      PGHOST: db
+      DATABASE_URL: postgresql://workouts:password@postgres:5432/workouts
+      WAIT_HOSTS: postgres:5432
+      PGHOST: postgres
       PGDATABASE: workouts
       PGUSER: postgres
       PGPASSWORD: test-databases
@@ -51,14 +48,12 @@ services:
     ports:
       - "8001:8000"
     volumes:
-      - ./accounts:/app 
+      - ./accounts:/app
+    depends_on:
+      - postgres 
     environment:
-      DATABASE_URL: postgresql://accounts:password@db/accounts
-      WAIT_HOSTS: db:5432
-      PGHOST: db
-      PGDATABASE: workouts
-      PGUSER: postgres
-      PGPASSWORD: test-databases
+      DATABASE_URL: postgres://accounts:password@postgres:5432/accounts
+      WAIT_HOSTS: postgres:5432
   ghi:
     image: node:lts-bullseye
     command: /bin/bash run.sh
@@ -71,6 +66,14 @@ services:
         HOST_OS: ${OS}
         NODE_ENV: development
         HOST: "0.0.0.0"
-        REACT_APP_USERS: http://localhost:8000
-        REACT_APP_WORKOUTS: http://localhost:8001
-
+        REACT_APP_USERS: http://localhost:8001
+        REACT_APP_WORKOUTS: http://localhost:8000
+  pgadmin:
+    image: dpage/pgadmin4
+    volumes:
+        - pgadmin/var/lib/pgadmin4
+    ports:
+        - "8060:80"
+    environment:
+        PGADMIN_DEFAULT_EMAIL: 'shelenells@gmail.com'
+        PGADMIN_DEFAULT_PASSWORD: 'password'

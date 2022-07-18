@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url #type:ignore
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,12 +26,21 @@ SECRET_KEY = 'django-insecure-z29da*9er00^g6(r!_xqf%+w50*l^6p0h032m$6q^adakd*t9-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
+ALLOWED_HOSTS = [
+    "localhost"
+]
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8001", "http://localhost:8000", "http://localhost:3000"
+]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
+    'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,16 +50,23 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'accounts.urls'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000", "http://localhost:8000", "http://localhost:8001"
+]
+CORS_ALLOW_CREDENTIALS = True
+
+AUTH_USER_MODEL = 'users.User'
 
 TEMPLATES = [
     {
@@ -73,12 +90,8 @@ WSGI_APPLICATION = 'accounts.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = {}
+DATABASES["default"] = dj_database_url.config()
 
 
 # Password validation

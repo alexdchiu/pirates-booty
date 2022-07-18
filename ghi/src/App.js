@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import SignUpForm from './SignUpForm';
+import Nav from './Nav';
+import LoginForm from './LoginForm';
+import MainPage from './MainPage';
+import WheelSpinner from './WheelSpinner';
 
-function App() {
+
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Nav />
+    <div className="container">
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path= "/WheelSpinner">
+          <Route path="" element={<WheelSpinner />} />
+        </Route>
+        <Route path="/signup">
+          <Route path="new" element={<SignUpForm signup={props.signup} />} />
+        </Route>
+            <Route path="/signup">
+              <Route path="new" element={<SignUpForm />} />
+            </Route>
+            <Route path="/login">
+              <Route path="" element={<LoginForm />} />
+            </Route>
+          </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
-
 export default App;
+

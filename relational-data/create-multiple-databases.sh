@@ -21,8 +21,6 @@ if [ -n "$POSTGRES_MULTIPLE_DATABASES" ]; then
     echo "Multiple databases created"
 fi
 
-echo "Hello Zynh"
-
 
 FILE=/data/workouts-db.sql
 if [ -f "$FILE" ]; then

@@ -1,5 +1,6 @@
 import WheelSpinner from "./WheelSpinner";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+// import { useEffect } from "react";
 
 
 
@@ -57,10 +58,22 @@ const exercises = [
 
 function MainPage() {
   let [result, setResult] = useState("")
+  // let [exercisedata, setExercisedata] = useState([]);
 
   const segments = exercises.map(exercise => exercise.name )
 
   console.log(segments)
+// using this to pass data, need to update const url 
+  // useEffect(() => {
+  //   async function getexerciseData() {
+  //     const url = '${process.env.REACT_APP_API}/endpoint';
+  //     const response = fetch(url);
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setExercisedata(data);
+  //     }
+  //   }
+  // }, [])
 
 
 

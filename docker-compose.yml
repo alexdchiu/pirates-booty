@@ -5,7 +5,9 @@ volumes:
     external: true
 services:
   postgres:
-    image: postgres:14.2-bullseye
+    build:
+      context: ./relational-data
+      dockerfile: ./Dockerfile.dev
     volumes:
         - postgres-data:/var/lib/postgresql/data
         - ./workouts/data:/data
@@ -13,17 +15,7 @@ services:
         - POSTGRES_MULTIPLE_DATABASES=accounts,workouts
         - POSTGRES_PASSWORD=test-databases
     ports:
-        - 15432:5432
-  pg-admin:
-    image: dpage/pgadmin4
-    volumes:
-      - pg-admin:/var/lib/pgadmin
-    ports:
-      - 8082:80
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: hello123
-      PGADMIN_DISABLE_POSTFIX: 1
+        - "15432:5432"
   workouts:
     build:
       context: ./workouts
@@ -52,7 +44,7 @@ services:
     depends_on:
       - postgres 
     environment:
-      DATABASE_URL: postgres://accounts:password@postgres:5432/accounts
+      DATABASE_URL: postgresql://accounts:password@postgres:5432/accounts
       WAIT_HOSTS: postgres:5432
   ghi:
     image: node:lts-bullseye
@@ -71,7 +63,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     volumes:
-        - pgadmin/var/lib/pgadmin4
+        - pgadmin:/var/lib/pgadmin
     ports:
         - "8060:80"
     environment:

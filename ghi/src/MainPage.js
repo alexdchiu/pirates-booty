@@ -67,12 +67,13 @@ function MainPage() {
   // useEffect(() => {
   //   async function getexerciseData() {
   //     const url = '${process.env.REACT_APP_API}/endpoint';
-  //     const response = fetch(url);
+      // const response = await fetch(url);
   //     if (response.ok) {
   //       const data = await response.json();
   //       setExercisedata(data);
   //     }
   //   }
+  //   getexerciseData();
   // }, [])
 
 

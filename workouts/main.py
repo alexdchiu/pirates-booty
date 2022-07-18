@@ -1,7 +1,8 @@
 from fastapi import FastAPI
-import psycopg
-# import os
+from routers import exercises
 
 # # pool = ConnectionPool(conninfo=os.environ["DATABASE_URL"])
 
 app = FastAPI()
+
+app.include_router(exercises.router)

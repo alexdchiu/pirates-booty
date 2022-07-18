@@ -1,3 +1,8 @@
+## July 18, 2022
+Today I worked on:
+
+*Checking in with my team to ensure we were all on the same page and we resolved a few bugs. Coordinated with Alex to get the API endpoints to pass my data to the wheel spinner. Agreed to check in with the rest of the team after lunch before pushing the changes that would allow me to access the database. My plan is to start working on the code to fetch the data and then implement once everyone is ready.  
+
 ## Jul 15, 2022
 Today I worked on:
 

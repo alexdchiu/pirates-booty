@@ -27,7 +27,7 @@ class Message(BaseModel):
   '/api/workouts/{exercise_id}',
   responses = {404: {'model': Message}}
 )
-def get_exercise(
+def get_exercise_by_id(
   exercise_id: int,
   response: Response
   ): 
@@ -61,7 +61,7 @@ def get_exercise(
 @router.get(
   '/api/workouts/random-wheel',
 )
-def get_random_workout_wheel(
+def get_random_workout_wheel_for_guests(
   response: Response
   ):
   with psycopg.connect(workouts_url) as conn:
@@ -94,7 +94,7 @@ def get_random_workout_wheel(
 @router.get(
   '/api/workouts/filtered/random-wheel',
 )
-def get_filtered_random_workout_wheel(
+def get_filtered_random_workout_wheel_for_logged_in_users(
   target,
   intensity,
   response: Response,
@@ -132,7 +132,7 @@ def get_filtered_random_workout_wheel(
 @router.get(
   '/api/workouts/filtered/',
 )
-def get_filtered_workout_list(
+def get_filtered_workout_list_for_logged_in_users(
   target,
   intensity,
   response: Response,

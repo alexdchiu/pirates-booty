@@ -59,7 +59,7 @@ def get_exercise(
         return result
 
 @router.get(
-  '/api/random-workout-wheel',
+  '/api/workouts/random-wheel',
 )
 def get_random_workout_wheel(
   response: Response
@@ -86,16 +86,17 @@ def get_random_workout_wheel(
 
       if result is None:
         response.status_code = status.HTTP_404_NOT_FOUND
-        return {"message": "Clue does not exist"}
+        return {"message": response.text}
       
       else:
         return result
 
 @router.get(
-  '/api/random-workout-wheel/{target}',
+  '/api/workouts/filtered/random-wheel',
 )
-def get_random_workout_wheel_by_target(
+def get_filtered_random_workout_wheel(
   target,
+  intensity,
   response: Response,
   ):
   with psycopg.connect(workouts_url) as conn:
@@ -113,16 +114,70 @@ def get_random_workout_wheel_by_target(
           'gif_url', exercises.gif_url
         )
         FROM exercises
-        WHERE target = %s
+        WHERE (target = %s)
+          AND (intensity = %s)
         ORDER BY random()
         LIMIT 10;
         """,
-        [target]
+        [target, intensity]
       ).fetchall()
 
       if result is None:
         response.status_code = status.HTTP_404_NOT_FOUND
-        return {"message": "Clue does not exist"}
+        return {"message": "Error fetching."}
       
       else:
         return result
+
+@router.get(
+  '/api/workouts/filtered/',
+)
+def get_filtered_workout_list(
+  target,
+  intensity,
+  response: Response,
+  ):
+  
+  with psycopg.connect(workouts_url) as conn:
+    with conn.cursor() as cur:
+      result = cur.execute(
+        """
+        SELECT json_build_object(
+          'id', exercises.id,
+          'name', exercises.name,
+          'body_part', exercises.body_part,
+          'target', exercises.target,
+          'equipment', exercises.equipment,
+          'intensity', exercises.intensity,
+          'length_of_workout', exercises.length_of_workout,
+          'gif_url', exercises.gif_url
+        )
+        FROM exercises
+        WHERE (target = %s)
+          AND (intensity = %s)
+        ORDER BY length_of_workout asc
+        LIMIT 100;
+        """,
+        [target, intensity]
+      ).fetchall()
+
+      if result is None:
+        response.status_code = status.HTTP_404_NOT_FOUND
+        return {"message": "Error fetching."}
+      
+      else:
+        return result
+
+  # if target:
+  #   target_filter = 'target = ' + target
+  # if intensity:
+  #   intensity_filter = 'intensity = ' + str(intensity)
+  # where_clause = ''
+  # if target_filter or intensity_filter:
+  #   res = 'WHERE '
+  #   if target_filter:
+  #     res += target_filter
+  #     if intensity_filter:
+  #       res += ' AND ' + intensity_filter
+  #   else:
+  #       res += intensity_filter

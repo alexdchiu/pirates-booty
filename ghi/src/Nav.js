@@ -18,9 +18,9 @@ function Nav() {
               <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" to="/login">Login</NavLink>
               </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                     <NavLink className="nav-link" to="/WheelSpinner">Wheel Spinner</NavLink>
-                    </li>
+                    </li> */}
             </ul>
 </div>
     

@@ -5,6 +5,7 @@ import Nav from './Nav';
 import LoginForm from './LoginForm';
 import MainPage from './MainPage';
 import WheelSpinner from './WheelSpinner';
+import Dashboard from './Dashboard';
 
 
 function App(props) {
@@ -25,6 +26,9 @@ function App(props) {
             </Route>
             <Route path="/login">
               <Route path="" element={<LoginForm />} />
+            </Route>
+            <Route path="/dashboard">
+              <Route path="" element={<Dashboard />} />
             </Route>
           </Routes>
       </div>

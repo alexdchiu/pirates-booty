@@ -5,6 +5,14 @@ At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
 
+## July 19, 2022
+Today I worked on:
+* Fixing YML files so both postgres databases were working.
+
+- Our group huddled up to try and go over YML file differences. Some teammates were able to get one to working or not
+- Got everyone merged and on the same page with working backends but we are having an issue with React where there is a dist folder that shows for some team members but doesn't push to GitLab, so when other teammates try to run the front-end site, we get "module not found" errors.
+
+
 ## July 18, 2022
 Today I worked on:
 * Getting FastAPI requests to pull data.

@@ -1,3 +1,11 @@
+July 15, 2022
+- discussion on blueprint of application with Perla and Shelen
+- modified css and removed password2 input
+
+July 14, 2022
+- discussion on frontend blueprint with Perla
+- updating frontend css
+
 July 13, 2022
 - modified Excalidraw to have a better idea on how to design frontend
 - added validation codes for sign-up form page and figured out how to clear fields after submit 

@@ -136,7 +136,6 @@ def get_filtered_random_workout_wheel_for_logged_in_users(
 )
 def get_filtered_workout_list_for_logged_in_users(
   target,
-  intensity,
   response: Response,
   ):
   
@@ -156,11 +155,10 @@ def get_filtered_workout_list_for_logged_in_users(
         )
         FROM exercises
         WHERE (target = %s)
-          AND (intensity = %s)
         ORDER BY length_of_workout asc
         LIMIT 100;
         """,
-        [target, intensity]
+        [target,]
       ).fetchall()
 
       if result is None:

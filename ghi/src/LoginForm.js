@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import validation from "./Validation"
 import {Link} from "react-router-dom"
 
+
 function LoginForm (){
     const [values, setValues] = useState({
         username:"",
@@ -26,11 +27,19 @@ function LoginForm (){
         console.log(values)
         };
 
+    // const playAudio = () => {
+    //     if response is ok, play sounds
+    // }
+    const useAudio = new Audio("/assets/sounds/argh.mp3")
+    const start = () => {
+        useAudio.play()
+    }
+
     return (
         <div className="login-container">  
         <div className="form-content-right">
         <form onSubmit={handleSubmit} className="form">
-        <img src= "https://cdn-icons.flaticon.com/png/512/1923/premium/1923035.png?token=exp=1657736714~hmac=80cae3d0cc89ee93299448495dbd8af1" alt="pirates" width="150px"></img>
+        <img src= '/assets/images/pirate.png' alt="pirates" width="150px"></img>
             <h1> ARGH! </h1>
             <h1>WELCOME BACK PIRATE</h1>
             <div className="form-inputs">
@@ -62,7 +71,7 @@ function LoginForm (){
             {errors.password && <p className="error">{errors.password}</p>}
             </div>
            
-            <button className="form-input-btn" type="submit">Login</button>
+            <button onClick={start} className="form-input-btn" type="submit">Login</button>
             <span className="form-input-login">Don't have an account? Sign up <Link to="/signup/new">here</Link></span>
         </form>
     </div>

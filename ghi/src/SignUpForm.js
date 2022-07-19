@@ -20,16 +20,8 @@ function SignUpForm () {
         }); 
     };
     
-    
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        // setValues({ 
-        // username: "",
-        // password: "",
-        // first_name:"",
-        // last_name: "",
-        // email: "",
-        // })
         setErrors(validation(values))
         callAPI()
     }

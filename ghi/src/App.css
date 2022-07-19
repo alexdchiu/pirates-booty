@@ -12,8 +12,8 @@
 }
 
 body {
-  background-image: url("https://img.freepik.com/free-vector/sea-background-video-conferencing_52683-46343.jpg?w=1800&t=st=1657814014~exp=1657814614~hmac=ebb6bc32f13b7d1c9a140f88b81801e3c914bbefd1e722201b9036af7bb233c3");
-  background-size: cover;
+  background-image: url("/public/assets/images/sea.jpg");
+  background-size:cover;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -27,8 +27,24 @@ body {
   height: 790px;
   background: rgb(215, 241, 254);
   /* border: 12px double rgb(229, 215, 172) */
-
 }
+
+.outer-div{
+  display: flex;
+  justify-content: center;
+}
+
+.list-container{
+  display: flex;
+  flex-direction: row;
+  margin-top:20%;
+  width:75%;
+  background-color:white;
+  text-align:  center;
+  border:2px solid black;
+  border-radius: 20px;
+}
+
 /* 
 @keyframes animate{
   from {

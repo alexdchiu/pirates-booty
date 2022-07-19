@@ -1,3 +1,9 @@
+## July 19, 2022
+Today I worked on:
+* The Dashboard file and making sure that the format matched the previous pages. Will be checking in with Ting to ensure we are on the same page in terms of what that page will look like. 
+
+
+
 ## July 18, 2022
 Today I worked on:
 

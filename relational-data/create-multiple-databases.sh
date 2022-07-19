@@ -14,9 +14,15 @@ EOSQL
 }
 
 if [ -n "$POSTGRES_MULTIPLE_DATABASES" ]; then
-	echo "Multiple database creation requested: $POSTGRES_MULTIPLE_DATABASES"
-	for db in $(echo $POSTGRES_MULTIPLE_DATABASES | tr ',' ' '); do
-		create_user_and_database $db
-	done
-	echo "Multiple databases created"
+    echo "Multiple database creation requested: $POSTGRES_MULTIPLE_DATABASES"
+    for db in $(echo $POSTGRES_MULTIPLE_DATABASES | tr ',' ' '); do
+        create_user_and_database $db
+    done
+    echo "Multiple databases created"
+fi
+
+
+FILE=/data/workouts-db.sql
+if [ -f "$FILE" ]; then
+    psql -U workouts workouts < /data/workouts-db.sql
 fi

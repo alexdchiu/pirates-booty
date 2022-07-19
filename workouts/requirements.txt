@@ -6,6 +6,7 @@ click==8.1.2
 dj-database-url==0.5.0
 django-cors-headers==3.11.0
 Django==4.0.3
+djwto @ git+https://github.com/hr-curtissimo/djwto.git
 django-spa==0.3.6
 djwto==0.0.3
 flake8==4.0.1
@@ -23,3 +24,6 @@ sqlparse==0.4.2
 tomli==2.0.1
 urllib3==1.26.9
 whitenoise==5.3.0
+stapi[all]==0.78.0
+uvicorn[standard]==0.17.6
+psycopg[binary,pool]==3.0.14

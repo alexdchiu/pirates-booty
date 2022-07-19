@@ -5,10 +5,12 @@ volumes:
     external: true
 services:
   postgres:
-    image: postgres:14.2-bullseye
+    build:
+      context: ./relational-data
+      dockerfile: ./Dockerfile.dev
     volumes:
         - postgres-data:/var/lib/postgresql/data
-        - ./relational-data:/docker-entrypoint-initdb.d
+        - ./workouts/data:/data
     environment:
         - POSTGRES_MULTIPLE_DATABASES=accounts,workouts
         - POSTGRES_PASSWORD=test-databases
@@ -25,20 +27,24 @@ services:
     depends_on:
       - postgres 
     environment:
-      DATABASE_URL: postgres://workouts:password@postgres:5432/workouts
+      DATABASE_URL: postgresql://workouts:password@postgres:5432/workouts
       WAIT_HOSTS: postgres:5432
+      PGHOST: postgres
+      PGDATABASE: workouts
+      PGUSER: postgres
+      PGPASSWORD: test-databases
   accounts:
     build:
       context: ./accounts
       dockerfile: ./Dockerfile.dev
     ports:
-      - "8001:8001"
+      - "8001:8000"
     volumes:
       - ./accounts:/app
     depends_on:
       - postgres 
     environment:
-      DATABASE_URL: postgres://accounts:password@postgres:5432/accounts
+      DATABASE_URL: postgresql://accounts:password@postgres:5432/accounts
       WAIT_HOSTS: postgres:5432
   ghi:
     image: node:lts-bullseye
@@ -57,7 +63,7 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     volumes:
-        - /pgadmin/var/lib/pgadmin4
+        - pgadmin:/var/lib/pgadmin
     ports:
         - "8060:80"
     environment:

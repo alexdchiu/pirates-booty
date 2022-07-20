@@ -4,14 +4,15 @@ function Leaderboard (){
     return(
         <div className="outer-div">
         <div className="list-container">
-            
             <table className="table table-striped">
+            <thead>
+                <tr className="leaderboard">LEADERBOARD</tr>
+            </thead>
             <thead>
                 <tr>
                 <th scope="col">Metal</th>
                 <th scope="col">Username</th>
                 <th scope="col">Total Booty</th>
-                
                 </tr>
             </thead>
             <tbody>

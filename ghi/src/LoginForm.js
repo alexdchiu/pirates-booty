@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import validation from "./Validation"
 import {Link} from "react-router-dom"
 
-
 function LoginForm (){
     const [values, setValues] = useState({
         username:"",

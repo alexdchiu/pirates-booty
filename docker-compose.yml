@@ -46,6 +46,7 @@ services:
     environment:
       DATABASE_URL: postgresql://accounts:password@postgres:5432/accounts
       WAIT_HOSTS: postgres:5432
+      DJWTO_SIGNING_KEY: 30bd16c09e22f5e7e51ba5885e8fd943d27377f3e249fdf36cbf367cece6613f
   ghi:
     image: node:lts-bullseye
     command: /bin/bash run.sh
@@ -69,3 +70,5 @@ services:
     environment:
         PGADMIN_DEFAULT_EMAIL: 'shelenells@gmail.com'
         PGADMIN_DEFAULT_PASSWORD: 'password'
+
+

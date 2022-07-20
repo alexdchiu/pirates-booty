@@ -45,6 +45,16 @@ def api_user(request):
         )
 
 
+@require_http_methods(["GET"])
+def api_user_token(request):
+    if "jwt_access_token" in request.COOKIES:
+        token = request.COOKIES["jwt_access_token"]
+        if token:
+            return JsonResponse({"token": token})
+    response = JsonResponse({"token": None})
+    return response
+
+
 # @require_http_methods(["PUT"])
 # def api_increment_coin(requests, pk):
 #     increase = User.objects.get(id=pk)

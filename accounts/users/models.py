@@ -3,6 +3,10 @@ from django.contrib.auth.models import AbstractUser, PermissionsMixin
 
 # class Coins(models.Model):
 #     amount = models.IntegerField(default=0)
+#     def increment(self):
+#         amount=0
+
+        
 
 
 class User(AbstractUser):
@@ -13,16 +17,15 @@ class User(AbstractUser):
 
     # @classmethod
     # def create(cls, **kwargs):
-    # kwargs["coins"] = Coins.objects.get(amount=0)
-    # user = cls(**kwargs)
-    # user.save()
-    # return user
-
+    #     kwargs["coins"] = Coins.objects.get(amount=0)
+    #     user = cls(**kwargs)
+    #     user.save()
+    #     return user
     # def increment(self):
-    # user = Coins.objects.get(amount=[+1])
-    # self.user = user
-    # self.save()
-
+    #     amount=0
+    #     user = Coins.objects.get(amount+=1)
+    #     user.save()
+    #     return user
 
 #  class SavedWorkoutVO(models.Model):
     

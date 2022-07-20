@@ -34,7 +34,7 @@ function SignUpForm () {
         // callAPI()
         const data = {...values}
         console.log(data)
-        const url = `${process.env.REACT_APP_USERS}/users/account`;
+        const url = `${process.env.REACT_APP_USERS}/users/account/`;
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),

@@ -208,3 +208,8 @@ p.error{
   text-decoration: none;
   color:black;
 }
+
+.leaderboard tr {
+  text-align: center;
+  font-size: 40px;
+}

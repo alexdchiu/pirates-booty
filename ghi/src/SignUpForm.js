@@ -29,7 +29,7 @@ function SignUpForm () {
     const callAPI = async () => {
         const data = {...values}
         console.log(data)
-        const url = `${process.env.REACT_APP_USERS}/users/account/`;
+        const url = "http://localhost:8001/users/account/";
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -40,7 +40,6 @@ function SignUpForm () {
             
         }
         const response = await fetch(url, fetchConfig);
-        console.log("res", response)
         if(response.ok){
             const newAccount = await response.json();
             console.log(newAccount);

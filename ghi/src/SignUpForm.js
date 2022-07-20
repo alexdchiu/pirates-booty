@@ -20,21 +20,16 @@ function SignUpForm () {
         }); 
     };
     
-    
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        // setValues({ 
-        // username: "",
-        // password: "",
-        // first_name:"",
-        // last_name: "",
-        // email: "",
-        // })
         setErrors(validation(values))
-        // callAPI()
+        callAPI()
+    }
+        
+    const callAPI = async () => {
         const data = {...values}
         console.log(data)
-        const url = `${process.env.REACT_APP_USERS}/users/account`;
+        const url = `${process.env.REACT_APP_USERS}/users/account/`;
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -43,8 +38,9 @@ function SignUpForm () {
                 // credentials: "include",
             },
             
-        };
+        }
         const response = await fetch(url, fetchConfig);
+        console.log("res", response)
         if(response.ok){
             const newAccount = await response.json();
             console.log(newAccount);
@@ -60,38 +56,7 @@ function SignUpForm () {
             const message = ` An error: ${response.status} - ${response.statusText}`;
             throw new Error(message);
         }
-    };
-        
-    // const callAPI = async () => {
-        // const data = {...values}
-        // console.log(data)
-        // const url = `${process.env.REACT_APP_USERS}/users/account`;
-        // const fetchConfig = {
-        //     method: "post",
-        //     body: JSON.stringify(data),
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         // credentials: "include",
-        //     },
-            
-        // }
-        // const response = await fetch(url, fetchConfig);
-        // if(response.ok){
-        //     const newAccount = await response.json();
-        //     console.log(newAccount);
-        //     setValues({ 
-        //         username: "",
-        //         password: "",
-        //         first_name:"",
-        //         last_name: "",
-        //         email: "",
-        //     })
-        // }
-        // else if (!response.ok){
-        //     const message = ` An error: ${response.status} - ${response.statusText}`;
-        //     throw new Error(message);
-        // }
-    // }
+    }
     
     return (
         <div className="container">

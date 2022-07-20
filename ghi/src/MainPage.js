@@ -57,24 +57,26 @@ const exercises = [
 ]
 
 function MainPage() {
-  let [result, setResult] = useState("")
+  let [exercises, setExercises] = useState([])
   // let [exercises, setExercises] = useState([]);
+// using this to pass data, need to update const url 
+  useEffect(() => {
+    async function getExercises() {
+      const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/guest/random-wheel`;
+      const response = await fetch(url);
+      if (response.ok) {
+        // const data = await response.json();
+        console.log('response', response)
+        // setExercises(data);
+      }
+    }
+    getExercises();
+  }, [setExercises])
 
+  // console.log(exercises)
   const segments = exercises.map(exercise => exercise.name )
 
-  console.log(segments)
-// using this to pass data, need to update const url 
-  // useEffect(() => {
-  //   async function exercises() {
-  //     const url = '${process.env.REACT_APP_API}/endpoint';
-      // const response = await fetch(url);
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       setExercises(data);
-  //     }
-  //   }
-  //   getExercises();
-  // }, [])
+  // console.log(segments)
 
 
 
@@ -87,7 +89,7 @@ function MainPage() {
         <p className="lead mb-4">
           Spin to choose your workout
         </p>
-        <WheelSpinner setResult={setResult} segments={segments} />
+        <WheelSpinner setResult={setExercises} segments={segments} />
       </div>
     </div>
   );

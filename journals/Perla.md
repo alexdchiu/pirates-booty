@@ -1,7 +1,18 @@
+## July 19, 2022
+Today I worked on:
+* The Dashboard file and making sure that the format matched the previous pages. Will be checking in with Ting to ensure we are on the same page in terms of what that page will look like. 
+
+
+
+## July 18, 2022
+Today I worked on:
+
+*Checking in with my team to ensure we were all on the same page and we resolved a few bugs. Coordinated with Alex to get the API endpoints to pass my data to the wheel spinner. Agreed to check in with the rest of the team after lunch before pushing the changes that would allow me to access the database. My plan is to start working on the code to fetch the data and then implement once everyone is ready. I also started the dashboard page that will display all the different components of our app.  
+
 ## Jul 15, 2022
 Today I worked on:
 
-*Walked through the details of our app with the team. We changed the design of the spin wheel so that it only displays treasure chests instead of the individual body parts. We also determined that we want the leader-boards page and pirate booty page to be in the same page instead of separate pages. In addition we are adding a page to display the workout once its clicked. 
+*Walked through the details of our app with the team. We changed the design of the spin wheel so that it only displays treasure chests instead of the individual body parts. We also determined that we want the leader-boards page and pirate booty page to be in the same page instead of separate pages. In addition we are adding a page to display the workout once its clicked. I also worked with Zynh on implementing the spinner wheel and he talked me through the logic.  
 
 
 ## July 14, 2022

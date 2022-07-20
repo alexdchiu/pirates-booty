@@ -6,6 +6,8 @@ import LoginForm from './LoginForm';
 import MainPage from './MainPage';
 import WheelSpinner from './WheelSpinner';
 import Leaderboard from './Leaderboard';
+import Dashboard from './Dashboard';
+
 
 
 function App(props) {
@@ -33,7 +35,11 @@ function App(props) {
             <Route path="/login">
               <Route path="" element={<LoginForm />} />
             </Route>
-      </Routes>
+            <Route path="/dashboard">
+              <Route path="" element={<Dashboard />} />
+            </Route>
+          </Routes>
+  
 
     </BrowserRouter>
   );

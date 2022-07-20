@@ -22,3 +22,7 @@ class User(AbstractUser):
     # user = Coins.objects.get(amount=[+1])
     # self.user = user
     # self.save()
+
+
+#  class SavedWorkoutVO(models.Model):
+    

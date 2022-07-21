@@ -1,17 +1,23 @@
 import React, { useState } from 'react'
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+import {Link} from 'react-router-dom'
 
 import WheelComponent from 'react-wheel-of-prizes'
-import './react-wheel-of-prizes/index.css'
-// import getWorkoutById from './helpers/getWorkoutById'
+import '../react-wheel-of-prizes/index.css' 
+import UserProfileView from '../UserProfileView'
+import WorkoutDetailView from '../WorkoutDetailView'
+
 
 const WheelSpinner = ({segments}) => {
   // console.log(segments)
   let [winnerObj, setWinner] = useState(null)
+  const [show, setShow] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   const nameArr = []
-  const idArr = []
   segments.map(el => nameArr.push(el.name))
-  // console.log(nameArr)
 
   const palate = [ 
     "#03ecfc",/*cyan*/
@@ -28,19 +34,20 @@ const WheelSpinner = ({segments}) => {
   //  console.log(segColors)
   
   const onFinished = (winner) => {
-    // setResult(winner)
-    // console.log(winner)
     let winnerExercise = segments.filter(el => el.name === winner)
     let winnerId = winnerExercise[0].id
-    setWinner(segments.filter(el => el.id === winnerId))
+    let winnerFilter = segments.filter(el => el.id === winnerId)
+    setWinner(winnerFilter[0])
+    handleShow()
   }
+
+  console.log(winnerObj)
 
   return (
     <>
       <WheelComponent
         segments={nameArr}
         segColors={segColors}
-        // winningSegment='won 10'
         onFinished={(winner) => onFinished(winner)}
         primaryColor='black'
         contrastColor='white'
@@ -51,11 +58,21 @@ const WheelSpinner = ({segments}) => {
         downDuration={300}
         fontFamily='Arial'
       />
-      {winnerObj ? 
-        <>
-          <p>'Intensity' = {winnerObj[0].intensity}</p>
-          <p>'Length of Workout' = {winnerObj[0].length_of_workout}</p>
-        </> : null}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>AHOY! Here is your randomly selected workout!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <WorkoutDetailView workoutDetails={winnerObj}/>
+        </Modal.Body>
+        <Modal.Footer>
+          <Link to="/profile" >
+            <Button variant="primary" >
+              User Profile
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </>
   )
 }

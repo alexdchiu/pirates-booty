@@ -10,9 +10,9 @@ Today I worked on:
 * Getting data from workouts API to populate different portions of the front end.
 
 - Our group had a meeting to touch base. We helped one teammate get her docker containers running. Then we shifted our focus on getting the login/signup pages to work and also how to get data from the workouts API to start populating different portions of the page.
-- Perla and I started focusing on getting the workouts data to populate the page. However, we ran into CORS related issues which Shelen and Ting Wei also ran into on the user login portion of the page. 
+- Perla and I started focusing on getting the workouts data to populate the page. However, we ran into CORS related issues which Shelen and Ting Wei also ran into on the user login portion of the page. After re-watching Curtis's video on hooks, we were able to solve this on the FastAPI side.
 - During this process I also noticed that the JSON response body from the workouts API were structured incorrectly so I went and manipulated the way the JSON response was set up with some python commands.
-- Next I moved onto getting the spinning wheel operational. I was able to populate the wheel with data from the fetch request, however, after spinning the wheel, the whole application re-renders which caused new errors. 
+- Next I moved onto getting the spinning wheel operational. I was able to populate the wheel with data from the fetch request, however, after spinning the wheel, the whole application re-renders which caused new errors. I realized that this was due to state related issues and the way we had our hook set up so after some tinkering I was able to get it to work. 
 
 
 ## July 19, 2022

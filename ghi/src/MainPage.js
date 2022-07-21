@@ -1,4 +1,4 @@
-import WheelSpinner from "./WheelSpinner";
+import WheelSpinner from './WheelSpinner'
 import { useEffect, useState } from 'react';
 
 // import { useEffect } from "react";

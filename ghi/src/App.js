@@ -7,7 +7,7 @@ import MainPage from './MainPage';
 import WheelSpinner from './WheelSpinner';
 import Leaderboard from './Leaderboard';
 import Dashboard from './Dashboard';
-
+import UserProfileView from './UserProfileView';
 
 
 function App(props) {
@@ -28,6 +28,9 @@ function App(props) {
             </Route> */}
             <Route path="/leaderboard">
               <Route path="" element={<Leaderboard />} />
+            </Route>
+            <Route path="/profile">
+              <Route path="" element={<UserProfileView />} />
             </Route>
         <Route path="/signup">
           <Route path="new" element={<SignUpForm />} />

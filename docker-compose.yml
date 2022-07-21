@@ -33,6 +33,7 @@ services:
       PGDATABASE: workouts
       PGUSER: postgres
       PGPASSWORD: test-databases
+      # SIGNING_KEY: <<SECRET VALUE>>
   accounts:
     build:
       context: ./accounts

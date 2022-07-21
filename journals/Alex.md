@@ -5,12 +5,22 @@ At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
 
+## July 20, 2022
+Today I worked on:
+* Getting data from workouts API to populate different portions of the front end.
+
+- Our group had a meeting to touch base. We helped one teammate get her docker containers running. Then we shifted our focus on getting the login/signup pages to work and also how to get data from the workouts API to start populating different portions of the page.
+- Perla and I started focusing on getting the workouts data to populate the page. However, we ran into CORS related issues which Shelen and Ting Wei also ran into on the user login portion of the page. 
+- During this process I also noticed that the JSON response body from the workouts API were structured incorrectly so I went and manipulated the way the JSON response was set up with some python commands.
+- Next I moved onto getting the spinning wheel operational. I was able to populate the wheel with data from the fetch request, however, after spinning the wheel, the whole application re-renders which caused new errors. 
+
+
 ## July 19, 2022
 Today I worked on:
 * Fixing YML files so both postgres databases were working.
 
 - Our group huddled up to try and go over YML file differences. Some teammates were able to get one to working or not
-- Got everyone merged and on the same page with working backends but we are having an issue with React where there is a dist folder that shows for some team members but doesn't push to GitLab, so when other teammates try to run the front-end site, we get "module not found" errors.
+- Got everyone merged and on the same page with working backends but we are having an issue with React when teammates try to run the front-end site, we get "module not found" errors. Determined that this is due to the module that was imported for the spinning wheel having been created some time ago so that it's dependent on react version 16.8 vs the react version 18.2 that we are using. I modified the run.sh file to force the installation of the module. GHI runs. However, there's a small issue that for some reason when I import the module into app.js, I have refer to the directory as "react-wheel-of-prizes" while some teammates have to refer to it as "./react-wheel-of-prizes". One way does not work for all of us, which is a bit confusing. 
 
 
 ## July 18, 2022

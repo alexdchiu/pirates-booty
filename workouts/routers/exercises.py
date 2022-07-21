@@ -100,15 +100,15 @@ def get_random_workout_wheel(
       list_for_json = []
       for item in result:
         list_for_json.append(item[0])
-      json_result = {}
-      json_result["exercises"] = list_for_json
+      # json_result = {}
+      # json_result["exercises"] = list_for_json
 
       if result is None:
         response.status_code = status.HTTP_404_NOT_FOUND
         return {"message": "Error fetching."}
       
       else:
-        return json_result
+        return list_for_json
 
 
 @router.get(

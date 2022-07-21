@@ -17,9 +17,9 @@ function App(props) {
 
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path= "/WheelSpinner">
+        {/* <Route path= "/WheelSpinner">
           <Route path="" element={<WheelSpinner />} />
-        </Route>
+        </Route> */}
           {/* <Route path="/saved-workouts"> 
               <Route path="/" element={<SavedWorkouts />} />
             </Route>

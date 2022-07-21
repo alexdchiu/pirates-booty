@@ -10,7 +10,7 @@ function UserProfileView (){
             </thead>
             <thead>
                 <tr>
-                <th scope="col">Metal</th>
+                <th scope="col">Medal</th>
                 <th scope="col">Username</th>
                 <th scope="col">Total Booty</th>
                 </tr>

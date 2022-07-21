@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom'
 
 import WheelComponent from 'react-wheel-of-prizes'
 import '../react-wheel-of-prizes/index.css' 
-import UserProfileView from '../UserProfileView'
 import WorkoutDetailView from '../WorkoutDetailView'
 
 

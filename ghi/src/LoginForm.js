@@ -5,12 +5,13 @@ import { useToken } from './Auth'
 import {useAuthContext} from './Auth'
 
 function LoginForm (){
-    const [login, logout] = useToken();
+    const [token_, login, logout] = useToken();
     const [user, setUser] = useState(null);
     const [username, setUsername] = useState("")
     const [password, setPassword] =  useState("")
     const [errors, setErrors] = useState({})
     const { token } = useAuthContext();
+
     // const handleStateChange = e => {
     //     setValues({
     //         ...values,
@@ -18,47 +19,19 @@ function LoginForm (){
     //     });
     // };
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
-        // setValues({ 
-        // username: "",
-        // password: "",})
         // setErrors(validation(values))
-        // setErrors(await login(username, password))
+        console.log('login inside', login)
+        setErrors(await login(username, password))
 
         };
-
+console.log('login', login)
     // ** Play audio with button**
     // const useAudio = new Audio("/assets/sounds/argh.mp3")
     // const start = () => {
     //     useAudio.play()
     // }
-
-
-
-    // For Django services, use this one
-    // const url = `${process.env.REACT_APP_USERS}/api/tokens/mine/`;
-
-    // For FastAPI services, use this one
-    // const tokenUrl = `${process.env.REACT_APP_ACCOUNTS_HOST}/token`;
-
-//     try {
-//       const response = await fetch(url, {
-//         credentials: "include",
-//       });
-//       if (response.ok) {
-//         const data = await response.json();
-//         const token = data.token;
-//         // DO SOMETHING WITH THE TOKEN SO YOU CAN USE IT
-//         // IN REQUESTS TO YOUR NON-ACCOUNTS SERVICES
-//       }
-//     } catch (e) {}
-//     return false;
-//   }
-//   let error = await response.json();
-//   // DO SOMETHING WITH THE ERROR, IF YOU WANT
-// }
-
 
     return (
         <div className="login-container">  
@@ -95,7 +68,7 @@ function LoginForm (){
            />
             {/* {errors.password && <p className="error">{errors.password}</p>} */}
             </div>
-            <button onClick={(e)=>(token)} className="form-input-btn" type="submit">Login</button>
+            <button className="form-input-btn" type="submit">Login</button>
             {/* <button onClick={start} className="form-input-btn" type="submit">Login</button> */}
             <span className="form-input-login">Don't have an account? Sign up <Link to="/signup/new">here</Link></span>
         </form> 

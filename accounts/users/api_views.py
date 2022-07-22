@@ -38,7 +38,7 @@ def api_user(request):
         )
     else:
         content = json.loads(request.body)
-        newuser = User.objects.create(**content)
+        newuser = User.objects.create_user(**content)
         return JsonResponse(
             newuser,
             encoder=AccountDetailModelEncoder,
@@ -48,10 +48,10 @@ def api_user(request):
 
 @require_http_methods(["GET"])
 def api_user_token(request):
-    print("reques", request)
+    # print("reques", request)
     if "jwt_access_token" in request.COOKIES:
         token = request.COOKIES["jwt_access_token"]
-        # print('toefasdf', token)
+        # print('token in api_user_token view.py', token)
         if token:
             return JsonResponse({"token": token})
     response = JsonResponse({"token": None})

@@ -7,12 +7,13 @@ import MainPage from './MainPage';
 import WheelSpinner from './WheelSpinner';
 import Leaderboard from './Leaderboard';
 import Dashboard from './Dashboard';
-
-
+import { AuthProvider } from './Auth';
 
 function App(props) {
   return (
+    
     <BrowserRouter>
+    <AuthProvider>
     <Nav />
 
       <Routes>
@@ -40,8 +41,9 @@ function App(props) {
             </Route>
           </Routes>
   
-
+ </AuthProvider>
     </BrowserRouter>
+   
   );
 }
 export default App;

@@ -51,6 +51,18 @@ def get_exercise_by_id(
         [exercise_id],
       ).fetchone()
 
+      json_result = {}
+      json_result["exercises"] = result[0]
+
+      if result is None:
+        response.status_code = status.HTTP_404_NOT_FOUND
+        return {"message": "Error fetching."}
+      
+      else:
+        return json_result
+
+
+
       if result is None:
         response.status_code = status.HTTP_404_NOT_FOUND
         return {"message": "Workout does not exist"}
@@ -85,12 +97,18 @@ def get_random_workout_wheel(
         """,
       ).fetchall()
 
+      list_for_json = []
+      for item in result:
+        list_for_json.append(item[0])
+      # json_result = {}
+      # json_result["exercises"] = list_for_json
+
       if result is None:
         response.status_code = status.HTTP_404_NOT_FOUND
         return {"message": "Error fetching."}
       
       else:
-        return result
+        return list_for_json
 
 
 @router.get(
@@ -124,19 +142,24 @@ def get_filtered_random_workout_wheel_for_logged_in_users(
         [target, intensity]
       ).fetchall()
 
+      list_for_json = []
+      for item in result:
+        list_for_json.append(item[0])
+      json_result = {}
+      json_result["exercises"] = list_for_json
+
       if result is None:
         response.status_code = status.HTTP_404_NOT_FOUND
         return {"message": "Error fetching."}
       
       else:
-        return result
+        return json_result
 
 @router.get(
   '/api/workouts/filtered/',
 )
 def get_filtered_workout_list_for_logged_in_users(
   target,
-  intensity,
   response: Response,
   ):
   
@@ -156,19 +179,24 @@ def get_filtered_workout_list_for_logged_in_users(
         )
         FROM exercises
         WHERE (target = %s)
-          AND (intensity = %s)
         ORDER BY length_of_workout asc
         LIMIT 100;
         """,
-        [target, intensity]
+        [target,]
       ).fetchall()
+
+      list_for_json = []
+      for item in result:
+        list_for_json.append(item[0])
+      json_result = {}
+      json_result["exercises"] = list_for_json
 
       if result is None:
         response.status_code = status.HTTP_404_NOT_FOUND
         return {"message": "Error fetching."}
       
       else:
-        return result
+        return json_result
 
   # if target:
   #   target_filter = 'target = ' + target

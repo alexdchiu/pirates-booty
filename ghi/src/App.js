@@ -4,10 +4,12 @@ import SignUpForm from './SignUpForm';
 import Nav from './Nav';
 import LoginForm from './LoginForm';
 import MainPage from './MainPage';
-import WheelSpinner from './WheelSpinner';
+// import WheelSpinner from './WheelSpinner';
 import Leaderboard from './Leaderboard';
 import Dashboard from './Dashboard';
 import { AuthProvider } from './Auth';
+import UserProfileView from './UserProfileView';
+
 
 function App(props) {
   return (
@@ -18,9 +20,9 @@ function App(props) {
 
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path= "/WheelSpinner">
+        {/* <Route path= "/WheelSpinner">
           <Route path="" element={<WheelSpinner />} />
-        </Route>
+        </Route> */}
           {/* <Route path="/saved-workouts"> 
               <Route path="/" element={<SavedWorkouts />} />
             </Route>
@@ -29,6 +31,9 @@ function App(props) {
             </Route> */}
             <Route path="/leaderboard">
               <Route path="" element={<Leaderboard />} />
+            </Route>
+            <Route path="/profile">
+              <Route path="" element={<UserProfileView />} />
             </Route>
         <Route path="/signup">
           <Route path="new" element={<SignUpForm />} />

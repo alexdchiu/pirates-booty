@@ -12,7 +12,7 @@ from .models import User
 
 class AccountModelEncoder(ModelEncoder):
     model = User
-    properties = ["username"]
+    properties = ["username", "heart"]
 
 
 class AccountDetailModelEncoder(ModelEncoder):
@@ -29,9 +29,9 @@ class AccountDetailModelEncoder(ModelEncoder):
 @require_http_methods(["GET", "POST"])
 def api_user(request):
     if request.method == "GET":
-        userdetail = User.objects.all()
+        user = User.objects.all()
         return JsonResponse(
-            {"user": userdetail},
+            {"user": user},
             encoder=AccountDetailModelEncoder,
             safe=False,
         )
@@ -46,13 +46,35 @@ def api_user(request):
 
 
 @require_http_methods(["GET"])
-def api_user_token(request):
-    if "jwt_access_token" in request.COOKIES:
-        token = request.COOKIES["jwt_access_token"]
-        if token:
-            return JsonResponse({"token": token})
-    response = JsonResponse({"token": None})
-    return response
+def saved_workouts(request):
+    heartworkouts = User.objects.filter(heart=True)
+    return JsonResponse(
+        heartworkouts,
+        encoder=AccountModelEncoder,
+        safe=False,
+    )
+
+@require_http_methods(["PUT"])
+def api_heart(requests, pk):
+    heart = User.objects.get(workout=pk)
+    heart[True] = heart
+    heart.save()
+    return JsonResponse(
+        heart,
+        encoder=AccountModelEncoder,
+        safe=False,
+    )
+
+
+
+# @require_http_methods(["POST"])
+# def api_user_token(request):
+#     if "jwt_access_token" in request.COOKIES:
+#         token = request.COOKIES["jwt_access_token"]
+#         if token:
+#             return JsonResponse({"token": token})
+#     response = JsonResponse({"token": None})
+#     return response
 
 
 # @require_http_methods(["PUT"])

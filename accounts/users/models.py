@@ -3,14 +3,14 @@ from django.contrib.auth.models import AbstractUser, PermissionsMixin
 
 # class Coins(models.Model):
 #     amount = models.IntegerField(default=0)
-#     def increment(self):
-#         amount=0
+
 
         
 
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
+    heart = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.email}"
@@ -22,10 +22,9 @@ class User(AbstractUser):
     #     user.save()
     #     return user
     # def increment(self):
-    #     amount=0
-    #     user = Coins.objects.get(amount+=1)
-    #     user.save()
-    #     return user
+    #     user.increment += 10
+#         user.save()
+#         return user  
 
 #  class SavedWorkoutVO(models.Model):
-    
+#       heart = models.Boolean(default=False) 

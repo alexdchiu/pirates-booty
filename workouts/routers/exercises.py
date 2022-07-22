@@ -58,11 +58,12 @@ def get_exercise_by_id(
       else:
         return result
 
+
 @router.get(
-  '/api/workouts/random-wheel',
+  '/api/workouts/guest/random-wheel',
 )
-def get_random_workout_wheel_for_guests(
-  response: Response
+def get_random_workout_wheel(
+  response: Response,
   ):
   with psycopg.connect(workouts_url) as conn:
     with conn.cursor() as cur:
@@ -81,15 +82,16 @@ def get_random_workout_wheel_for_guests(
         FROM exercises
         ORDER BY random()
         LIMIT 10;
-        """
+        """,
       ).fetchall()
 
       if result is None:
         response.status_code = status.HTTP_404_NOT_FOUND
-        return {"message": response.text}
+        return {"message": "Error fetching."}
       
       else:
         return result
+
 
 @router.get(
   '/api/workouts/filtered/random-wheel',

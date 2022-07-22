@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 # from datetime import timedelta
 from pathlib import Path
 import dj_database_url #type:ignore
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +33,8 @@ DEBUG = True
 
 # # Your DEBUG value MUST be False in production
 # DJWTO_SAME_SITE = "LAX" if DEBUG else "NONE"
+
+
 
 ALLOWED_HOSTS = [
     "localhost"
@@ -54,7 +57,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djwto',
 ]
+
+DJWTO_MODE = "TWO-COOKIES"
+DJWTO_CSRF = False
+DJWTO_ACCESS_TOKEN_LIFETIME = timedelta(days=1)
+
+# Your DEBUG value MUST be False in production
+DJWTO_SAME_SITE = "LAX" if DEBUG else "NONE"
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

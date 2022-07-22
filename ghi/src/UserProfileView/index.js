@@ -1,6 +1,6 @@
 import React from "react"
 
-function Leaderboard (){
+function UserProfileView (){
     return(
         <div className="outer-div">
         <div className="list-container">
@@ -10,7 +10,7 @@ function Leaderboard (){
             </thead>
             <thead>
                 <tr>
-                <th scope="col">Metal</th>
+                <th scope="col">Medal</th>
                 <th scope="col">Username</th>
                 <th scope="col">Total Booty</th>
                 </tr>
@@ -37,4 +37,4 @@ function Leaderboard (){
         </div>
         )
 }
-export default Leaderboard;
+export default UserProfileView;

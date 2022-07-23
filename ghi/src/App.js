@@ -10,14 +10,12 @@ import Dashboard from './Dashboard';
 import { AuthProvider } from './Auth';
 import UserProfileView from './UserProfileView';
 
+function App() {
 
-function App(props) {
   return (
-    
     <BrowserRouter>
     <AuthProvider>
     <Nav />
-
       <Routes>
         <Route path="/" element={<MainPage />} />
         {/* <Route path= "/WheelSpinner">
@@ -45,11 +43,9 @@ function App(props) {
               <Route path="" element={<Dashboard />} />
             </Route>
           </Routes>
-  
- </AuthProvider>
+    </AuthProvider>
+
     </BrowserRouter>
-   
   );
 }
 export default App;
-

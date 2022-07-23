@@ -12,21 +12,14 @@ function LoginForm (){
     const [errors, setErrors] = useState({})
     const { token } = useAuthContext();
 
-    // const handleStateChange = e => {
-    //     setValues({
-    //         ...values,
-    //         [e.target.name]: e.target.value
-    //     });
-    // };
-
     const handleSubmit = async e => {
         e.preventDefault()
         // setErrors(validation(values))
-        console.log('login inside', login)
+        // console.log('login inside', login)
         setErrors(await login(username, password))
 
         };
-console.log('login', login)
+// console.log('login', login)
     // ** Play audio with button**
     // const useAudio = new Audio("/assets/sounds/argh.mp3")
     // const start = () => {
@@ -69,9 +62,11 @@ console.log('login', login)
             {/* {errors.password && <p className="error">{errors.password}</p>} */}
             </div>
             <button className="form-input-btn" type="submit">Login</button>
+            
             {/* <button onClick={start} className="form-input-btn" type="submit">Login</button> */}
             <span className="form-input-login">Don't have an account? Sign up <Link to="/signup/new">here</Link></span>
         </form> 
+        <button onClick={logout}>Logout</button>
     </div>
     </div>
     )

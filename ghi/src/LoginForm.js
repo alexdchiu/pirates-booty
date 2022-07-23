@@ -19,12 +19,11 @@ function LoginForm (){
         setErrors(await login(username, password))
 
         };
-// console.log('login', login)
-    // ** Play audio with button**
-    // const useAudio = new Audio("/assets/sounds/argh.mp3")
-    // const start = () => {
-    //     useAudio.play()
-    // }
+
+    const useAudio = new Audio("/assets/sounds/argh.mp3")
+    const start = () => {
+        useAudio.play()
+    }
 
     return (
         <div className="login-container">  
@@ -61,12 +60,9 @@ function LoginForm (){
            />
             {/* {errors.password && <p className="error">{errors.password}</p>} */}
             </div>
-            <button className="form-input-btn" type="submit">Login</button>
-            
-            {/* <button onClick={start} className="form-input-btn" type="submit">Login</button> */}
+            <button onClick={start} className="form-input-btn" type="submit">Login</button>
             <span className="form-input-login">Don't have an account? Sign up <Link to="/signup/new">here</Link></span>
         </form> 
-        <button onClick={logout}>Logout</button>
     </div>
     </div>
     )

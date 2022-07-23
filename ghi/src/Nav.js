@@ -1,10 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import { useAuthContext } from './Auth';
+import { useToken } from './Auth'
 
-function Nav(props) {
+
+function Nav() {
   const { token } = useAuthContext();
-  // const token = props.token
-  console.log(token)
+  const [token_, login, logout] = useToken();
+  // console.log(token)
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-new">
       <div className="container-fluid">
@@ -49,7 +51,7 @@ function Nav(props) {
             </li>
             <li className="nav-item">
             {token &&(
-            <NavLink className="nav-link" aria-current="page" to="/">Logout</NavLink>
+            <NavLink onClick={logout} className="nav-link" aria-current="page" to="/">Logout</NavLink>
             )}
             </li>
           </ul>

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import dj_database_url #type:ignore
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,6 +26,8 @@ SECRET_KEY = 'django-insecure-z29da*9er00^g6(r!_xqf%+w50*l^6p0h032m$6q^adakd*t9-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+
 
 
 ALLOWED_HOSTS = [
@@ -47,7 +50,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djwto',
 ]
+
+DJWTO_MODE = "TWO-COOKIES"
+DJWTO_CSRF = False
+DJWTO_ACCESS_TOKEN_LIFETIME = timedelta(days=1)
+
+# Your DEBUG value MUST be False in production
+DJWTO_SAME_SITE = "LAX" if DEBUG else "NONE"
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

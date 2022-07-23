@@ -6,7 +6,7 @@ function Dashboard() {
 return (
     
     <div className="px-4 py-5 my-5 text-center">
-       <ul class="nav nav-pills nav-justified">
+       <ul className="nav nav-pills nav-justified">
   <li class="nav-item">
     <a className="nav-link active" aria-current="page" href="#">Save Workouts</a>
   </li>

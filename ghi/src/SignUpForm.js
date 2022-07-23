@@ -40,7 +40,6 @@ function SignUpForm () {
             
         }
         const response = await fetch(url, fetchConfig);
-        console.log("res", response)
         if(response.ok){
             const newAccount = await response.json();
             console.log(newAccount);

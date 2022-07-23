@@ -40,7 +40,7 @@ const WheelSpinner = ({segments}) => {
     handleShow()
   }
 
-  console.log(winnerObj)
+  // console.log(winnerObj)
 
   return (
     <>

@@ -4,17 +4,17 @@ import SignUpForm from './SignUpForm';
 import Nav from './Nav';
 import LoginForm from './LoginForm';
 import MainPage from './MainPage';
-// import WheelSpinner from './WheelSpinner';
 import Leaderboard from './Leaderboard';
 import Dashboard from './Dashboard';
+import { AuthProvider } from './Auth';
 import UserProfileView from './UserProfileView';
 
+function App() {
 
-function App(props) {
   return (
     <BrowserRouter>
+    <AuthProvider>
     <Nav />
-
       <Routes>
         <Route path="/" element={<MainPage />} />
         {/* <Route path= "/WheelSpinner">
@@ -42,10 +42,9 @@ function App(props) {
               <Route path="" element={<Dashboard />} />
             </Route>
           </Routes>
-  
+    </AuthProvider>
 
     </BrowserRouter>
   );
 }
 export default App;
-

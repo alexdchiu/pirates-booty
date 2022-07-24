@@ -1,30 +1,43 @@
 import React, {useState, useEffect} from 'react'
 // import validation from "./Validation"
-import {Link, Navigate} from "react-router-dom"
+import {Link, Navigate, useNavigate} from "react-router-dom"
 import { useToken } from './Auth'
 import {useAuthContext} from './Auth'
 
 function LoginForm (){
     const [token_, login, logout] = useToken();
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
     const [username, setUsername] = useState("")
     const [password, setPassword] =  useState("")
-    const [errors, setErrors] = useState({})
     const { token } = useAuthContext();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (token) {
+            console.log('user has logged in')
+            navigate(`/profile`)
+            // redirect
+        }
+    }, [token])
 
     const handleSubmit = async e => {
         e.preventDefault()
         // setErrors(validation(values))
         // console.log('login inside', login)
-        setErrors(await login(username, password))
-
+       
+        await login(username, password).then(message => {
+            if (message !== undefined) {
+                alert(message)
+            }})
         };
-
     const useAudio = new Audio("/assets/sounds/argh.mp3")
-    const start = () => {
-        useAudio.play()
+    const start = async () => {
+        // useAudio.play()
+        
+
     }
 
+    
     return (
         <div className="login-container">  
         <div className="form-content-right">

@@ -20,7 +20,6 @@ export async function getTokenInternal() {
   } catch (e) {}
   return false;
 }
-
 function handleErrorMessage(error) {
   if ("error" in error) {
     error = error.error;
@@ -99,8 +98,9 @@ export function useToken() {
       setToken(token);
       return;
     }
-    let error = await response.json();
-    return handleErrorMessage(error);
+  
+    let error = await response.json()
+    return handleErrorMessage(error)
   }
 
  

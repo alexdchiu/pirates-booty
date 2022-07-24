@@ -6,7 +6,7 @@ import { useToken } from './Auth'
 function Nav() {
   const { token } = useAuthContext();
   const [token_, login, logout] = useToken();
-  // console.log(token)
+  console.log(token)
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-new">
       <div className="container-fluid">

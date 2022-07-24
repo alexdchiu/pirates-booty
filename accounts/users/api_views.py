@@ -68,16 +68,16 @@ def api_user_token(request):
 #         safe=False,
 #     )
 
-# @require_http_methods(["GET"])
-# @auth.jwt_login_required
-# def api_current_user(request):
-#     print(request.payload)
-#     user_id = request.payload["user"]["id"]
-#     user = User.objects.get(id=user_id)
-#     return JsonResponse(
-#         {
-#             "username": user.username,
-#             "email": user.email,
-#             "first_name": user.first_name,
-#             "last_name": user.last_name,
-#         })
+@require_http_methods(["GET"])
+@auth.jwt_login_required
+def api_current_user(request, username):
+    print(request.payload)
+    username = request.payload["user"]["username"]
+    user = User.objects.get(username=username)
+    return JsonResponse(
+        {
+            "username": user.username,
+            "email": user.email,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+        })

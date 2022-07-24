@@ -1,12 +1,16 @@
-import React from "react"
+import React from "react";
+import { useAuthContext } from '../Auth';
 
 function UserProfileView (){
+    const { user, token } = useAuthContext();
+    console.log('user', user)
+    console.log('token', token)
     return(
         <div className="outer-div">
         <div className="list-container">
             <table className="table table-striped">
             <thead>
-                <tr className="leaderboard">LEADERBOARD</tr>
+                <tr className="leaderboard">{user.first_name}'s Profile</tr>
             </thead>
             <thead>
                 <tr>

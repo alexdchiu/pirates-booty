@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 let internalToken = null;
+let userData = null;
 
 export function getToken() {
   return internalToken;
@@ -41,16 +42,35 @@ function handleErrorMessage(error) {
   return error;
 }
 
+export async function getUserData(username) {
+  const usernameurl = `${process.env.REACT_APP_USERS}/users/account/${username}`;
+  try {
+    const response = await fetch(usernameurl, {
+      method: "get",
+      credentials: "include",
+    });
+    if (response.ok) {
+      const data = await response.json();
+      console.log(data)
+      userData = data
+      return userData
+    }
+  } catch (e) {}
+  return false
+}
+
 export const AuthContext = createContext({
   token: null,
   setToken: () => null,
+  user: null,
+  setUser: () => null
 });
 
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
-
+  const [user, setUser] = useState({});
   return (
-    <AuthContext.Provider value={{ token, setToken }}>
+    <AuthContext.Provider value={{ token, setToken, user, setUser }}>
       {children}
     </AuthContext.Provider>
   );
@@ -59,13 +79,16 @@ export const AuthProvider = ({ children }) => {
 export const useAuthContext = () => useContext(AuthContext);
 
 export function useToken() {
-  const { token, setToken } = useAuthContext();
+  const { token, setToken, user, setUser } = useAuthContext();
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchToken() {
       const token = await getTokenInternal();
+      const user = await getUserData();
+      // getUserData should require a param, not sure why it works without one right now..
       setToken(token);
+      setUser(user)
     }
     if (!token) {
       fetchToken();
@@ -85,6 +108,7 @@ export function useToken() {
 
   async function login(username, password) {
     const url = `${process.env.REACT_APP_USERS}/login/`;
+    const usernameurl = `${process.env.REACT_APP_USERS}/users/account/${username}`;
     const form = new FormData();
     form.append("username", username);
     form.append("password", password);
@@ -93,9 +117,12 @@ export function useToken() {
       credentials: "include",
       body: form,
     });
+    
     if (response.ok) {
       const token = await getTokenInternal();
+      const user = await getUserData(username)
       setToken(token);
+      setUser(user);
       return;
     }
   
@@ -103,6 +130,5 @@ export function useToken() {
     return handleErrorMessage(error)
   }
 
- 
-  return [token, login, logout];
+  return [token, login, logout, user];
 }

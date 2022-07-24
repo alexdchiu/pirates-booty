@@ -63,14 +63,6 @@ def get_exercise_by_id(
 
 
 
-      if result is None:
-        response.status_code = status.HTTP_404_NOT_FOUND
-        return {"message": "Workout does not exist"}
-      
-      else:
-        return result
-
-
 @router.get(
   '/api/workouts/guest/random-wheel',
 )
@@ -211,3 +203,44 @@ def get_filtered_workout_list_for_logged_in_users(
   #       res += ' AND ' + intensity_filter
   #   else:
   #       res += intensity_filter
+
+
+@router.post(
+  '/api/workouts/completed_workouts',
+  responses = {404: {'model': Message}}
+)
+def get_completed_workouts_for_user(
+  exercise_ids: list[int],
+  response: Response
+  ): 
+  with psycopg.connect(workouts_url) as conn:
+    sql_values = ', '.join(str(i) for i in exercise_ids)
+    print('sql_values', sql_values)
+    with conn.cursor() as cur:
+      result = cur.execute(
+        """
+        SELECT json_build_object(
+          'id', exercises.id,
+          'name', exercises.name,
+          'body_part', exercises.body_part,
+          'target', exercises.target,
+          'equipment', exercises.equipment,
+          'intensity', exercises.intensity,
+          'length_of_workout', exercises.length_of_workout,
+          'gif_url', exercises.gif_url
+        )
+        FROM exercises
+        WHERE exercises.id IN %s;
+        """,
+        [sql_values],
+      ).fetchall()
+
+      json_result = {}
+      json_result["exercises"] = result[0]
+
+      if result is None:
+        response.status_code = status.HTTP_404_NOT_FOUND
+        return {"message": "Error fetching."}
+      
+      else:
+        return json_result

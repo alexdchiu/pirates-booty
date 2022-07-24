@@ -8,7 +8,7 @@ import json
 # Create your views here.
 
 from common.json import ModelEncoder
-from .models import User
+from .models import User, Completed_Workout
 
 
 class AccountModelEncoder(ModelEncoder):
@@ -24,6 +24,13 @@ class AccountDetailModelEncoder(ModelEncoder):
         "first_name",
         "last_name",
         "password"
+    ]
+
+class CompleteWorkoutEncoder(ModelEncoder):
+    model = Completed_Workout
+    properties = [
+        "workout_id",
+        "user"
     ]
 
 
@@ -81,3 +88,14 @@ def api_current_user(request, username):
             "first_name": user.first_name,
             "last_name": user.last_name,
         })
+
+
+@require_http_methods(['POST'])
+def api_user_complete_workout(request):
+    content = json.loads(request.body)
+    completed_workout = Completed_Workout.objects.create(**content)
+    return JsonResponse(
+        completed_workout,
+        encoder=CompleteWorkoutEncoder,
+        safe=False,
+    )

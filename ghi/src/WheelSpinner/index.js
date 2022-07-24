@@ -66,12 +66,6 @@ const WheelSpinner = ({segments}) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Skip Workout
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
-            Save Workout
-          </Button>
-          <Button variant="secondary" onClick={handleClose}>
             Complete Workout
           </Button>
           <Link to="/profile" >

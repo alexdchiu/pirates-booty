@@ -1,10 +1,11 @@
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useAuthContext } from './Auth';
+import { AuthContext, useAuthContext } from './Auth';
 import { useToken } from './Auth'
 
 
 function Nav() {
-  const { token } = useAuthContext();
+  const {user, token} = useContext(AuthContext)
   const [token_, login, logout] = useToken();
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-new">
@@ -16,7 +17,7 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <li className="nav-item">
+          {/* <li className="nav-item">
             {token &&(
             <NavLink className="nav-link" aria-current="page" to="/saved-workouts">Saved Workouts</NavLink>
             )}
@@ -25,7 +26,7 @@ function Nav() {
             {token &&(
             <NavLink className="nav-link" aria-current="page" to="/more-workouts">More Workouts</NavLink>
             )}
-            </li>
+            </li> */}
             <li className="nav-item">
             {token &&(
             <NavLink className="nav-link" aria-current="page" to="/leaderboard">Leaderboard</NavLink>
@@ -46,6 +47,11 @@ function Nav() {
             <li className="nav-item">
             {!token &&(
             <NavLink className="nav-link" aria-current="page" to="/login">Login</NavLink>
+            )}
+            </li>
+            <li className="nav-item">
+            {token &&(
+            <NavLink className="nav-link" aria-current="page" to="/profile">User Profile</NavLink>
             )}
             </li>
             <li className="nav-item">

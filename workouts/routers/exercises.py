@@ -152,6 +152,7 @@ def get_filtered_random_workout_wheel_for_logged_in_users(
 )
 def get_filtered_workout_list_for_logged_in_users(
   target,
+  intensity,
   response: Response,
   ):
   
@@ -171,10 +172,11 @@ def get_filtered_workout_list_for_logged_in_users(
         )
         FROM exercises
         WHERE (target = %s)
+          AND (intensity = %s)        
         ORDER BY length_of_workout asc
         LIMIT 100;
         """,
-        [target,]
+        [target,intensity]
       ).fetchall()
 
       list_for_json = []
@@ -213,13 +215,6 @@ def get_completed_workouts_for_user(
   exercise_ids: list[int],
   response: Response
   ): 
-  # sql_values = ', '.join(str(i) for i in exercise_ids)
-  # print('sql_values', sql_values)
-  # list = [1,2,3]
-  # s = ','.join([i for i in list])
-  # s = '{1,2,3}'
-  # s = [1,2,3]
-  # print(s)
   with psycopg.connect(workouts_url) as conn:   
     with conn.cursor() as cur:
       result = cur.execute(

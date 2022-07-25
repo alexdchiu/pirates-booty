@@ -19,6 +19,7 @@ class AccountModelEncoder(ModelEncoder):
 class AccountDetailModelEncoder(ModelEncoder):
     model = User
     properties = [
+        "id",
         "username",
         "email",
         "first_name",
@@ -83,6 +84,7 @@ def api_current_user(request, username):
     user = User.objects.get(username=username)
     return JsonResponse(
         {
+            "id": user.id,
             "username": user.username,
             "email": user.email,
             "first_name": user.first_name,

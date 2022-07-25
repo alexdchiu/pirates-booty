@@ -1,3 +1,13 @@
+## July 25, 2022
+- discussion of next step of project. Will work on create a form to filter the wheel based on the targeted area and maybe intensity. 
+
+## July 22, 2022
+- debug with Curtis. Unable to authenticate user because when using Django User object, it needs to be User.objects.create_user instead of just create. Create_user method will hash the password but with the create method, the password will be exactly the same as what is entered, and will not be usable to authenticate the user and also if website is hacked, this will allow them to have access to the password. 
+- another thing I learned why I kept getting the same token to show up despite me not entering the log in information was that for Mac system, you need to close the app, not just the window to clear the cookie. Because I did not close, it kept the same old cookie. One way to clear it was to go to the Application, and right click on the localhost:3000, and click clear.
+
+## July 20 and 21, 2022
+- trying to work on the authentication page using the Authenticate Cookbook, however it was a struggle. Put the auth codes in project and followed the instructions, but still does not work. Finally decided to contact Curtis for some help...
+
 ## July 19, 2022
 - fixed docker/database/yml file issues
 - trouble when trying to run the GET/POST requests in Insomnia due to error of 

@@ -8,6 +8,7 @@ import Leaderboard from './Leaderboard';
 import Dashboard from './Dashboard';
 import { AuthProvider } from './Auth';
 import UserProfileView from './UserProfileView';
+import FilterForm from './FilterForm';
 
 function App() {
 
@@ -26,8 +27,11 @@ function App() {
             <Route path="/more-workouts">
               <Route path="/" element={<MoreWorkouts />} />
             </Route> */}
-            <Route path="/leaderboard">
-              <Route path="" element={<Leaderboard />} />
+            <Route path="">
+              <Route path="/filter-form" element={<FilterForm />} />
+            </Route>
+            <Route path="">
+              <Route path="/leaderboard" element={<Leaderboard />} />
             </Route>
             <Route path="/profile">
               <Route path="" element={<UserProfileView />} />

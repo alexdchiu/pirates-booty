@@ -8,7 +8,7 @@ import json
 # Create your views here.
 
 from common.json import ModelEncoder
-from .models import User
+from .models import User, Completed_Workout
 
 
 class AccountModelEncoder(ModelEncoder):
@@ -19,11 +19,19 @@ class AccountModelEncoder(ModelEncoder):
 class AccountDetailModelEncoder(ModelEncoder):
     model = User
     properties = [
+        "id",
         "username",
         "email",
         "first_name",
         "last_name",
         "password"
+    ]
+
+class CompleteWorkoutEncoder(ModelEncoder):
+    model = Completed_Workout
+    properties = [
+        "workout_id",
+        "user"
     ]
 
 
@@ -68,16 +76,28 @@ def api_user_token(request):
 #         safe=False,
 #     )
 
-# @require_http_methods(["GET"])
-# @auth.jwt_login_required
-# def api_current_user(request):
-#     print(request.payload)
-#     user_id = request.payload["user"]["id"]
-#     user = User.objects.get(id=user_id)
-#     return JsonResponse(
-#         {
-#             "username": user.username,
-#             "email": user.email,
-#             "first_name": user.first_name,
-#             "last_name": user.last_name,
-#         })
+@require_http_methods(["GET"])
+@auth.jwt_login_required
+def api_current_user(request, username):
+    print(request.payload)
+    username = request.payload["user"]["username"]
+    user = User.objects.get(username=username)
+    return JsonResponse(
+        {
+            "id": user.id,
+            "username": user.username,
+            "email": user.email,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
+        })
+
+
+@require_http_methods(['POST'])
+def api_user_complete_workout(request):
+    content = json.loads(request.body)
+    completed_workout = Completed_Workout.objects.create(**content)
+    return JsonResponse(
+        completed_workout,
+        encoder=CompleteWorkoutEncoder,
+        safe=False,
+    )

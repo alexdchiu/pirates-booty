@@ -6,12 +6,12 @@ import LoginForm from './LoginForm';
 import MainPage from './MainPage';
 import Leaderboard from './Leaderboard';
 import Dashboard from './Dashboard';
-import { AuthProvider } from './Auth';
+import { AuthProvider, useAuthContext, useToken } from './Auth';
 import UserProfileView from './UserProfileView';
 import FilterForm from './FilterForm';
 
 function App() {
-
+  const { user, token } = useAuthContext();
   return (
     <BrowserRouter>
     <AuthProvider>

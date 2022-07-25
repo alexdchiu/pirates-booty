@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
+from django.core.validators import int_list_validator
 
 # class Coins(models.Model):
 #     amount = models.IntegerField(default=0)
@@ -25,4 +26,9 @@ class User(AbstractUser):
 
 
 #  class SavedWorkoutVO(models.Model):
-    
+
+class Completed_Workout(models.Model):
+    workout_id = models.IntegerField
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE
+    )

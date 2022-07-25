@@ -5,6 +5,20 @@ At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
 
+
+## July 22, 2022
+* Getting login auth to work.
+
+- Vivian was fortunately able to flag Curtis who dropped in to help provide some guidance. We had an issue because we did not know that DJango required a specific create_user method vs create which would encrypt passwords. Once he pointed this out, we were able to get instances of users
+
+
+## July 21, 2022
+Today I worked on:
+* Cleaning up GHI directory and load to try and remove errors.
+
+- We had 3 package.json files in GHI directory or sub directories
+
+
 ## July 20, 2022
 Today I worked on:
 * Getting data from workouts API to populate different portions of the front end.

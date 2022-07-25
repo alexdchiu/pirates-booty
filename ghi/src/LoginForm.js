@@ -2,39 +2,44 @@
 =======
 import React, {useState, useEffect} from 'react'
 // import validation from "./Validation"
-import {Link, Navigate} from "react-router-dom"
+import {Link, Navigate, useNavigate} from "react-router-dom"
 import { useToken } from './Auth'
 import {useAuthContext} from './Auth'
 
 function LoginForm (){
     const [token_, login, logout] = useToken();
-    const [user, setUser] = useState(null);
+    // const [user, setUser] = useState(null);
     const [username, setUsername] = useState("")
     const [password, setPassword] =  useState("")
-    const [errors, setErrors] = useState({})
     const { token } = useAuthContext();
+    const navigate = useNavigate();
 
-    // const handleStateChange = e => {
-    //     setValues({
-    //         ...values,
-    //         [e.target.name]: e.target.value
-    //     });
-    // };
+    useEffect(() => {
+        if (token) {
+            console.log('user has logged in')
+            navigate(`/profile`)
+            // redirect
+        }
+    }, [token])
 
     const handleSubmit = async e => {
         e.preventDefault()
         // setErrors(validation(values))
-        console.log('login inside', login)
-        setErrors(await login(username, password))
-
+        // console.log('login inside', login)
+       
+        await login(username, password).then(message => {
+            if (message !== undefined) {
+                alert(message)
+            }})
         };
-console.log('login', login)
-    // ** Play audio with button**
-    // const useAudio = new Audio("/assets/sounds/argh.mp3")
-    // const start = () => {
-    //     useAudio.play()
-    // }
+    const useAudio = new Audio("/assets/sounds/argh.mp3")
+    const start = async () => {
+        // useAudio.play()
+        
 
+    }
+
+    
     return (
         <div className="login-container">  
         <div className="form-content-right">
@@ -70,8 +75,7 @@ console.log('login', login)
            />
             {/* {errors.password && <p className="error">{errors.password}</p>} */}
             </div>
-            <button className="form-input-btn" type="submit">Login</button>
-            {/* <button onClick={start} className="form-input-btn" type="submit">Login</button> */}
+            <button onClick={start} className="form-input-btn" type="submit">Login</button>
             <span className="form-input-login">Don't have an account? Sign up <Link to="/signup/new">here</Link></span>
         </form> 
     </div>

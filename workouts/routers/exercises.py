@@ -213,9 +213,14 @@ def get_completed_workouts_for_user(
   exercise_ids: list[int],
   response: Response
   ): 
-  with psycopg.connect(workouts_url) as conn:
-    sql_values = ', '.join(str(i) for i in exercise_ids)
-    print('sql_values', sql_values)
+  # sql_values = ', '.join(str(i) for i in exercise_ids)
+  # print('sql_values', sql_values)
+  # list = [1,2,3]
+  # s = ','.join([i for i in list])
+  # s = '{1,2,3}'
+  # s = [1,2,3]
+  # print(s)
+  with psycopg.connect(workouts_url) as conn:   
     with conn.cursor() as cur:
       result = cur.execute(
         """
@@ -230,17 +235,21 @@ def get_completed_workouts_for_user(
           'gif_url', exercises.gif_url
         )
         FROM exercises
-        WHERE exercises.id IN %s;
+        WHERE exercises.id = ANY(%s);
         """,
-        [sql_values],
+        [exercise_ids],
       ).fetchall()
 
       json_result = {}
-      json_result["exercises"] = result[0]
+      json_list = []
+      for exercise in result:
+        json_list.append(exercise[0])
+      json_result["exercises"] = json_list
 
       if result is None:
         response.status_code = status.HTTP_404_NOT_FOUND
         return {"message": "Error fetching."}
       
       else:
+        # return json_result
         return json_result

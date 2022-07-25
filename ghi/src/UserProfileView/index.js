@@ -1,6 +1,18 @@
 import React from "react";
 import { useAuthContext } from '../Auth';
 
+
+// edit user data
+// get completed workouts data
+
+// create a new field on user profile to have list of workouts
+// create functionality on the individual workout to complete workout
+// upon completion -> add workout id to list on user profile
+
+
+
+
+
 function UserProfileView (){
     const { user, token } = useAuthContext();
     console.log('user', user)

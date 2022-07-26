@@ -66,15 +66,7 @@ def api_user_token(request):
     return response
 
 
-# @require_http_methods(["PUT"])
-# def api_increment_coin(requests, pk):
-#     increase = User.objects.get(id=pk)
-#     increase.increment()
-#     return JsonResponse(
-#         increase,
-#         encoder=CoinViewEncoder,
-#         safe=False,
-#     )
+
 
 @require_http_methods(["GET"])
 @auth.jwt_login_required

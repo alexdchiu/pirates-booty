@@ -71,3 +71,5 @@ services:
     environment:
         PGADMIN_DEFAULT_EMAIL: 'shelenells@gmail.com'
         PGADMIN_DEFAULT_PASSWORD: 'password'
+
+

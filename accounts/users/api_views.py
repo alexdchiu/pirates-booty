@@ -1,3 +1,4 @@
+from pyexpat import model
 import djwto.authentication as auth
 from django.shortcuts import render
 from django.db import IntegrityError
@@ -13,7 +14,7 @@ from .models import User, Completed_Workout
 
 class AccountModelEncoder(ModelEncoder):
     model = User
-    properties = ["username"]
+    properties = ["username", "coins"]
 
 
 class AccountDetailModelEncoder(ModelEncoder):
@@ -35,12 +36,13 @@ class CompleteWorkoutEncoder(ModelEncoder):
     ]
 
 
+
 @require_http_methods(["GET", "POST"])
 def api_user(request):
     if request.method == "GET":
-        userdetail = User.objects.all()
+        user = User.objects.all()
         return JsonResponse(
-            {"user": userdetail},
+            {"user": user},
             encoder=AccountDetailModelEncoder,
             safe=False,
         )
@@ -54,9 +56,10 @@ def api_user(request):
         )
 
 
-@require_http_methods(["GET"])
+
+
 def api_user_token(request):
-    # print("reques", request)
+    # print("request", request)
     if "jwt_access_token" in request.COOKIES:
         token = request.COOKIES["jwt_access_token"]
         # print('token in api_user_token view.py', token)
@@ -66,7 +69,16 @@ def api_user_token(request):
     return response
 
 
-
+@require_http_methods(["PUT"])
+def api_increment_coin(requests, pk):
+    user = User.objects.get(id=pk)
+    user.coins += 1
+    user.save()
+    return JsonResponse(
+        user,
+        encoder=AccountModelEncoder,
+        safe=False,
+    )
 
 @require_http_methods(["GET"])
 @auth.jwt_login_required

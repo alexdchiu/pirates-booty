@@ -34,12 +34,12 @@ function Nav() {
             </li>
             <li className="nav-item">
             {token &&(
-            <NavLink className="nav-link" aria-current="page" to="/leaderboard">Leaderboard</NavLink>
+            <NavLink className="nav-link" to="/">Wheel Spinner</NavLink>
             )}
             </li>
             <li className="nav-item">
             {token &&(
-            <NavLink className="nav-link" to="/WheelSpinner">Wheel Spinner</NavLink>
+            <NavLink className="nav-link" aria-current="page" to="/leaderboard">Leaderboard</NavLink>
             )}
             </li>
             </ul>

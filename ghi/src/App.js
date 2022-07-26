@@ -4,6 +4,7 @@ import SignUpForm from './SignUpForm';
 import Nav from './Nav';
 import LoginForm from './LoginForm';
 import MainPage from './MainPage';
+import FilterForm from './FilterForm';
 import Leaderboard from './Leaderboard';
 import Dashboard from './Dashboard';
 import { AuthProvider, useAuthContext, useToken } from './Auth';
@@ -30,8 +31,8 @@ function App() {
             <Route path="">
               <Route path="/filter-form" element={<FilterForm />} />
             </Route>
-            <Route path="">
-              <Route path="/leaderboard" element={<Leaderboard />} />
+            <Route path="/leaderboard">
+              <Route path="" element={<Leaderboard />} />
             </Route>
             <Route path="/profile">
               <Route path="" element={<UserProfileView />} />

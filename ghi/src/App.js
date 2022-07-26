@@ -13,33 +13,33 @@ function App() {
   const { user, token } = useAuthContext();
   return (
     <BrowserRouter>
-    <AuthProvider>
-    <Nav />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        {/* <Route path= "/WheelSpinner">
-          <Route path="" element={<WheelSpinner />} />
-        </Route> */}
-          {/* <Route path="/saved-workouts"> 
-              <Route path="/" element={<SavedWorkouts />} />
+      <AuthProvider>
+      <Nav />
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          {/* <Route path= "/WheelSpinner">
+            <Route path="" element={<WheelSpinner />} />
+          </Route> */}
+            {/* <Route path="/saved-workouts"> 
+                <Route path="/" element={<SavedWorkouts />} />
+              </Route>
+              <Route path="/more-workouts">
+                <Route path="/" element={<MoreWorkouts />} />
+              </Route> */}
+            <Route path="/leaderboard">
+              <Route path="" element={<Leaderboard />} />
             </Route>
-            <Route path="/more-workouts">
-              <Route path="/" element={<MoreWorkouts />} />
-            </Route> */}
-          <Route path="/leaderboard">
-            <Route path="" element={<Leaderboard />} />
-          </Route>
-          <Route path="/signup">
-            <Route path="new" element={<SignUpForm />} />
-          </Route>
-          <Route path="/login">
-            <Route path="" element={<LoginForm />} />
-          </Route>
-          <Route path="/dashboard">
-            <Route path="" element={<Dashboard />} />
-          </Route>
-          </Routes>
-    </BrowserRouter>
+            <Route path="/signup">
+              <Route path="new" element={<SignUpForm />} />
+            </Route>
+            <Route path="/login">
+              <Route path="" element={<LoginForm />} />
+            </Route>
+            <Route path="/dashboard">
+              <Route path="" element={<Dashboard />} />
+            </Route>
+            </Routes>
+      </BrowserRouter>
     </AuthProvider>
   )
 }

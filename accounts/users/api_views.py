@@ -1,3 +1,4 @@
+from pyexpat import model
 import djwto.authentication as auth
 from django.shortcuts import render
 from django.db import IntegrityError
@@ -13,7 +14,7 @@ from .models import User, Completed_Workout
 
 class AccountModelEncoder(ModelEncoder):
     model = User
-    properties = ["username", "heart"]
+    properties = ["username", "coins"]
 
 
 class AccountDetailModelEncoder(ModelEncoder):
@@ -35,6 +36,7 @@ class CompleteWorkoutEncoder(ModelEncoder):
     ]
 
 
+
 @require_http_methods(["GET", "POST"])
 def api_user(request):
     if request.method == "GET":
@@ -54,30 +56,10 @@ def api_user(request):
         )
 
 
-@require_http_methods(["GET"])
-def saved_workouts(request):
-    heartworkouts = User.objects.filter(heart=True)
-    return JsonResponse(
-        heartworkouts,
-        encoder=AccountModelEncoder,
-        safe=False,
-    )
-
-@require_http_methods(["PUT"])
-def api_heart(requests, pk):
-    heart = User.objects.get(workout=pk)
-    heart[True] = heart
-    heart.save()
-    return JsonResponse(
-        heart,
-        encoder=AccountModelEncoder,
-        safe=False,
-    )
-
 
 
 def api_user_token(request):
-    # print("reques", request)
+    # print("request", request)
     if "jwt_access_token" in request.COOKIES:
         token = request.COOKIES["jwt_access_token"]
         # print('token in api_user_token view.py', token)
@@ -87,15 +69,16 @@ def api_user_token(request):
     return response
 
 
-# @require_http_methods(["PUT"])
-# def api_increment_coin(requests, pk):
-#     increase = User.objects.get(id=pk)
-#     increase.increment()
-#     return JsonResponse(
-#         increase,
-#         encoder=CoinViewEncoder,
-#         safe=False,
-#     )
+@require_http_methods(["PUT"])
+def api_increment_coin(requests, pk):
+    user = User.objects.get(id=pk)
+    user.coins += 1
+    user.save()
+    return JsonResponse(
+        user,
+        encoder=AccountModelEncoder,
+        safe=False,
+    )
 
 @require_http_methods(["GET"])
 @auth.jwt_login_required

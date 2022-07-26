@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 import React, {useState, useEffect} from 'react'
 // import validation from "./Validation"
 import {Link, Navigate, useNavigate} from "react-router-dom"
@@ -84,4 +82,3 @@ function LoginForm (){
 }
 
 export default LoginForm
->>>>>>> main

@@ -39,8 +39,8 @@ function App() {
               <Route path="" element={<Dashboard />} />
             </Route>
             </Routes>
+            </AuthProvider>
       </BrowserRouter>
-    </AuthProvider>
   )
 }
 export default App;

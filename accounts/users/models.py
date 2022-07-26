@@ -8,6 +8,7 @@ from django.core.validators import int_list_validator
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
+    coins = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.email}"

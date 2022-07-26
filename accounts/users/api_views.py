@@ -13,7 +13,7 @@ from .models import User, Completed_Workout
 
 class AccountModelEncoder(ModelEncoder):
     model = User
-    properties = ["username"]
+    properties = ["username", "coins"]
 
 
 class AccountDetailModelEncoder(ModelEncoder):
@@ -24,7 +24,8 @@ class AccountDetailModelEncoder(ModelEncoder):
         "email",
         "first_name",
         "last_name",
-        "password"
+        "password",
+        "coins"
     ]
 
 class CompleteWorkoutEncoder(ModelEncoder):
@@ -54,7 +55,7 @@ def api_user(request):
         )
 
 
-@require_http_methods(["GET"])
+# @require_http_methods(["GET"])
 def api_user_token(request):
     # print("reques", request)
     if "jwt_access_token" in request.COOKIES:
@@ -66,15 +67,17 @@ def api_user_token(request):
     return response
 
 
-# @require_http_methods(["PUT"])
-# def api_increment_coin(requests, pk):
-#     increase = User.objects.get(id=pk)
-#     increase.increment()
-#     return JsonResponse(
-#         increase,
-#         encoder=CoinViewEncoder,
-#         safe=False,
-#     )
+@require_http_methods(["PUT"])
+def api_increment_coin(request, pk):
+    user = User.objects.get(id=pk)
+    user.coins += 1
+    user.save()
+    return JsonResponse(
+        user,
+        encoder=AccountModelEncoder,
+        safe=False,
+    )
+
 
 @require_http_methods(["GET"])
 @auth.jwt_login_required
@@ -89,6 +92,7 @@ def api_current_user(request, username):
             "email": user.email,
             "first_name": user.first_name,
             "last_name": user.last_name,
+            "coins": user.coins,
         })
 
 

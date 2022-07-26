@@ -5,11 +5,25 @@ At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
 
+## July 25, 2022
+Today I worked on:
+* Getting api query to work for dynamic list of exercises by ID. Cleaned some code up to be able to pass data for queries to user database. Changed modal functionality.
+
+- I was tinkering with my psycopg / postgres / fastAPI to be able to allow us to input a dynamic list of exercise IDs into a query. I was stuck forever but fortunately the SEIR Yesenia suggested I try ANY instead of IN in my sql query. This worked and we can now pass a list of IDs into a query and get the results.
+- Our team huddled up and decided to store completed workouts on a separate table on the users DB. It's not pretty but every instance we'd click that a workout was created, it would add a row to the completed workouts table linked to a user with a foreign key. Then we could query that table by user ID, get a list of exercise IDs and then do another query to eventually be able to show a list of completed workouts on the user profile. Not pretty, but hopefully this works. So based on what we were able to achieve yesterday, we had the user and exercise data available to us in the state and we could pass this into the post request we'd make to the completed workouts table in the user DB. We hope..
+
+## July 24, 2022
+Today I worked on:
+* Getting user and token state to work across different components.
+
+- Once we had the login auth working, now we needed to figure out how to set state so that we could pull user data for different portions of the website. It took some tinkering since my knowledge of state is not that great, but after a lot of googling / repeated trial and errors, I was able to get the authState / userState working and could then use information from the userState to populate the user profile page. 
+- As an added bonus, I was able to build a modal that popped up after a wheel spin. This also took some tinkering with state since I needed to be able to take the winning exercise and use that data to populate the modal card. 
 
 ## July 22, 2022
+Today I worked on:
 * Getting login auth to work.
 
-- Vivian was fortunately able to flag Curtis who dropped in to help provide some guidance. We had an issue because we did not know that DJango required a specific create_user method vs create which would encrypt passwords. Once he pointed this out, we were able to get instances of users
+- Vivian was fortunately able to flag Curtis who dropped in to help provide some guidance. We had an issue because we did not know that DJango required a specific create_user method vs create which would encrypt passwords. Once he pointed this out, we were able to get users and auth tokens all working. Who knew such a small tweak to one command could make such a difference?
 
 
 ## July 21, 2022

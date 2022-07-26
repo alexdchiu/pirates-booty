@@ -43,9 +43,22 @@ const WheelSpinner = ({segments}) => {
     handleShow()
   }
 
-  const completeWorkout = (e) => {
+  const completeWorkout = async (e) => {
     e.preventDefault()
-    console.log('userId', user.id)
+    const userId = user.id;
+    const url = `${process.env.REACT_APP_USERS}/users/account/${userId}/`;
+    const fetchConfig = {
+      method: "put",
+      headers: {"Content-Type": "application/json"}
+    }
+    const response = await fetch(url, fetchConfig);
+    if (response.ok) {
+      console.log("Success - Added one coin")
+    } else {
+      console.log("No - success it did not work")
+    }
+    // console.log('userId', user.id)
+    console.log('userCoins', user.coins)
     console.log('workoutId', winnerObj.id)
     handleClose()
   }

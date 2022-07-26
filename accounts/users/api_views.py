@@ -25,7 +25,8 @@ class AccountDetailModelEncoder(ModelEncoder):
         "email",
         "first_name",
         "last_name",
-        "password"
+        "password",
+        "coins"
     ]
 
 class CompleteWorkoutEncoder(ModelEncoder):
@@ -56,8 +57,7 @@ def api_user(request):
         )
 
 
-
-
+# @require_http_methods(["GET"])
 def api_user_token(request):
     # print("request", request)
     if "jwt_access_token" in request.COOKIES:
@@ -70,7 +70,7 @@ def api_user_token(request):
 
 
 @require_http_methods(["PUT"])
-def api_increment_coin(requests, pk):
+def api_increment_coin(request, pk):
     user = User.objects.get(id=pk)
     user.coins += 1
     user.save()
@@ -93,6 +93,7 @@ def api_current_user(request, username):
             "email": user.email,
             "first_name": user.first_name,
             "last_name": user.last_name,
+            "coins": user.coins,
         })
 
 

@@ -19,7 +19,7 @@ function UserProfileView (){
     console.log('token', token)
     const newLocal = "breadcrumb-item";
     return(
-        <div className="container">
+        <div className="profile-container">
   <div className="main-body">
     {/* Breadcrumb */}
     <nav aria-label="breadcrumb" className="main-breadcrumb">

@@ -51,7 +51,7 @@ export async function getUserData(username) {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log(data)
+      // console.log(data)
       userData = data
       return userData
     }

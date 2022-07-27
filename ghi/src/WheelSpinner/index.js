@@ -55,7 +55,7 @@ const WheelSpinner = ({segments}) => {
     const response = await fetch(url, fetchConfig);
     if (response.ok) {
       setPopup(true)
-      console.log("Success - Added one coin")
+      // console.log("Success - Added one coin")
     } else {
       console.log("No - success it did not work")
     }
@@ -83,7 +83,7 @@ const WheelSpinner = ({segments}) => {
       
       <Modal show={popup}>
         <Modal.Header>
-          <Modal.Title>You have earned a coin!</Modal.Title>
+          <Modal.Title>You earned a coin!</Modal.Title>
           <Button variant="primary" onClick={handlePopupClose}>Close</Button>
         </Modal.Header>
         </Modal>

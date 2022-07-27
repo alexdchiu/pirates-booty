@@ -9,7 +9,6 @@ import '../react-wheel-of-prizes/index.css'
 import WorkoutDetailView from '../WorkoutDetailView'
 import SignupModal from '../SignupModal/index.js'
 
-
 const WheelSpinner = ({segments}) => {
   const {user, token} = useContext(AuthContext)
   // console.log(segments)
@@ -17,6 +16,8 @@ const WheelSpinner = ({segments}) => {
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  const [popup, setPopup] = useState(false)
+  const handlePopupClose = () => setPopup(false)
 
   const nameArr = []
   segments.map(el => nameArr.push(el.name))
@@ -53,6 +54,7 @@ const WheelSpinner = ({segments}) => {
     }
     const response = await fetch(url, fetchConfig);
     if (response.ok) {
+      setPopup(true)
       console.log("Success - Added one coin")
     } else {
       console.log("No - success it did not work")
@@ -78,7 +80,15 @@ const WheelSpinner = ({segments}) => {
         downDuration={300}
         fontFamily='Arial'
       />
-      <Modal show={show} onHide={handleClose}>
+      
+      <Modal show={popup}>
+        <Modal.Header>
+          <Modal.Title>You have earned a coin!</Modal.Title>
+          <Button variant="primary" onClick={handlePopupClose}>Close</Button>
+        </Modal.Header>
+        </Modal>
+
+        <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
             {token ? 'AHOY! Here is your randomly selected workout!' : 'ARGH!!!'}

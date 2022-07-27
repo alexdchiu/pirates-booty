@@ -9,7 +9,7 @@ import Leaderboard from './Leaderboard';
 import Dashboard from './Dashboard';
 import { AuthProvider, useAuthContext, useToken } from './Auth';
 import UserProfileView from './UserProfileView';
-import FilterForm from './FilterForm';
+
 
 function App() {
   const { user, token } = useAuthContext();

@@ -34,6 +34,11 @@ function Nav() {
             </li>
             <li className="nav-item">
             {token &&(
+            <NavLink className="nav-link" aria-current="page" to="/filter-form">Filtered Search</NavLink>
+            )}
+            </li>
+            <li className="nav-item">
+            {token &&(
             <NavLink className="nav-link" aria-current="page" to="/leaderboard">Leaderboard</NavLink>
             )}
             </li>

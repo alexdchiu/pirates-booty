@@ -1,7 +1,6 @@
 import React from "react";
 import { useAuthContext } from '../Auth';
 
-
 // edit user data
 // get completed workouts data
 
@@ -52,6 +51,9 @@ function UserProfileView (){
                 {/* <p className="text-secondary mb-1">Full Stack Developer</p> */}
                 <p className="text-muted font-size-sm">
                   {user.email}
+                </p>
+                <p className="text-muted font-size-sm">
+                  Booty Coins Earned: {user.coins}
                 </p>
               </div>
             </div>

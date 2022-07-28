@@ -22,6 +22,44 @@ class ExerciseOut(BaseModel):
 class Message(BaseModel):
   message: str
 
+@router.get(
+  '/api/workouts/all',
+  responses = {404: {'model': Message}}
+)
+def get_all_exercises(
+  response: Response
+  ): 
+  with psycopg.connect(workouts_url) as conn:
+    with conn.cursor() as cur:
+      result = cur.execute(
+        """
+        SELECT json_build_object(
+          'id', exercises.id,
+          'name', exercises.name,
+          'body_part', exercises.body_part,
+          'target', exercises.target,
+          'equipment', exercises.equipment,
+          'intensity', exercises.intensity,
+          'length_of_workout', exercises.length_of_workout,
+          'gif_url', exercises.gif_url
+        )
+        FROM exercises;
+        """,
+      ).fetchall()
+
+      json_result = {}
+      exercise_list = []
+      for exercise in result:
+        exercise_list.append(exercise[0])
+      json_result["exercises"] = exercise_list
+
+      if result is None:
+        response.status_code = status.HTTP_404_NOT_FOUND
+        return {"message": "Error fetching."}
+      
+      else:
+        return json_result
+
 
 @router.get(
   '/api/workouts/{exercise_id}',

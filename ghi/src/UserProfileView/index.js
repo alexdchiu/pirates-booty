@@ -10,9 +10,6 @@ import { useAuthContext } from '../Auth';
 // upon completion -> add workout id to list on user profile
 
 
-
-
-
 function UserProfileView (){
     const { user, token } = useAuthContext();
     console.log('user', user)
@@ -25,7 +22,7 @@ function UserProfileView (){
     <nav aria-label="breadcrumb" className="main-breadcrumb">
       <ol className="breadcrumb">
         <li className="breadcrumb-item">
-          <a href="index.html">Home</a>
+          <a href="/">Home</a>
         </li>
         <li className="breadcrumb-item">
           <a href="javascript:void(0)">User</a>
@@ -81,7 +78,8 @@ function UserProfileView (){
               </div>
               <div className="col-sm-9 text-secondary">{user.username}</div>
             </div>
-            <hr />
+            <br></br>
+            {/* <hr />
             <div className="row">
               <div className="col-sm-3">
                 <h6 className="mb-0">Mobile</h6>
@@ -97,7 +95,7 @@ function UserProfileView (){
                 Bay Area, San Francisco, CA
               </div>
             </div>
-            <hr />
+            <hr /> */}
             <div className="row">
               <div className="col-sm-12">
                 <a
@@ -118,7 +116,7 @@ function UserProfileView (){
                 <h6 className="d-flex align-items-center mb-3">
                   <i className="material-icons text-info mr-2">Workout History</i>
                 </h6>
-                <small>Web Design</small>
+                <small>to show list of workouts here?</small>
                 <div className="progress mb-3" style={{ height: 5 }}>
                   <div
                     className="progress-bar bg-primary"

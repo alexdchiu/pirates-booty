@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
-.bg-new{
-  background:#ffffff;
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,8 +12,19 @@ body {
   background-size:cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
+/* Navbar background */
+.bg-new{
+  background:#ffffff;
+}
+
+.navbar-brand {
+  margin-left:15px;
+}
+
+/* Sign up form div */
 .container{
   margin: 100px auto;
   width: 790px;
@@ -29,11 +36,34 @@ body {
   /* border: 12px double rgb(229, 215, 172) */
 }
 
+/* Leaderboard header spacing */
+.table>:not(caption)>*>* {
+  padding: 0.5rem 11.5rem;
+  font-size: 18px;
+}
+
+/* Leaderboard table row */
+.leaderboard tr {
+  text-align: center;
+  font-size: 40px;
+}
+
+.leaderboard-h1{
+  border-bottom: 1px solid black;
+}
+
+/* Leaderboard table */
+.outer-div {
+  margin-top:10%;
+}
+
+/* Leaderboard and WorkoutList div*/
 .outer-div{
   display: flex;
   justify-content: center;
 }
 
+/* Leaderboard and WorkoutList div */
 .list-container{
   width:75%;
   background-color:white;
@@ -69,6 +99,7 @@ body {
   z-index:0
 } */
 
+/* Login form div */
 .login-container {
   margin: 100px auto;
   width:790px;
@@ -79,25 +110,15 @@ body {
   background-color: rgb(215, 241, 254);
 }
 
+/* Login form pirate image */
 .login-container img {
   margin-top:5rem;
 }
 
-.close-btn {
-  position: absolute;
-  top: 2%;
-  right: 3%;
-  font-size: 1.5rem;
-  z-index: 1;
-  color: #fff;
-  cursor: pointer;
-}
-
+/* Login and Sign up form div */
 .form-content-right {
   border-radius: 0 10px 10px 0;
   position: relative;
-  z-index:2
-
 }
 
 .form {
@@ -112,6 +133,7 @@ body {
   align-items: center; 
 }
 
+/* Login and Sign up form h1 tag */
 .form h1 {
   font-size:3rem;
   text-align: center;
@@ -120,11 +142,13 @@ body {
   color: black;
 }
 
+/* Login and Sign up form input tag */
 .form-inputs {
   margin-bottom: 0.5rem;
   width: 80%;
 }
 
+/* Login and Sign up form label tag */
 .form-label {
   display: inline-block;
   font-size: 1rem;
@@ -132,6 +156,7 @@ body {
   color: black;
 }
 
+/* Login and Sign up form input tag */
 .form-input {
   display: block;
   padding-left: 10px;
@@ -143,15 +168,18 @@ body {
   border:black 1px solid;
 }
 
+/* Login and Sign up form placeholder style*/
 .form-input::placeholder {
   color: #595959;
   font-size: 20px;
 }
 
+/* Login and Sign up form focus effect*/
 .form-input:focus{
   border:1px solid rgb(55, 115, 255);
 }
 
+/* Login and Sign up form button without hover effect */
 .form-input-btn {
   width: 80%;
   height: 50px;
@@ -168,6 +196,7 @@ body {
   font-size: 1.2rem;
 }
 
+/* Login and Sign up button hover effect */
 .form-input-btn:hover {
   cursor: pointer;
   background: linear-gradient(
@@ -178,6 +207,7 @@ body {
   transition: all 0.4s ease-out;
 }
 
+/* Login and Sign up form span tag */
 .form-input-login {
   font-size: 1.2rem;
   margin-top: 10px;
@@ -186,31 +216,26 @@ body {
   text-align: center;
 }
 
+/* Login and Sign up form a tag */
 .form-input-login a {
   text-decoration: none;
   color: #27cdff;
   font-weight: 600;
 }
 
-.navbar-brand {
-  margin-left:15px;
-}
-
+/* Sign up form error message */
 p.error{
   margin-bottom: -20px;
   color:rgb(236, 47, 47);
 }
 
+/* Login and Sign up form button a tag */
 .form-input-btn a {
   text-decoration: none;
   color:black;
 }
 
-.leaderboard tr {
-  text-align: center;
-  font-size: 40px;
-}
-
+/* Filter form div */
 .filter-form-container{
   margin: 100px auto;
   width: 500px;
@@ -218,14 +243,17 @@ p.error{
   height: 700px;
 }
 
+/* Filter form select tag */
 .filter-form-container select {
   margin-bottom:10px;
 }
 
+/* Profile page div */
 .profile-container{
   margin: 100px auto;
   width: 790px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);  border-radius: 1%;
-  height: 100vh;
+  height: 45vh;
   background: rgb(215, 241, 254);
 }
+

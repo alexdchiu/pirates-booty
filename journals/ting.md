@@ -1,5 +1,7 @@
 ## July 28, 2022
--
+- added redirect page after successful sign up.
+- adjusted user profile jsx to make it dynamic.
+- adjusted App.css
 
 ## July 27, 2022
 - everyone assisted Perla to have the list of workouts to show

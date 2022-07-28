@@ -5,6 +5,20 @@ At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
 
+## July 27, 2022
+Today I worked on:
+* Trying to get the search filter options to be dynamically populated to improve user UX.
+
+- The team had a stand up meeting to kick start the group project session. We worked on trying to help everyone get their front-end working since we had some new errors pop up regarding the wheelspinner. We also spent time working together to get a component that a teammate was working on up and running. 
+- Later on, I worked on trying to get the search filter options to be auto populated and replace the hardcoded placeholders we had. This required a little data manipulation to get a list without repeats of the targeted muscles that had instances of exercises. After getting this list and dynamically mapping it out to populate the list of options for that filter, I shifted my attention to trying to get the options for desired intensity to also be dynamic. This required a little more thinking since some targeted muscles only had a few instances, so I wanted the user to only be able to select from those intensity levels that were available for a given target. Lastly, I added some conditionals in the JSX so that that intensity filter only showed after the target filter was selected.  
+
+## July 26, 2022
+Today I worked on:
+* Integrating state into the filter form.
+
+- Now that we have a filter form in place, I worked on getting the wheel component to pop up after filters were selected. This involved updating the onClick function where we set the wheelspinner to 1) dynamically appear only upon the click of a button with proper filters and 2) to be auto populated with the results that meet the criteria of the filter. This was a bit challenging since I still don't have that firm of a grasp of hooks / state, but after a lot of playing around / googling, was eventually able to get it to work. Hooray!
+- We also had issues on the main branch where the front end was not working. We've been having issues with the wheelspinner module that was imported. For some reason every now and then someone gets an error where value.substr is not a function. However, since the module is directly installed in the docker container we actually don't even have access to the files that it says are causing an error we can't problem solve on those files. After discussing and trying to figure out a solution, we figured maybe the best path forward was to create a main2 since we could not diagnose the issue.
+
 ## July 25, 2022
 Today I worked on:
 * Getting api query to work for dynamic list of exercises by ID. Cleaned some code up to be able to pass data for queries to user database. Changed modal functionality.

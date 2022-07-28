@@ -7,7 +7,7 @@ import MainPage from './MainPage';
 import FilterForm from './FilterForm';
 import Leaderboard from './Leaderboard';
 import Dashboard from './Dashboard';
-// import WorkoutsList from './WorkoutsList';
+import WorkoutsList from './WorkoutsList';
 import { AuthProvider, useAuthContext, useToken } from './Auth';
 import UserProfileView from './UserProfileView';
 import React, {useState, useEffect} from 'react'
@@ -33,24 +33,15 @@ function App() {
     <Nav />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        {/* <Route path= "/WheelSpinner">
-          <Route path="" element={<WheelSpinner />} />
-        </Route> */}
-          {/* <Route path="/saved-workouts"> 
-              <Route path="/" element={<SavedWorkouts />} />
-            </Route>
-            <Route path="/more-workouts">
-              <Route path="/" element={<MoreWorkouts />} />
-            </Route> */}
             <Route path="">
               <Route path="/filter-form" element={<FilterForm workouts={workouts} />} />
             </Route>
             <Route path="/leaderboard">
               <Route path="" element={<Leaderboard />} />
             </Route>
-            {/* <Route path="/WorkoutsList">
+            <Route path="/WorkoutsList">
               <Route path="" element={<WorkoutsList />} />
-            </Route> */}
+            </Route>
             <Route path="/profile">
               <Route path="" element={<UserProfileView />} />
             </Route>

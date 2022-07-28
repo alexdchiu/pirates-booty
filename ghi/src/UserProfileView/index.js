@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useAuthContext } from '../Auth';
 
 // edit user data
@@ -16,6 +16,11 @@ function UserProfileView (){
     const { user, token } = useAuthContext();
     console.log('user', user)
     console.log('token', token)
+
+  // useEffect ( () => {
+    
+  // },)
+
     const newLocal = "breadcrumb-item";
     return(
         <div className="container">

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import WheelSpinner from './WheelSpinner'
+import WorkoutsList from './WorkoutsList'
 
 function FilterForm ({workouts}) {
     const [targets, setTargets] = useState([])
@@ -147,7 +148,7 @@ function FilterForm ({workouts}) {
                 </div>
                 <div>
                     {showWheel && <WheelSpinner segments={result} />}
-                    {showList && <div>List goes here</div>}
+                    {showList && <WorkoutsList exercises={result} />}
                 </div>
             </div>
             )

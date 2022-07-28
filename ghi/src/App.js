@@ -9,10 +9,24 @@ import Leaderboard from './Leaderboard';
 import Dashboard from './Dashboard';
 import { AuthProvider, useAuthContext, useToken } from './Auth';
 import UserProfileView from './UserProfileView';
-
+import React, {useState, useEffect} from 'react'
+import WorkoutsList from './WorkoutsList';
 
 function App() {
   const { user, token } = useAuthContext();
+  const [workouts, setWorkouts] = useState({});
+
+  useEffect ( () => {
+    async function getAllWorkouts() {
+      const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/all`;
+      const res = await fetch(url)
+      if(res.ok) {
+        setWorkouts(await res.json())
+      }
+    }
+    getAllWorkouts()
+  },[])
+
   return (
     <BrowserRouter>
     <AuthProvider>
@@ -29,10 +43,13 @@ function App() {
               <Route path="/" element={<MoreWorkouts />} />
             </Route> */}
             <Route path="">
-              <Route path="/filter-form" element={<FilterForm />} />
+              <Route path="/filter-form" element={<FilterForm workouts={workouts} />} />
             </Route>
             <Route path="/leaderboard">
               <Route path="" element={<Leaderboard />} />
+            </Route>
+            <Route path="/WorkoutsList">
+              <Route path="" element={<WorkoutsList />} />
             </Route>
             <Route path="/profile">
               <Route path="" element={<UserProfileView />} />

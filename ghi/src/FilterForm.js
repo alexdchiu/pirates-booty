@@ -5,6 +5,7 @@ import WorkoutsList from './WorkoutsList'
 function FilterForm ({workouts}) {
     const [targets, setTargets] = useState([])
     const [intensities, setIntensity] = useState([])
+    const [intensityOccurences, setIntensityOccurences] = useState({})
     const [target, setTarget] = useState('')
     const [intensity, setIntense] = useState('')
     const [result, setResult] = useState([])
@@ -68,7 +69,19 @@ function FilterForm ({workouts}) {
     
     let workoutsFilteredByTarget = (lst) => {
         var filteredList = []
-        // var intensitiesOccurences = {}
+        var filteredObj = {}
+        
+        lst?.forEach(element => {
+            if (element.target === target) {
+                var intensity = element.intensity.toString()
+                if (intensity in filteredObj) {
+                    filteredObj[intensity] += 1
+                } else {
+                    filteredObj[intensity] = 1
+                }
+            }
+        });
+
         lst?.filter((workout) => {
             if (workout.target === target && !filteredList.includes(workout.intensity)){
                 filteredList.push(workout.intensity)
@@ -77,7 +90,9 @@ function FilterForm ({workouts}) {
                 })
             }
         })
+
         setIntensity(filteredList)
+        setIntensityOccurences(filteredObj)
     }
     
 
@@ -134,7 +149,7 @@ function FilterForm ({workouts}) {
                         <option value="" disabled selected>Select your option</option>
                         {intensities.map(intensity => {
                             return(
-                                <option key={intensity} value={intensity}>{intensity}</option> 
+                                <option key={intensity} value={intensity}>Intensity: {intensity} - (Results: {intensityOccurences[intensity.toString()]})</option> 
                             )
                         })}
                         </select>

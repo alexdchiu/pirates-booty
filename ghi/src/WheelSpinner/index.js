@@ -61,8 +61,8 @@ const WheelSpinner = ({segments}) => {
       console.log("No - success it did not work")
     }
     // console.log('userId', user.id)
-    console.log('userCoins', user.coins)
-    console.log('workoutId', winnerObj.id)
+    // console.log('userCoins', user.coins)
+    // console.log('workoutId', winnerObj.id)
     handleClose()
   }
 

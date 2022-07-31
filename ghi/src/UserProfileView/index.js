@@ -1,5 +1,5 @@
-import React, {useEffect} from "react";
-import { useAuthContext } from '../Auth';
+import React, {useEffect, useState } from "react";
+import { useAuthContext, getUserData } from '../Auth';
 
 // edit user data
 // get completed workouts data
@@ -14,12 +14,28 @@ import { useAuthContext } from '../Auth';
 
 function UserProfileView (){
     const { user, token } = useAuthContext();
-    console.log('user', user)
-    console.log('token', token)
-
-  // useEffect ( () => {
+    const [userData, setUserData] = useState(null);
     
-  // },)
+    async function getUserData(username) {
+      const usernameurl = `${process.env.REACT_APP_USERS}/users/account/${username}`;
+      try {
+        const response = await fetch(usernameurl, {
+          method: "get",
+          credentials: "include",
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setUserData(data)
+        }
+      } catch (e) {}
+      return false
+    }
+
+    useEffect(
+      () => {
+        getUserData(user.username)
+      }, []
+    )
 
     const newLocal = "breadcrumb-item";
     return(
@@ -52,13 +68,13 @@ function UserProfileView (){
                 width={150}
               />
               <div className="mt-3">
-                <h4>{user.first_name} {user.last_name}</h4>
+                <h4>{userData?.first_name} {userData?.last_name}</h4>
                 {/* <p className="text-secondary mb-1">Full Stack Developer</p> */}
                 <p className="text-muted font-size-sm">
-                  {user.email}
+                  {userData?.email}
                 </p>
                 <p className="text-muted font-size-sm">
-                  Booty Coins Earned: {user.coins}
+                  Booty Coins Earned: {userData?.coins}
                 </p>
               </div>
             </div>

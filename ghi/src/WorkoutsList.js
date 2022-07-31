@@ -1,160 +1,43 @@
-import React from 'react'
+import React, {useContext, useState} from 'react'
+import WorkoutDetailView from './WorkoutDetailView';
+import {AuthContext} from './Auth.js'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
+import SignupModal from './SignupModal/index.js'
+import {Link} from 'react-router-dom'
 
 
 function WorkoutsList({exercises}) {
-  // const exercises = [
-  //   {
-  //     "id": 870,
-  //     "name": "butt-ups",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "body weight",
-  //     "intensity": 5,
-  //     "length_of_workout": 5,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0870.gif"
-  //   },
-  //   {
-  //     "id": 840,
-  //     "name": "weighted overhead crunch (on stability ball)",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "weighted",
-  //     "intensity": 5,
-  //     "length_of_workout": 5,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0840.gif"
-  //   },
-  //   {
-  //     "id": 2297,
-  //     "name": "stability ball crunch (full range hands behind head)",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "stability ball",
-  //     "intensity": 5,
-  //     "length_of_workout": 10,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/2297.gif"
-  //   },
-  //   {
-  //     "id": 2135,
-  //     "name": "weighted front plank",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "weighted",
-  //     "intensity": 5,
-  //     "length_of_workout": 10,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/2135.gif"
-  //   },
-  //   {
-  //     "id": 3665,
-  //     "name": "power point plank",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "body weight",
-  //     "intensity": 5,
-  //     "length_of_workout": 10,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/3665.gif"
-  //   },
-  //   {
-  //     "id": 1496,
-  //     "name": "sledge hammer",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "hammer",
-  //     "intensity": 5,
-  //     "length_of_workout": 10,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/1496.gif"
-  //   },
-  //   {
-  //     "id": 475,
-  //     "name": "hanging straight leg raise",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "body weight",
-  //     "intensity": 5,
-  //     "length_of_workout": 20,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0475.gif"
-  //   },
-  //   {
-  //     "id": 2466,
-  //     "name": "bridge - mountain climber (cross body)",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "body weight",
-  //     "intensity": 5,
-  //     "length_of_workout": 20,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/2466.gif"
-  //   },
-  //   {
-  //     "id": 13,
-  //     "name": "assisted lying leg raise with throw down",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "assisted",
-  //     "intensity": 5,
-  //     "length_of_workout": 20,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0013.gif"
-  //   },
-  //   {
-  //     "id": 635,
-  //     "name": "oblique crunches floor",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "body weight",
-  //     "intensity": 5,
-  //     "length_of_workout": 25,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0635.gif"
-  //   },
-  //   {
-  //     "id": 871,
-  //     "name": "tuck crunch",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "body weight",
-  //     "intensity": 5,
-  //     "length_of_workout": 25,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0871.gif"
-  //   },
-  //   {
-  //     "id": 3698,
-  //     "name": "inchworm v. 2",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "body weight",
-  //     "intensity": 5,
-  //     "length_of_workout": 30,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/3698.gif"
-  //   },
-  //   {
-  //     "id": 972,
-  //     "name": "band bicycle crunch",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "band",
-  //     "intensity": 5,
-  //     "length_of_workout": 30,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0972.gif"
-  //   },
-  //   {
-  //     "id": 212,
-  //     "name": "cable seated crunch",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "cable",
-  //     "intensity": 5,
-  //     "length_of_workout": 30,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0212.gif"
-  //   },
-  //   {
-  //     "id": 12,
-  //     "name": "assisted lying leg raise with lateral throw down",
-  //     "body_part": "waist",
-  //     "target": "abs",
-  //     "equipment": "assisted",
-  //     "intensity": 5,
-  //     "length_of_workout": 30,
-  //     "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0012.gif"
-  //   }
-  // ]
+  const {user, token} = useContext(AuthContext)
+  const [popup, setPopup] = useState(false)
+  const handleClose = () => setShow(false)
+  const handleShow = (exercise) => {
+    setShow(true)
+    setSelectedExercise(exercise)
+  }
+  const [show, setShow] = useState(false)
+  const handlePopupClose = () => setPopup(false)
 
+  const [selectedExercise, setSelectedExercise] = useState()
+
+  const completeWorkout = async (e) => {
+    e.preventDefault()
+    const userId = user.id;
+    const url = `${process.env.REACT_APP_USERS}/users/account/${userId}/`;
+    const fetchConfig = {
+      method: "put",
+      headers: {"Content-Type": "application/json"}
+    }
+    const response = await fetch(url, fetchConfig);
+    if (response.ok) {
+      setPopup(true)
+      console.log("Success - Added one coin")
+    } else {
+      console.log("No - success it did not work")
+    }
+
+    handleClose()
+  }
 
   return (
     <div className="outer-div">
@@ -166,7 +49,7 @@ function WorkoutsList({exercises}) {
             </thead>
             <thead>
               <tr>
-                <th>Name</th>
+                <th>Name (Click for workout details)</th>
                 <th>Target</th>
                 <th>Equipment</th>
                 <th>Intensity</th>
@@ -178,7 +61,7 @@ function WorkoutsList({exercises}) {
                 exercises.map(filtered => {
                   return(
                     <tr key={filtered.id}>
-                      <td>{filtered.name}</td>
+                      <td onClick={() => handleShow(filtered)} className="text-primary">{filtered.name}</td>
                       <td>{filtered.target}</td>
                       <td>{filtered.equipment}</td>
                       <td>{filtered.intensity}</td>
@@ -190,6 +73,33 @@ function WorkoutsList({exercises}) {
             </tbody>
           </table>
       </div>
+      <Modal show={popup}>
+        <Modal.Header>
+          <Modal.Title>You earned a coin!</Modal.Title>
+          <Button variant="primary" onClick={handlePopupClose}>Close</Button>
+        </Modal.Header>
+      </Modal>    
+      
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>
+            AHOY! Here is your selected workout!
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <WorkoutDetailView workoutDetails={selectedExercise}/>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={completeWorkout} >
+            Complete Workout
+          </Button>
+          <Link to="/profile" >
+            <Button variant="primary" >
+              User Profile
+            </Button>
+          </Link>
+        </Modal.Footer>
+      </Modal>
     </div>
   )
 }

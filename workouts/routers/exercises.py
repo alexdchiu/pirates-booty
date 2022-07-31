@@ -166,8 +166,7 @@ def get_filtered_random_workout_wheel_for_logged_in_users(
         FROM exercises
         WHERE (target = %s)
           AND (intensity = %s)
-        ORDER BY random()
-        LIMIT 10;
+        ORDER BY random();
         """,
         [target, intensity]
       ).fetchall()

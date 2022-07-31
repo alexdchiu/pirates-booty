@@ -4,6 +4,13 @@ A reflection on any design conversations that you had
 At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
+## July 31, 2022
+* Worked on getting state to update on user profile. Filtered form list to have link for workout detail modal to pop up. Get # of exercises for a given intensity to show on filter form.
+
+- There was an issue where on the user profile, the state of the user wasn't being refreshed so even after a user completed a workout, the number of coins was not being updated. After trying to play around with the auth component trying to get that to do another call, I ended up adding the getUserData function to the userprofile component and doing it on this component level. Not ideal, but it works.
+- Next, I had to add functionality to the workout list view in the filter form to have the workout detail modal pop up. This took some time since I had to figure out how to populate a modal with the specific workout that a user clicks on. 
+- Lastly, I added some detail to the intensity filter dropdown options where a user could see the # of results for a given intensity level. I did this by manipulating the data and looping over the exercises with a counter that incremented for a given target / intensity.
+
 
 ## July 27, 2022
 Today I worked on:

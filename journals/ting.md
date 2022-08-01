@@ -1,3 +1,6 @@
+## August 1, 2022
+- 
+
 ## July 28, 2022
 - added redirect page after successful sign up.
 - adjusted user profile jsx to make it dynamic.

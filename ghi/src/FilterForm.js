@@ -1,12 +1,21 @@
 import React, {useState, useEffect} from 'react'
+import WheelSpinner from './WheelSpinner'
+import WorkoutsList from './WorkoutsList'
 
-function FilterForm () {
+function FilterForm ({workouts}) {
     const [targets, setTargets] = useState([])
     const [intensities, setIntensity] = useState([])
+    const [intensityOccurences, setIntensityOccurences] = useState({})
     const [target, setTarget] = useState('')
     const [intensity, setIntense] = useState('')
     const [result, setResult] = useState([])
-    
+    const [showWheel, setWheel] = useState(false)
+    const [showList, setList] = useState(false)
+
+    let workoutsList = workouts.exercises
+    // workoutsList?.map(element => console.log(element))
+    let listOfTargets = Array.from(new Set(workoutsList?.map(({target}) => target)))
+    // console.log('targets', listOfTargets)
 
 // for dynamic with API call
     // useEffect(()=> {
@@ -23,19 +32,72 @@ function FilterForm () {
     //     }
     //     getDropDownValues();
     // }, [])
+    useEffect ( () => {
+        workoutsFilteredByTarget(workoutsList)
+    }, [target])
 
-
- const handleClick = async (e) => {
-    e.preventDefault()
-    const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/filtered/random-wheel?target=${target}&intensity=${intensity}`;
-    const res = await fetch(url);   
-    if(res.ok){
-        const data = await res.json();
-        console.log("fata", data)
-        setResult(data)
+    const handleClick = async (e) => {
+        setWheel(false)
+        setList(false)
+        e.preventDefault()
+        const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/filtered/random-wheel?target=${target}&intensity=${intensity}`;
+        // const res = await fetch(url);   
+        // if(res.ok){
+        //     const data = await res.json();
+        //     // console.log("data", data)
+        //     setResult(data.exercises)
+        // } 
+        fetch(url).then((res) => {
+            if (res.ok) {
+            return res.json();
+            }
+            throw new Error('Query parameters are invalid.');
+        })
+        .then((resData) => {
+            setResult(resData.exercises)
+            if (e.target.value === "wheel") {
+                setWheel(true)
+            } else {
+                setList(true)
+            }
+        })
+        .catch(() => {
+            alert('Please enter valid query parameters.')
+        });
     }
- }
- 
+
+    
+    let workoutsFilteredByTarget = (lst) => {
+        var filteredList = []
+        var filteredObj = {}
+        
+        lst?.forEach(element => {
+            if (element.target === target) {
+                var intensity = element.intensity.toString()
+                if (intensity in filteredObj) {
+                    filteredObj[intensity] += 1
+                } else {
+                    filteredObj[intensity] = 1
+                }
+            }
+        });
+
+        lst?.filter((workout) => {
+            if (workout.target === target && !filteredList.includes(workout.intensity)){
+                filteredList.push(workout.intensity)
+                filteredList.sort(function(a,b) {
+                    return a-b
+                })
+            }
+        })
+
+        setIntensity(filteredList)
+        setIntensityOccurences(filteredObj)
+    }
+    
+
+    // console.log(filteredList)
+
 // useEffect(()=> {
 //     async function submitFilterValues(){
 //        const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/filtered/random-wheel?target=${target}&intensity=${intensity}`;
@@ -64,56 +126,46 @@ function FilterForm () {
     //     submitFilterValues();
     //  }, [target, intensity])
 
+
     return (
+            <div>
+                <div className="outer-div">
+                <div className="list-container justify-content-center">
                 <form>
                 <div className="filter-form-container">
-                    <select onChange={(e)=>setTarget(e.target.value)} className="form-select" aria-label="Default select example" value={target}>
-                    <option>Targeted Muscles</option>
-                        <option value="abductors">abductors</option>
-                        <option value="abs">abs</option>
-                        <option value="adductors">adductors</option>
-                        <option value="biceps">biceps</option>
-                        <option value="calves">calves</option>
-                        <option value="cardiovascular system">cardiovascular system</option>
-                        <option value="delts">delts</option>
-                        <option value="forearms">forearms</option>
-                        <option value="glutes">glutes</option>
-                        <option value="hamstrings">hamstrings</option>
-                        <option value="lats">lats</option>
-                        <option value="levator scapulae">levator scapulae</option>
-                        <option value="pectorals">pectorals</option>
-                        <option value="quads">quads</option>
-                        <option value="serratus anterior">serratus anterior</option>
-                        <option value="spine">spine</option>
-                        <option value="traps">traps</option>
-                        <option value="triceps">triceps</option>
-                        <option value="upper back">upper back</option>
-                    {/* {targets.map(target=>{
-                        return(
-                        <option value={target.target} key={target.id}>{target.target}</option>
-                        )
-                    })} */}
-                    </select>
-                    <select onChange={(e)=>setIntense(e.target.value)} className="form-select" aria-label="Default select example" value={intensity}>
-                    <option>Intensity</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-
-                    {/* {intensities.map(intensity=>
-                        <option key={intensity.id} value={intensity.intensity}>{intensity.intensity}</option>
-                    )} */}
-                    </select>
-                  <button onClick={handleClick} className="btn btn-primary" type="submit">Submit</button>
+                    <p><label>Targeted Muscle to Work Out:</label>
+                    <select onChange={(e)=> {setTarget(e.target.value)}} className="form-select" aria-label="Default select example" value={target}>
+                    {/* <option>Targeted Muscles</option> */}
+                        <option value="" disabled selected>Select your option</option>
+                        {listOfTargets.map(target => {
+                            return(
+                                <option key={target} value={target}>{target}</option> 
+                            )
+                        })}
+                    </select></p>
+                    {(intensities.length > 0) && (
+                        <p><label>Desired Intensity:</label>
+                        <select onChange={(e)=>setIntense(e.target.value)} className="form-select" aria-label="Default select example" value={intensity}>
+                        <option value="" disabled selected>Select your option</option>
+                        {intensities.map(intensity => {
+                            return(
+                                <option key={intensity} value={intensity}>Intensity: {intensity} - (Results: {intensityOccurences[intensity.toString()]})</option> 
+                            )
+                        })}
+                        </select>
+                        </p>
+                    )}
+                  <button onClick={handleClick} className="btn btn-primary" type="submit" value="wheel">Wheel Spinner</button>
+                  <button onClick={handleClick} className="btn btn-primary" type="submit" value="list">List of Exercises</button>
                 </div>  
                 </form>
+                </div>
+                </div>
+                <div>
+                    {showWheel && <WheelSpinner segments={result} />}
+                    {showList && <WorkoutsList exercises={result} />}
+                </div>
+            </div>
             )
         }
         export default FilterForm

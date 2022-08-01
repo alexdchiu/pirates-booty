@@ -24,11 +24,13 @@ const WheelSpinner = ({segments}) => {
 
   const palate = [ 
     "#03ecfc",/*cyan*/
-    "#03dbfc",/*light blue*/
     "#38a874",/*ocean green*/
     "##03fc80",/*spring green*/
     "#fcb103",/*yellow sea*/
-    "#fc03b5"/*shocking pink*/
+    "#fc03b5",/*shocking pink*/
+    "#0066ff",
+    "#8000ff",
+    "#00bfff",
   ]
   const colorFromPalate = () => palate[Math.floor(Math.random() * palate.length)]
 
@@ -55,12 +57,12 @@ const WheelSpinner = ({segments}) => {
     const response = await fetch(url, fetchConfig);
     if (response.ok) {
       setPopup(true)
-      // console.log("Success - Added one coin")
+      console.log("Success - Added one coin")
     } else {
       console.log("No - success it did not work")
     }
     // console.log('userId', user.id)
-    console.log('userCoins', user.coins)
+    // console.log('userCoins', user.coins)
     console.log('workoutId', winnerObj.id)
     handleClose()
   }
@@ -86,9 +88,9 @@ const WheelSpinner = ({segments}) => {
           <Modal.Title>You earned a coin!</Modal.Title>
           <Button variant="primary" onClick={handlePopupClose}>Close</Button>
         </Modal.Header>
-        </Modal>
-
-        <Modal show={show} onHide={handleClose}>
+      </Modal>    
+      
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
             {token ? 'AHOY! Here is your randomly selected workout!' : 'ARGH!!!'}

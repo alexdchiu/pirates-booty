@@ -1,6 +1,6 @@
 
 
-export default async function getWorkoutById(id) {
+export async function getWorkoutById(id) {
   const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/${id}`;
       const response = await fetch(url);
       if (response.ok) {
@@ -10,7 +10,7 @@ export default async function getWorkoutById(id) {
       }
 }
 
-export default async function completWorkout(id) {
+export async function completWorkout(id) {
   const url = `${process.env.REACT_APP_USERS}/users/account/complete_workout/${id}`;
   const requestOptions = {
     method: 'PUT',

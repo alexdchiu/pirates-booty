@@ -10,11 +10,10 @@ return (
     </div>
     <img className="card-img-top" src={workoutDetails.gif_url} alt="loading..."/>
     <div className="card-body">
-      <p className="card-text">{workoutDetails.target}</p>
-      <p className="card-text">{workoutDetails.body_part}</p>
-      <p className="card-text">{workoutDetails.equipment}</p>
-      <p className="card-text">{workoutDetails.intensity}</p>
-      <p className="card-text">{workoutDetails.length_of_workout}</p>
+      <p className="card-text">Targeted Muscle: {workoutDetails.target}</p>
+      <p className="card-text">Necessary Equipment: {workoutDetails.equipment}</p>
+      <p className="card-text">Workout Intensity: {workoutDetails.intensity}</p>
+      <p className="card-text">Length of Workout: {workoutDetails.length_of_workout}</p>
     </div>
   </div>
 );

@@ -7,10 +7,10 @@ import MainPage from './MainPage';
 import FilterForm from './FilterForm';
 import Leaderboard from './Leaderboard';
 import Dashboard from './Dashboard';
+import WorkoutsList from './WorkoutsList';
 import { AuthProvider, useAuthContext, useToken } from './Auth';
 import UserProfileView from './UserProfileView';
 import React, {useState, useEffect} from 'react'
-import WorkoutsList from './WorkoutsList';
 
 function App() {
   const { user, token } = useAuthContext();
@@ -26,22 +26,13 @@ function App() {
     }
     getAllWorkouts()
   },[])
-
+  
   return (
     <BrowserRouter>
     <AuthProvider>
     <Nav />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        {/* <Route path= "/WheelSpinner">
-          <Route path="" element={<WheelSpinner />} />
-        </Route> */}
-          {/* <Route path="/saved-workouts"> 
-              <Route path="/" element={<SavedWorkouts />} />
-            </Route>
-            <Route path="/more-workouts">
-              <Route path="/" element={<MoreWorkouts />} />
-            </Route> */}
             <Route path="">
               <Route path="/filter-form" element={<FilterForm workouts={workouts} />} />
             </Route>

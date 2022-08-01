@@ -1,6 +1,6 @@
 import React, {useState}  from "react"
 import validation from "./Validation"
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 
 function SignUpForm () {
     const [values, setValues] = useState ({
@@ -10,7 +10,7 @@ function SignUpForm () {
         last_name: "",
         email: "",
     })
-    
+    let navigate= useNavigate()
     const [errors, setErrors] = useState({})
 
     const handleChange = e => {

@@ -50,6 +50,7 @@ function SignUpForm () {
                 last_name: "",
                 email: "",
             })
+            navigate('/login')
         }
         else if (!response.ok){
             const message = ` An error: ${response.status} - ${response.statusText}`;

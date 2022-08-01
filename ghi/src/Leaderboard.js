@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useAuthContext } from "./Auth";
 
 const positions = {
     "1": "🥇",
@@ -17,9 +18,25 @@ function Rank({username, coins, pos}) {
 }
 
 function Leaderboard() {
-
+    const {user} = useAuthContext()
     let [leaders, setLeaders] = useState([])
+    const [userData, setUserData] = useState(null);
 
+    async function getUserData(username) {
+        const usernameurl = `${process.env.REACT_APP_USERS}/users/account/${username}`;
+        try {
+          const response = await fetch(usernameurl, {
+            method: "get",
+            credentials: "include",
+          });
+          if (response.ok) {
+            const data = await response.json();
+            setUserData(data)
+          }
+        } catch (e) {}
+        return false
+      }
+    
     useEffect(() => {
         async function getLeaders() {
             const url = `${process.env.REACT_APP_USERS}/users/account/leaderboard/`;
@@ -30,7 +47,8 @@ function Leaderboard() {
                 setLeaders(data);
             }
         }
-        getLeaders();
+        getLeaders()
+        getUserData(user.username);
     }, [])
 
     // {data.map(user => )}
@@ -55,6 +73,13 @@ function Leaderboard() {
                                       pos={i + 1} 
                                       username={user.username} 
                                       coins={user.coins}/>)}
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td><b>CURRENT USER:</b></td>
+                            <td><b>{userData?.username}</b></td>
+                            <td><b>{userData?.coins}</b></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

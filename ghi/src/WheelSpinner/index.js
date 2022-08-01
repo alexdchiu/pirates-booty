@@ -25,11 +25,13 @@ const WheelSpinner = ({segments}) => {
 
   const palate = [ 
     "#03ecfc",/*cyan*/
-    "#03dbfc",/*light blue*/
     "#38a874",/*ocean green*/
     "##03fc80",/*spring green*/
     "#fcb103",/*yellow sea*/
-    "#fc03b5"/*shocking pink*/
+    "#fc03b5",/*shocking pink*/
+    "#0066ff",
+    "#8000ff",
+    "#00bfff",
   ]
   const colorFromPalate = () => palate[Math.floor(Math.random() * palate.length)]
 
@@ -62,7 +64,7 @@ const WheelSpinner = ({segments}) => {
     }
     // console.log('userId', user.id)
     // console.log('userCoins', user.coins)
-    // console.log('workoutId', winnerObj.id)
+    console.log('workoutId', winnerObj.id)
     handleClose()
   }
 

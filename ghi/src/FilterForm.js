@@ -129,8 +129,8 @@ function FilterForm ({workouts}) {
 
     return (
             <div>
-                <div className="outer-div">
-                <div className="list-container justify-content-center">
+                <div className="filter-form-outer-div">
+                <div className="filter-form-list-container">
                 <form>
                 <div className="filter-form-container">
                     <p><label>Targeted Muscle to Work Out:</label>

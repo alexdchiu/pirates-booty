@@ -235,19 +235,6 @@ p.error{
   color:black;
 }
 
-/* Filter form div */
-.filter-form-container{
-  margin: 100px auto;
-  width: 500px;
-  position: relative;
-  height: 700px;
-}
-
-/* Filter form select tag */
-.filter-form-container select {
-  margin-bottom:10px;
-}
-
 /* Profile page div */
 .profile-container{
   margin: 100px auto;
@@ -257,3 +244,49 @@ p.error{
   background: rgb(215, 241, 254);
 }
 
+/* Cursor for list of workout in Filtered Search */
+.text-primary:hover{
+  cursor: pointer;
+}
+
+.workoutslist-container{
+  background-color: white;
+  border: 2px solid black;
+  width:90%;
+  border-radius: 18px;
+}
+
+.workoutslist-outer-div{
+  display: flex;
+  justify-content: center;
+}
+
+/* h4 in workout list table for Filtered Search */
+h4{
+  text-align: center;
+}
+
+/* Filtered search css: */
+.filter-form-outer-div{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.filter-form-list-container{
+  margin:50px auto;
+  border: 2px solid black;
+  height:300px;
+  width:33%;
+  background-color: white;
+  border-radius: 18px;
+}
+
+.filter-form-container{
+  margin: 10% 10%;
+}
+
+/* Filter form select tag */
+.filter-form-container select {
+  margin-bottom:10px;
+}

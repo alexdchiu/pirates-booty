@@ -47,8 +47,7 @@ const WheelSpinner = ({segments}) => {
     handleShow()
   }
 
-  const completeWorkout = async (e) => {
-    e.preventDefault()
+  const addCoin = async () => {
     const userId = user.id;
     const url = `${process.env.REACT_APP_USERS}/users/account/${userId}/`;
     const fetchConfig = {
@@ -57,15 +56,45 @@ const WheelSpinner = ({segments}) => {
     }
     const response = await fetch(url, fetchConfig);
     if (response.ok) {
-      setPopup(true)
       console.log("Success - Added one coin")
     } else {
-      console.log("No - success it did not work")
+      console.log("No success - it did not work")
     }
+  }
+
+  const addCompletedWorkout = async () => {
+    // console.log('workoutId', winnerObj.id)
+    const data = {
+      "workout_id": winnerObj.id
+    }
+    console.log(data)
+    const urlWK = `${process.env.REACT_APP_USERS}/users/account/completed/`;
+    const fetchConfigWK ={
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      // credentials: "include",
+      body: JSON.stringify(data)
+    }
+    // console.log('fetchConfig', fetchConfigWK)
+    // const responseWK = await fetch(urlWK, fetchConfigWK);
+    const responseWK = await fetch(urlWK);
+    if (responseWK.ok) {
+      console.log("Success - Added to list")
+      console.log('success', responseWK)
+    } else {
+      console.log("No - success it did not work")
+      console.log('failed', responseWK)
+    }
+
+  }
+
+  const completeWorkout = (e) => {
+    e.preventDefault()
+    // addCoin()
     // console.log('userId', user.id)
     // console.log('userCoins', user.coins)
-    console.log('workoutId', winnerObj.id)
-    handleClose()
+    addCompletedWorkout()
+    // handleClose()
   }
 
   return (

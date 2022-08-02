@@ -33,8 +33,11 @@ class CompleteWorkoutEncoder(ModelEncoder):
     model = Completed_Workout
     properties = [
         "workout_id",
-        "user"
+        # "username"
     ]
+    # encoders = {
+    #     "username": AccountDetailModelEncoder
+    # }
 
 
 
@@ -107,12 +110,21 @@ def api_current_user(request, username):
         })
 
 
-@require_http_methods(['POST'])
+@require_http_methods(['POST', 'GET'])
 def api_user_complete_workout(request):
-    content = json.loads(request.body)
-    completed_workout = Completed_Workout.objects.create(**content)
-    return JsonResponse(
-        completed_workout,
-        encoder=CompleteWorkoutEncoder,
-        safe=False,
-    )
+    if request.method == "GET":
+        completed_workout_list = Completed_Workout.objects.all()
+        return JsonResponse(
+            completed_workout_list,
+            encoder=CompleteWorkoutEncoder,
+            safe=False,
+        )
+    else:
+        content = json.loads(request.body)
+        completed_workout = Completed_Workout.objects.create(**content)
+        return JsonResponse(
+            completed_workout,
+            encoder=CompleteWorkoutEncoder,
+            safe=False,
+        )
+

@@ -63,7 +63,7 @@ const WheelSpinner = ({segments}) => {
   }
 
   const addCompletedWorkout = async () => {
-    // console.log('workoutId', winnerObj.id)
+    console.log('workoutId', winnerObj.id)
     const data = {
       "workout_id": winnerObj.id
     }
@@ -76,13 +76,12 @@ const WheelSpinner = ({segments}) => {
       body: JSON.stringify(data)
     }
     // console.log('fetchConfig', fetchConfigWK)
-    // const responseWK = await fetch(urlWK, fetchConfigWK);
-    const responseWK = await fetch(urlWK);
+    const responseWK = await fetch(urlWK, fetchConfigWK);
     if (responseWK.ok) {
-      console.log("Success - Added to list")
+      // console.log("Success - Added to list")
       console.log('success', responseWK)
     } else {
-      console.log("No - success it did not work")
+      // console.log("No - success it did not work")
       console.log('failed', responseWK)
     }
 
@@ -90,11 +89,11 @@ const WheelSpinner = ({segments}) => {
 
   const completeWorkout = (e) => {
     e.preventDefault()
-    // addCoin()
+    addCoin()
     // console.log('userId', user.id)
     // console.log('userCoins', user.coins)
     addCompletedWorkout()
-    // handleClose()
+    handleClose()
   }
 
   return (

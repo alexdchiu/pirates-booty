@@ -56,6 +56,7 @@ const WheelSpinner = ({segments}) => {
     }
     const response = await fetch(url, fetchConfig);
     if (response.ok) {
+      setPopup(true)
       console.log("Success - Added one coin")
     } else {
       console.log("No success - it did not work")
@@ -83,6 +84,7 @@ const WheelSpinner = ({segments}) => {
     } else {
       // console.log("No - success it did not work")
       console.log('failed', responseWK)
+      alert("Exercise already in user\'s completed workout history.")
     }
 
   }

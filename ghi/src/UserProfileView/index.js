@@ -74,16 +74,27 @@ function UserProfileView (){
                   {userData?.email}
                 </p>
                 <p className="text-muted font-size-sm">
-                  Booty Coins Earned: {userData?.coins}
+                🪙Booty Coins Earned: {userData?.coins}
                 </p>
               </div>
+              <div className="row">
+              <div className="col-sm-12">
+                <a
+                  className="btn btn-info "
+                  target="__blank"
+                  href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills"
+                >
+                  Edit
+                </a>
+              </div>
+            </div>
             </div>
           </div>
         </div>
       </div>
       <div className="col-md-8">
         <div className="card mb-3">
-          <div className="card-body">
+          {/* <div className="card-body">
             <div className="row">
               <div className="col-sm-3">
                 <h6 className="mb-0">Full Name</h6>
@@ -132,7 +143,7 @@ function UserProfileView (){
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="row gutters-sm">
           <div className="col-sm-12 mb-3">
@@ -141,16 +152,19 @@ function UserProfileView (){
                 <h6 className="d-flex align-items-center mb-3">
                   <i className="material-icons text-info mr-2">Workout History</i>
                 </h6>
-                <small>Web Design</small>
+                <small>Complete More Workouts to Earn More Coins!</small>
                 <div className="progress mb-3" style={{ height: 5 }}>
-                  <div
+                  
+                  
+                  
+                  {/* <div
                     className="progress-bar bg-primary"
                     role="progressbar"
                     style={{ width: "80%" }}
                     aria-valuenow={80}
                     aria-valuemin={0}
                     aria-valuemax={100}
-                  />
+                  /> */}
                 </div>
               </div>
             </div>

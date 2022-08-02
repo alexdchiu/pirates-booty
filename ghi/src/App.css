@@ -306,3 +306,20 @@ h4{
   margin-bottom:10px;
 }
 
+#wheel{
+  text-align: center;
+}
+
+.filter-form-wheel{
+ display: flex;
+ justify-content: center;
+}
+
+#canvas {
+  padding-left:400px;
+}
+
+.main-page-wheel{
+display: flex;
+justify-content: center;
+}

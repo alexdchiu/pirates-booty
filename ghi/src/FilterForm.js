@@ -105,10 +105,13 @@ function FilterForm ({workouts}) {
                 </form>
                 </div>
                 </div>
-                <div>
-                    {showWheel && <WheelSpinner segments={result} />}
-                    {showList && <WorkoutsList exercises={result} />}
-                </div>
+                <div className="filter-form-wheel">
+                    <div className="inner-wheel-div">{showWheel && <WheelSpinner segments={result} />}</div>
+                    
+                
+                </div>    
+                <div>{showList && <WorkoutsList exercises={result} />}</div>
+                
             </div>
             )
         }

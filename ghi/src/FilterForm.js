@@ -3,7 +3,6 @@ import WheelSpinner from './WheelSpinner'
 import WorkoutsList from './WorkoutsList'
 
 function FilterForm ({workouts}) {
-    const [targets, setTargets] = useState([])
     const [intensities, setIntensity] = useState([])
     const [intensityOccurences, setIntensityOccurences] = useState({})
     const [target, setTarget] = useState('')
@@ -13,25 +12,8 @@ function FilterForm ({workouts}) {
     const [showList, setList] = useState(false)
 
     let workoutsList = workouts.exercises
-    // workoutsList?.map(element => console.log(element))
     let listOfTargets = Array.from(new Set(workoutsList?.map(({target}) => target)))
-    // console.log('targets', listOfTargets)
 
-// for dynamic with API call
-    // useEffect(()=> {
-    //     async function getDropDownValues() {
-    //         const list_url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/guest/random-wheel`;
-    //         const response = await fetch(list_url);
-    //         if (response.ok){
-    //             const data = await response.json();
-    //             const uniqueIntensity= Array.from(data.reduce((map, obj)=> map.set(obj.intensity, obj), new Map()).values())        
-    //             const uniqueTargets= Array.from(data.reduce((map, obj)=> map.set(obj.target, obj), new Map()).values())        
-    //             setTargets(uniqueTargets)
-    //             setIntensity(uniqueIntensity)
-    //         }
-    //     }
-    //     getDropDownValues();
-    // }, [])
     useEffect ( () => {
         workoutsFilteredByTarget(workoutsList)
     }, [target])
@@ -41,12 +23,6 @@ function FilterForm ({workouts}) {
         setList(false)
         e.preventDefault()
         const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/filtered/random-wheel?target=${target}&intensity=${intensity}`;
-        // const res = await fetch(url);   
-        // if(res.ok){
-        //     const data = await res.json();
-        //     // console.log("data", data)
-        //     setResult(data.exercises)
-        // } 
         fetch(url).then((res) => {
             if (res.ok) {
             return res.json();
@@ -95,38 +71,6 @@ function FilterForm ({workouts}) {
         setIntensityOccurences(filteredObj)
     }
     
-
-    // console.log(filteredList)
-
-// useEffect(()=> {
-//     async function submitFilterValues(){
-//        const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/filtered/random-wheel?target=${target}&intensity=${intensity}`;
-//        const res = await fetch(url);   
-//        console.log(res)
-//        if(res.ok){
-//            const data = await res.json();
-//            console.log("fata", data)
-//            setResult(data)
-//        }
-//    }
-//    submitFilterValues();
-// }, [target, intensity])
-
-    //  useEffect(()=> {
-    //      async function submitFilterValues(){
-    //         const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/filtered/random-wheel?target=${target}&intensity=${intensity}`;
-    //         const res = await fetch(url);   
-    //         console.log(res)
-    //         if(res.ok){
-    //             const data = await res.json();
-    //             console.log("fata", data)
-    //             setResult(data)
-    //         }
-    //     }
-    //     submitFilterValues();
-    //  }, [target, intensity])
-
-
     return (
             <div>
                 <div className="filter-form-outer-div">

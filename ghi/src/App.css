@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   font-family: 'PT Sans', sans-serif;
+  
 }
 
 body {
@@ -32,14 +33,40 @@ body {
   position: relative;
   border-radius: 50%;
   height: 790px;
-  background: rgb(215, 241, 254);
-  /* border: 12px double rgb(229, 215, 172) */
+  background:rgb(244, 249, 251)
 }
 
-/* Leaderboard header spacing */
-.table>:not(caption)>*>* {
-  padding: 0.5rem 11.5rem;
-  font-size: 18px;
+@keyframes animate{
+  from {
+    transform: rotate(0deg)
+  }
+  to{
+    transform: rotate(360deg);
+  }
+} 
+
+.container:before{
+  content: '';
+  position:absolute;
+  top:-30px;
+  right:-30px;
+  bottom:-30px;
+  left: -30px;
+  border-radius:50%;  
+  background: linear-gradient(
+    90deg,
+    rgb(255, 221, 135) 50%,
+    rgb(233, 255, 144) 100%
+  );
+  animation: animate 1.5s linear infinite;
+  z-index:-1
+}
+
+/* Leaderboard and Filtered Seach table */
+table{
+  table-layout: fixed;
+  border-collapse:collapse;
+  width:100%;
 }
 
 /* Leaderboard table row */
@@ -72,33 +99,6 @@ body {
   border-radius: 20px;
 }
 
-/* 
-@keyframes animate{
-  from {
-    transform: rotate(0deg)
-  }
-  to{
-    transform: rotate(360deg);
-  }
-} 
-
-.container:before{
-  content: '';
-  position:absolute;
-  top:35px;
-  right:35px;
-  bottom:35px;
-  left:35px;
-  border-radius:50%;  
-  background: linear-gradient(
-    90deg,
-    rgb(39, 143, 255) 0%,
-    rgb(12, 99, 250) 100%
-  );
-  animation: animate 1s linear infinite;
-  z-index:0
-} */
-
 /* Login form div */
 .login-container {
   margin: 100px auto;
@@ -107,7 +107,24 @@ body {
   position: relative;
   border-radius: 50%;
   height: 790px;
-  background-color: rgb(215, 241, 254);
+  background-color: rgb(244, 249, 251)
+}
+
+.login-container:before{
+  content: '';
+  position:absolute;
+  top:-30px;
+  right:-30px;
+  bottom:-30px;
+  left: -30px;
+  border-radius:50%;  
+  background: linear-gradient(
+    90deg,
+    rgb(255, 221, 135) 50%,
+    rgb(233, 255, 144) 100%
+  );
+  animation: animate 1.5s linear infinite;
+  z-index:-1
 }
 
 /* Login form pirate image */
@@ -160,11 +177,9 @@ body {
 .form-input {
   display: block;
   padding-left: 10px;
-  outline: none;
-  border-radius: 2px;
+  outline:none;
   height: 40px;
   width: 100%;
-  border: none;
   border:black 1px solid;
 }
 
@@ -188,7 +203,7 @@ body {
   background: linear-gradient(
     90deg,
     rgb(39, 176, 255) 0%,
-    rgb(0, 232, 236) 100%
+    rgb(0, 232, 236)100%
   );
   outline: none;
   border: none;
@@ -290,3 +305,4 @@ h4{
 .filter-form-container select {
   margin-bottom:10px;
 }
+

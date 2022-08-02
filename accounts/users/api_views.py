@@ -33,11 +33,11 @@ class CompleteWorkoutEncoder(ModelEncoder):
     model = Completed_Workout
     properties = [
         "workout_id",
-        # "username"
+        "user"
     ]
-    # encoders = {
-    #     "username": AccountDetailModelEncoder
-    # }
+    encoders = {
+        "user": AccountDetailModelEncoder(),
+    }
 
 
 
@@ -121,6 +121,14 @@ def api_user_complete_workout(request):
         )
     else:
         content = json.loads(request.body)
+        try:
+            user = User.objects.get(id=content["user"])
+            content["user"] = user
+        except User.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid user ID"},
+                status = 400,
+            )
         completed_workout = Completed_Workout.objects.create(**content)
         return JsonResponse(
             completed_workout,

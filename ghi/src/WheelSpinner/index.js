@@ -66,7 +66,8 @@ const WheelSpinner = ({segments}) => {
   const addCompletedWorkout = async () => {
     console.log('workoutId', winnerObj.id)
     const data = {
-      "workout_id": winnerObj.id
+      "workout_id": winnerObj.id,
+      "user": user.id
     }
     console.log(data)
     const urlWK = `${process.env.REACT_APP_USERS}/users/account/completed/`;
@@ -91,7 +92,7 @@ const WheelSpinner = ({segments}) => {
 
   const completeWorkout = (e) => {
     e.preventDefault()
-    addCoin()
+    // addCoin()
     // console.log('userId', user.id)
     // console.log('userCoins', user.coins)
     addCompletedWorkout()

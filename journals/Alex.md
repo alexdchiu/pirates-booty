@@ -4,7 +4,16 @@ A reflection on any design conversations that you had
 At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
+## August 1, 2022
+Today I worked on:
+* Trying to get the post command to the user database to work so we could populate rows of workout IDs.
+
+- Shelen built out the model / view / URL but we were having some issues with the post request itself. First we had to change up the body to dynamically include the workout ID and also to stringify it. Then we got stuck with the request itself which kept spitting out 405 errors. We tried playing with a lot of different things, but after a while of trying with no success, Vivian pointed out that we were missing a back slash at the end of the URL......sad. But it works! Next we need to figure out how to enter a user ID as well to match so we can ultimately filter it to show a specific user's workout history.
+
+
+
 ## July 31, 2022
+Today I worked on:
 * Worked on getting state to update on user profile. Filtered form list to have link for workout detail modal to pop up. Get # of exercises for a given intensity to show on filter form.
 
 - There was an issue where on the user profile, the state of the user wasn't being refreshed so even after a user completed a workout, the number of coins was not being updated. After trying to play around with the auth component trying to get that to do another call, I ended up adding the getUserData function to the userprofile component and doing it on this component level. Not ideal, but it works.

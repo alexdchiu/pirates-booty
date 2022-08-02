@@ -14,10 +14,10 @@ class User(AbstractUser):
 
 
 class Completed_Workout(models.Model):
-    workout_id = models.IntegerField(unique=True, default=0)
-    # user = models.ForeignKey(
-    #     User, on_delete=models.PROTECT
-    # )
+    workout_id = models.IntegerField()
+    user = models.ForeignKey(
+        User, related_name="users", on_delete=models.CASCADE
+    )
 
 # one to many- 
 # 

@@ -77,9 +77,8 @@ def api_user_change(request, pk):
     elif request.method == "PUT":
         content = json.loads(request.body)
         user = User.objects.filter(id=pk).update(**content)
-        updated_user = User.objects.get(id=pk)
         return JsonResponse(
-            updated_user,
+            user,
             encoder=AccountModelEncoder,
             safe=False,
         )

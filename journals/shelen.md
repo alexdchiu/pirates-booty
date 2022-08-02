@@ -9,3 +9,4 @@ still need model forms to show aspects for pirate coins as well as a VO
 
 07/14:
 plan is to create a vo model to poll data from workouts, finish urls to verify the back end works via insomnia. the user model will have a class method that add's coins to the users profile via an onclick handler on the react pages.
+

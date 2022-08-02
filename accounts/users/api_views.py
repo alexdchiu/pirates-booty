@@ -1,5 +1,8 @@
 from pyexpat import model
 import djwto.authentication as auth
+from datetime import date
+from datetime import datetime, time
+from django.utils.timezone import datetime
 from django.shortcuts import render
 from django.db import IntegrityError
 from django.http import HttpResponse, JsonResponse
@@ -14,8 +17,15 @@ from .models import User, Completed_Workout
 
 class AccountModelEncoder(ModelEncoder):
     model = User
-    properties = ["username", "coins"]
-
+    properties = [
+        "username", 
+        "coins", 
+        "picture_url",
+        "first_name",
+        "last_name"
+    ]
+    # def get_extra_data(self, o):
+    #     return {"updated": timezone.now()}
 
 class AccountDetailModelEncoder(ModelEncoder):
     model = User
@@ -28,16 +38,16 @@ class AccountDetailModelEncoder(ModelEncoder):
         "password",
         "coins"
     ]
+    # def get_extra_data(self, o):
+    #     return {"updated": timezone.now()}
 
 class CompleteWorkoutEncoder(ModelEncoder):
     model = Completed_Workout
     properties = [
         "workout_id",
-        # "username"
+        "date"
     ]
-    # encoders = {
-    #     "username": AccountDetailModelEncoder
-    # }
+
 
 
 
@@ -58,6 +68,29 @@ def api_user(request):
             encoder=AccountDetailModelEncoder,
             safe=False,
         )
+
+@require_http_methods(["DELETE", "PUT", "GET"])
+def api_user_change(request, pk):
+    if request.method == "DELETE":
+            count, _ = User.objects.filter(id=pk).delete()
+            return JsonResponse({"deleted": count > 0})
+    elif request.method == "PUT":
+        content = json.loads(request.body)
+        user = User.objects.filter(id=pk).update(**content)
+        updated_user = User.objects.get(id=pk)
+        return JsonResponse(
+            updated_user,
+            encoder=AccountModelEncoder,
+            safe=False,
+        )
+    else:
+        user = User.objects.get(id=pk)
+        return JsonResponse(
+            user,
+            encoder=AccountModelEncoder,
+            safe=False,
+        )
+
 
 
 # @require_http_methods(["GET"])
@@ -121,6 +154,8 @@ def api_user_complete_workout(request):
         )
     else:
         content = json.loads(request.body)
+        date = datetime.today().isoformat()
+        content["date"] = date
         completed_workout = Completed_Workout.objects.create(**content)
         return JsonResponse(
             completed_workout,

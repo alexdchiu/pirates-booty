@@ -74,7 +74,7 @@ function UserProfileView (){
                   {userData?.email}
                 </p>
                 <p className="text-muted font-size-sm">
-                🪙Booty Coins Earned: {userData?.coins}
+                🪙Booty Coins: {userData?.coins}
                 </p>
               </div>
               <div className="row">

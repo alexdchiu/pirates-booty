@@ -1,7 +1,8 @@
 ## August 1, 2022
-- fixed wheel css to be center-aligned. 
+- fixed wheel css to be center-aligned by adding a few div to wrap the wheel in and used flexbox justify content to center
 - fixed leaderboard css and filtered search css
 - enhanced login and sign up form css 
+- work on profile edit page
 
 ## July 28, 2022
 - added redirect page after successful sign up.

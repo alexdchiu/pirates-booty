@@ -1,5 +1,7 @@
 import React, {useEffect, useState } from "react";
 import { useAuthContext, getUserData } from '../Auth';
+import {Link} from "react-router-dom"
+
 
 // edit user data
 // get completed workouts data
@@ -121,13 +123,11 @@ function UserProfileView (){
             <hr /> */}
             <div className="row">
               <div className="col-sm-12">
-                <a
-                  className="btn btn-info "
+                <button
+                  className="btn btn-info"
                   target="__blank"
-                  href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills"
-                >
-                  Edit
-                </a>
+                ><Link className="link" to="/profile/edit/">Edit</Link>
+                </button>
               </div>
             </div>
           </div>

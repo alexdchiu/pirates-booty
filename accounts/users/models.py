@@ -9,6 +9,7 @@ from django.core.validators import int_list_validator
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     coins = models.IntegerField(default=0)
+    picture_url = models.URLField(null=True)
 
     def __str__(self):
         return f"{self.email}"
@@ -30,6 +31,7 @@ class User(AbstractUser):
 
 class Completed_Workout(models.Model):
     workout_id = models.IntegerField
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE
-    )
+    date = models.CharField(null=True, blank=True, max_length=100)
+    # user = models.ForeignKey(
+    #     User, on_delete=models.CASCADE
+    # )

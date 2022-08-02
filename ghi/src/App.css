@@ -323,3 +323,14 @@ h4{
 display: flex;
 justify-content: center;
 }
+
+/* User profile button */
+.link{
+  text-decoration: none;
+}
+
+.edit-profile{
+  display: flex;
+  border:1px solid red;
+  justify-content: center;
+}

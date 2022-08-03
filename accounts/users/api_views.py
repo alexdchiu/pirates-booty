@@ -1,5 +1,8 @@
 from pyexpat import model
 import djwto.authentication as auth
+from datetime import date
+from datetime import datetime, time
+from django.utils.timezone import datetime
 from django.shortcuts import render
 from django.db import IntegrityError
 from django.http import HttpResponse, JsonResponse
@@ -14,7 +17,13 @@ from .models import User, Completed_Workout
 
 class AccountModelEncoder(ModelEncoder):
     model = User
-    properties = ["username", "coins"]
+    properties = [
+        "username", 
+        "coins",
+        "picture_url",
+        "first_name",
+        "last_name"
+    ]
 
 
 class AccountDetailModelEncoder(ModelEncoder):
@@ -33,6 +42,7 @@ class CompleteWorkoutEncoder(ModelEncoder):
     model = Completed_Workout
     properties = [
         "workout_id",
+        "date",
         "user"
     ]
     encoders = {
@@ -56,6 +66,28 @@ def api_user(request):
         return JsonResponse(
             newuser,
             encoder=AccountDetailModelEncoder,
+            safe=False,
+        )
+
+
+@require_http_methods(["DELETE", "PUT", "GET"])
+def api_user_change(request, pk):
+    if request.method == "DELETE":
+            count, _ = User.objects.filter(id=pk).delete()
+            return JsonResponse({"deleted": count > 0})
+    elif request.method == "PUT":
+        content = json.loads(request.body)
+        user = User.objects.filter(id=pk).update(**content)
+        return JsonResponse(
+            user,
+            encoder=AccountModelEncoder,
+            safe=False,
+        )
+    else:
+        user = User.objects.get(id=pk)
+        return JsonResponse(
+            user,
+            encoder=AccountModelEncoder,
             safe=False,
         )
 
@@ -93,6 +125,7 @@ def api_increment_coin(request, pk):
         safe=False,
     )
 
+
 @require_http_methods(["GET"])
 @auth.jwt_login_required
 def api_current_user(request, username):
@@ -121,6 +154,8 @@ def api_user_complete_workout(request):
         )
     else:
         content = json.loads(request.body)
+        date = datetime.today().isoformat()
+        content["date"] = date
         try:
             user = User.objects.get(id=content["user"])
             content["user"] = user

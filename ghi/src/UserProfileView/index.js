@@ -57,13 +57,13 @@ function UserProfileView (){
       const response = await fetch(url, fetchConfig)
       if (response.ok) {
         const data = await response.json()
-        var workoutIDs = []
+        var filteredWorkouts = []
         data.filter(workout => {
           if (workout.user.id === o.id) {
-            workoutIDs.push(workout.workout_id)
+            filteredWorkouts.push(workout)
           }
         })
-        return workoutIDs
+        return filteredWorkouts
       }
       else {
         console.log('completed workout fetch failed')
@@ -71,19 +71,34 @@ function UserProfileView (){
     }
     
 
-    let fetchUserCompletedWorkouts = async (listOfIds) => {
+    let fetchUserCompletedWorkouts = async (lst) => {
+      var workoutIDs = []
+      lst?.forEach(obj => {
+        workoutIDs.push(obj.workout_id)
+      })
+      
       const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/completed_workouts`;
       const fetchConfig = {
       method: "POST",
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(listOfIds)
+      body: JSON.stringify(workoutIDs)
       }
       fetch(url, fetchConfig)
       .then((res) => {
         return res.json()
       })
       .then((resData) => {
-        setCompletedWorkouts(resData.exercises)
+        var completedWorkoutsAndDates = []
+        var listOfWorkouts = resData.exercises
+        for (var i = 0; i < listOfWorkouts.length; i++) {
+          completedWorkoutsAndDates.push({
+            'workout': listOfWorkouts[i],
+            'dateCompleted': lst[i].date.substring(0,10)
+            // 'dateCompleted': lst[i].date
+          })
+          console.log('completedWorkoutsAndDates', completedWorkoutsAndDates)
+        }
+        setCompletedWorkouts(completedWorkoutsAndDates)
       })
     }
     
@@ -214,7 +229,11 @@ function UserProfileView (){
                           <ListGroup>
                             {completedWorkouts.map(workout => {
                               return (
-                                <ListGroupItem onClick={() => handleShow(workout)}>{workout.name}</ListGroupItem>
+                                <ListGroupItem onClick={() => handleShow(workout.workout)} key={workout.workout.id} className="text-capitalize">{workout.workout.name} 
+                                  <p><small><i>
+                                    (Originally Completed: {workout.dateCompleted})
+                                  </i></small></p>
+                                </ListGroupItem>
                               )
                             })}
                           </ListGroup>

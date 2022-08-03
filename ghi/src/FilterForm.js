@@ -118,7 +118,7 @@ function FilterForm ({workouts}) {
                 <form>
                 <div className="filter-form-container">
                     <p><label>Targeted Muscle to Work Out:</label>
-                    <select onChange={(e)=> {setTarget(e.target.value)}} className="form-select" aria-label="Default select example" value={target}>
+                    <select onChange={(e)=> {setTarget(e.target.value)}} className="form-select text-capitalize" aria-label="Default select example" value={target}>
                     {/* <option>Targeted Muscles</option> */}
                         <option value="" disabled selected>Select your option</option>
                         {listOfTargets.map(target => {
@@ -129,7 +129,7 @@ function FilterForm ({workouts}) {
                     </select></p>
                     {(listOfEquipment.length > 0) && (
                         <p><label>Required Equipment:</label>
-                        <select onChange={(e)=>setEquipment(e.target.value)} className="form-select" aria-label="Default select example" value={equipment}>
+                        <select onChange={(e)=>setEquipment(e.target.value)} className="form-select text-capitalize" aria-label="Default select example" value={equipment}>
                         <option value="" disabled selected>Select your option</option>
                         {listOfEquipment.map(equipment => {
                             return(

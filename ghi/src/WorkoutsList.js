@@ -49,11 +49,11 @@ function WorkoutsList({exercises}) {
                 exercises.map(filtered => {
                   return(
                     <tr key={filtered.id}>
-                      <td onClick={() => handleShow(filtered)} className="text-primary">{filtered.name}</td>
-                      <td>{filtered.target}</td>
-                      <td>{filtered.equipment}</td>
-                      <td>{filtered.intensity}</td>
-                      <td>{filtered.length_of_workout} mins</td>
+                      <td onClick={() => handleShow(filtered)} className="text-primary text-capitalize">{filtered.name}</td>
+                      <td className="text-capitalize">{filtered.target}</td>
+                      <td className="text-capitalize">{filtered.equipment}</td>
+                      <td className="text-capitalize">{filtered.intensity}</td>
+                      <td className="text-capitalize">{filtered.length_of_workout} mins</td>
                     </tr>
                   )
                 })

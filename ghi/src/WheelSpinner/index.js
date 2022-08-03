@@ -22,7 +22,7 @@ const WheelSpinner = ({segments}) => {
   const handlePopupClose = () => setPopup(false)
 
   const nameArr = []
-  segments.map(el => nameArr.push(el.name))
+  segments.map(el => nameArr.push(el.name.toUpperCase()))
 
   const palate = [ 
     "#03ecfc",/*cyan*/
@@ -41,7 +41,7 @@ const WheelSpinner = ({segments}) => {
   //  console.log(segColors)
   
   const onFinished = (winner) => {
-    let winnerExercise = segments.filter(el => el.name === winner)
+    let winnerExercise = segments.filter(el => el.name === winner.toLowerCase())
     let winnerId = winnerExercise[0].id
     let winnerFilter = segments.filter(el => el.id === winnerId)
     setWinner(winnerFilter[0])

@@ -11,7 +11,7 @@ import WorkoutsList from './WorkoutsList';
 import { AuthProvider, useAuthContext, useToken } from './Auth';
 import UserProfileView from './UserProfileView';
 import React, {useState, useEffect} from 'react'
-import EditProfile from './UserProfileView/edit'
+import { EditProfile } from './UserProfileView/edit';
 
 function App() {
   const { user, token } = useAuthContext();

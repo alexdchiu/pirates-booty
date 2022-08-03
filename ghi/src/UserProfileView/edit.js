@@ -1,23 +1,36 @@
-import React, {useState}  from "react"
+import React, {useState, useContext}  from 'react'
 import {useNavigate} from "react-router-dom"
+import {AuthContext} from '../Auth'
 
 
-function EditProfile () {
-    const [first_name, setFirstName] = useState("")
-    const [last_name, setLastName] = useState("")
-    const [username, setUsername] = useState("")
-    const [picture, setPicture] = useState("")
-    const [email, setEmail] = useState("")
+export function EditProfile (){
+    const {user} = useContext(AuthContext)
     const navigate= useNavigate()
+    const [values, setValues] = useState ({
+        first_name:"",
+        last_name: "",
+        email: "",
+        picture_url: "",
+    })
 
 
-    const handleSubmit = async (e) =>{
-        e.preventDefault()
-        putAPI()
+    const handleChange = e => {
+        setValues({
+            ...values,
+            [e.target.name]: e.target.value
+        }); 
+    };
+
+    const handleFormSubmit = async (e) => {
+        e.preventDefault();
+        updateUser()
     }
-    const putAPI = async (id) => {
-        const data = {...first_name, ...last_name, ...username, ...picture}
-        const url = `${process.env.REACT_APP_USERS}/users/account/details/${id}`;
+
+    const updateUser = async () => {
+        const userId = user.id
+        console.log(userId)
+        const url = `${process.env.REACT_APP_USERS}/users/account/details/${userId}/`;
+        const data = {...values}
         const fetchConfig = {
             method: "put",
             body: JSON.stringify(data),
@@ -27,8 +40,9 @@ function EditProfile () {
         }
         const response = await fetch(url, fetchConfig);
         if(response.ok){
-            const editAccount = await response.json();
-            console.log(editAccount);
+            const updateAccount = await response.json();
+            console.log(updateAccount);
+            setValues(updateAccount)
             navigate('/profile/')
         }
         else if (!response.ok){
@@ -36,66 +50,80 @@ function EditProfile () {
             throw new Error(message);
         }
     }
+    
+    return(
+    <div className="profile-container">
+  <div className="main-body">
+    <h1>Update Profile</h1>
+    <div className="row gutters-sm">
 
-    return (
-        <div className="profile-container">
-            <div className="edit-profile">
-                <form>
-                    <div className="form-inputs">
-                        <label htmlFor="username">
-                        </label>
-                            <input 
-                            onChange={(e)=>setUsername(e.target.value)}
-                            type="text"
-                            name="username"
-                            placeholder="username"
-                            value={username} />
-                    </div>
-                    <div className="form-inputs">
-                        <label htmlFor="first_name">
-                        </label>
-                            <input
-                            onChange={(e)=>setFirstName(e.target.value)}
-                            type="text"
-                            name="first_name"
-                            placeholder="First Name"
-                            value={first_name} />
-                    </div>
-                    <div className="form-inputs">
-                        <label htmlFor="last_name">
-                        </label>
-                            <input
-                            onChange={(e)=>setLastName(e.target.value)}
-                            type="text"
-                            name="last_name"
-                            placeholder="Last Name"
-                            value={last_name} />
-                    </div>
-                    <div className="form-inputs">
-                        <label htmlFor="email">
-                        </label>
-                            <input
-                            onChange={(e)=>setEmail(e.target.value)}
-                            type="text"
-                            name="email"
-                            placeholder="Email"
-                            value={email} />
-                    </div>
-                    <div className="form-inputs">
-                        <label htmlFor="picture">
-                        </label>
-                            <input
-                            onChange={(e)=>setPicture(e.target.value)}
-                            type="text"
-                            name="picture"
-                            placeholder="Picure URL"
-                            value={picture} />
-                    </div>
-            <button onClick={handleSubmit} type="submit">Update</button>
-        </form>
-    </div>
-    </div>
+      <div className="col-md-8">
+        <div className="card mb-3">
+          <div className="card-body">
+            <div className="row">
+              <div className="col-sm-3">
+              <input
+              onChange={handleChange}
+                type="text"
+                name="first_name"
+                placeholder="first name"
+                value={values.first_name} 
+                />
+              </div>
+            </div>
+            <br />
+            <div className="row">
+              <div className="col-sm-3">
+              <input
+              onChange={handleChange}
+                type="text"
+                name="last_name"
+                placeholder="last name"
+                value={values.last_name} 
+                />
+              </div>
+            </div>
+            <br />
+            <div className="row">
+              <div className="col-sm-3">
+              <input
+              onChange={handleChange}
+                type="text"
+                name="email"
+                placeholder="email"
+                value={values.email} 
+                />
+              </div>
+            </div>
+            <br />
+            <div className="row">
+              <div className="col-sm-3">
+              <input
+              onChange={handleChange}
+                type="text"
+                name="picture_url"
+                placeholder="picture URL"
+                value={values.picture_url} 
+                />
+              </div>
+            </div>
+            <br></br>
+            <div className="row">
+              <div className="col-sm-12">
+                <button
+                onClick={handleFormSubmit}
+                  className="btn btn-info"
+                  target="__blank"
+                >UPDATE
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
 
-);
+      </div>
+    </div>
+  </div>
+</div>
+    )
 }
-export default EditProfile

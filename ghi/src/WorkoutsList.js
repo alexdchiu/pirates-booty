@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import SignupModal from './SignupModal/index.js'
 import {Link} from 'react-router-dom'
-
+import { addCoin, addCompletedWorkout } from './helpers/Workouts';
 
 function WorkoutsList({exercises}) {
   const {user, token} = useContext(AuthContext)
@@ -22,20 +22,8 @@ function WorkoutsList({exercises}) {
 
   const completeWorkout = async (e) => {
     e.preventDefault()
-    const userId = user.id;
-    const url = `${process.env.REACT_APP_USERS}/users/account/${userId}/`;
-    const fetchConfig = {
-      method: "put",
-      headers: {"Content-Type": "application/json"}
-    }
-    const response = await fetch(url, fetchConfig);
-    if (response.ok) {
-      setPopup(true)
-      console.log("Success - Added one coin")
-    } else {
-      console.log("No - success it did not work")
-    }
-
+    addCoin(user).then(setPopup(true))
+    addCompletedWorkout(selectedExercise, user)
     handleClose()
   }
 

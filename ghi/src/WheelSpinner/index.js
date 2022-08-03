@@ -8,6 +8,7 @@ import WheelComponent from 'react-wheel-of-prizes'
 import '../react-wheel-of-prizes/index.css' 
 import WorkoutDetailView from '../WorkoutDetailView'
 import SignupModal from '../SignupModal/index.js'
+import { addCoin, addCompletedWorkout } from '../helpers/Workouts.js'
 
 
 const WheelSpinner = ({segments}) => {
@@ -47,55 +48,10 @@ const WheelSpinner = ({segments}) => {
     handleShow()
   }
 
-  const addCoin = async () => {
-    const userId = user.id;
-    const url = `${process.env.REACT_APP_USERS}/users/account/${userId}/`;
-    const fetchConfig = {
-      method: "put",
-      headers: {"Content-Type": "application/json"}
-    }
-    const response = await fetch(url, fetchConfig);
-    if (response.ok) {
-      setPopup(true)
-      console.log("Success - Added one coin")
-    } else {
-      console.log("No success - it did not work")
-    }
-  }
-
-  const addCompletedWorkout = async () => {
-    console.log('workoutId', winnerObj.id)
-    const data = {
-      "workout_id": winnerObj.id,
-      "user": user.id
-    }
-    console.log(data)
-    const urlWK = `${process.env.REACT_APP_USERS}/users/account/completed/`;
-    const fetchConfigWK ={
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      // credentials: "include",
-      body: JSON.stringify(data)
-    }
-    // console.log('fetchConfig', fetchConfigWK)
-    const responseWK = await fetch(urlWK, fetchConfigWK);
-    if (responseWK.ok) {
-      // console.log("Success - Added to list")
-      console.log('success', responseWK)
-    } else {
-      // console.log("No - success it did not work")
-      console.log('failed', responseWK)
-      alert("Exercise already in user\'s completed workout history.")
-    }
-
-  }
-
   const completeWorkout = (e) => {
     e.preventDefault()
-    addCoin()
-    // console.log('userId', user.id)
-    // console.log('userCoins', user.coins)
-    addCompletedWorkout()
+    addCoin(user).then(setPopup(true))
+    addCompletedWorkout(winnerObj, user)
     handleClose()
   }
 

@@ -5,20 +5,12 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import { useAuthContext, getUserData } from '../Auth';
+import { addCoin, addCompletedWorkout  } from "../helpers/Workouts";
 import {Link} from 'react-router-dom'
 
-// edit user data
-// get completed workouts data
-
-// create a new field on user profile to have list of workouts
-// create functionality on the individual workout to complete workout
-// upon completion -> add workout id to list on user profile
 
 
-
-
-
-function UserProfileView ({workouts}){
+function UserProfileView (){
     const { user, token } = useAuthContext();
     const [userData, setUserData] = useState(null);
     const [completedWorkouts, setCompletedWorkouts] = useState([])
@@ -35,20 +27,8 @@ function UserProfileView ({workouts}){
 
     const completeWorkout = async (e) => {
       e.preventDefault()
-      const userId = user.id;
-      const url = `${process.env.REACT_APP_USERS}/users/account/${userId}/`;
-      const fetchConfig = {
-        method: "put",
-        headers: {"Content-Type": "application/json"}
-      }
-      const response = await fetch(url, fetchConfig);
-      if (response.ok) {
-        setPopup(true)
-        console.log("Success - Added one coin")
-      } else {
-        console.log("No - success it did not work")
-      }
-
+      addCoin(user).then(setPopup(true))
+      addCompletedWorkout(selectedExercise, user)
       handleClose()
     }
     
@@ -61,7 +41,6 @@ function UserProfileView ({workouts}){
         });
         if (response.ok) {
           const data = await response.json();
-          // console.log('userData', data)
           setUserData(data)
           const ids = await getUserCompletedWorkouts(data)
             .then((res) => fetchUserCompletedWorkouts(res))
@@ -78,9 +57,7 @@ function UserProfileView ({workouts}){
       const response = await fetch(url, fetchConfig)
       if (response.ok) {
         const data = await response.json()
-        // console.log(data)
         var workoutIDs = []
-        // var completedWorkoutIDs = [1,2,3]
         data.filter(workout => {
           if (workout.user.id === o.id) {
             workoutIDs.push(workout.workout_id)
@@ -258,7 +235,7 @@ function UserProfileView ({workouts}){
                           <Modal.Body>
                             <WorkoutDetailView workoutDetails={selectedExercise}/>
                           </Modal.Body>
-                          {/* <Modal.Footer>
+                          <Modal.Footer>
                             <Button variant="secondary" onClick={completeWorkout} >
                               Complete Workout
                             </Button>
@@ -267,7 +244,7 @@ function UserProfileView ({workouts}){
                                 User Profile
                               </Button>
                             </Link>
-                          </Modal.Footer> */}
+                          </Modal.Footer>
                         </Modal>
                       </div>
                     </div>

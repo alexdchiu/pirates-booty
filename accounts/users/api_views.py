@@ -36,6 +36,7 @@ class AccountDetailModelEncoder(ModelEncoder):
         "first_name",
         "last_name",
         "password",
+        "picture_url",
         "coins"
     ]
     # def get_extra_data(self, o):

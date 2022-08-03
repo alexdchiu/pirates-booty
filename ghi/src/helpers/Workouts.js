@@ -26,6 +26,7 @@ export async function addCoin (user) {
   }
 }
 
+
 export async function addCompletedWorkout (winnerObj, user) {
   console.log('workoutId', winnerObj.id)
   const data = {

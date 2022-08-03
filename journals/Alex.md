@@ -4,6 +4,13 @@ A reflection on any design conversations that you had
 At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
+## August 2, 2022
+Today I worked on:
+* Trying to get the completed workouts to show on a user profile.
+
+- I had issues with promises and empty data sets. Need to resolve with .then to only show once it's populated.
+
+
 ## August 1, 2022
 Today I worked on:
 * Trying to get the post command to the user database to work so we could populate rows of workout IDs.

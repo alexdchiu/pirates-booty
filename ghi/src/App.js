@@ -43,7 +43,7 @@ function App() {
               <Route path="" element={<WorkoutsList />} />
             </Route>
             <Route path="/profile">
-              <Route path="" element={<UserProfileView />} />
+              <Route path="" element={<UserProfileView workouts={workouts} />} />
             </Route>
         <Route path="/signup">
           <Route path="new" element={<SignUpForm />} />

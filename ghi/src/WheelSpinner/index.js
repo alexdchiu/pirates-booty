@@ -92,7 +92,7 @@ const WheelSpinner = ({segments}) => {
 
   const completeWorkout = (e) => {
     e.preventDefault()
-    // addCoin()
+    addCoin()
     // console.log('userId', user.id)
     // console.log('userCoins', user.coins)
     addCompletedWorkout()

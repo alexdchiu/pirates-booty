@@ -28,6 +28,7 @@ class AccountDetailModelEncoder(ModelEncoder):
         "first_name",
         "last_name",
         "password",
+        "picture_url",
         "coins"
     ]
 
@@ -130,6 +131,7 @@ def api_current_user(request, username):
             "first_name": user.first_name,
             "last_name": user.last_name,
             "coins": user.coins,
+            "picture_url": user.picture_url,
         })
 
 

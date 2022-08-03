@@ -5,6 +5,7 @@ import {AuthContext} from '../Auth'
 
 export function EditProfile (){
     const {user} = useContext(AuthContext)
+    console.log(user)
     const navigate= useNavigate()
     const [values, setValues] = useState ({
         first_name:"",
@@ -28,7 +29,6 @@ export function EditProfile (){
 
     const updateUser = async () => {
         const userId = user.id
-        console.log(userId)
         const url = `${process.env.REACT_APP_USERS}/users/account/details/${userId}/`;
         const data = {...values}
         const fetchConfig = {
@@ -41,7 +41,7 @@ export function EditProfile (){
         const response = await fetch(url, fetchConfig);
         if(response.ok){
             const updateAccount = await response.json();
-            console.log(updateAccount);
+            // console.log(updateAccount);
             setValues(updateAccount)
             navigate('/profile/')
         }

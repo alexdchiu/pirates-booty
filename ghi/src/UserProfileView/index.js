@@ -14,7 +14,6 @@ import { EditProfile } from "./edit";
 function UserProfileView (){
     const { user, token } = useAuthContext();
     const [userData, setUserData] = useState(null);
-    
     async function getUserData(username) {
       const usernameurl = `${process.env.REACT_APP_USERS}/users/account/${username}`;
       try {
@@ -61,7 +60,7 @@ function UserProfileView (){
           <div className="card-body">
             <div className="d-flex flex-column align-items-center text-center">
               <img
-                
+                src={user.picture_url}
                 alt="Admin"
                 className="rounded-circle"
                 width={150}

@@ -6,33 +6,30 @@ import os
 
 router = APIRouter()
 
-workouts_url = os.environ['DATABASE_URL']
+workouts_url = os.environ["DATABASE_URL"]
+
 
 class ExerciseOut(BaseModel):
-  id: int
-  body_part: str
-  equipment: str
-  gif_url: str
-  name: str
-  target: str
-  intensity: int
-  length_of_workout: int
+    id: int
+    body_part: str
+    equipment: str
+    gif_url: str
+    name: str
+    target: str
+    intensity: int
+    length_of_workout: int
 
 
 class Message(BaseModel):
-  message: str
+    message: str
 
-@router.get(
-  '/api/workouts/all',
-  responses = {404: {'model': Message}}
-)
-def get_all_exercises(
-  response: Response
-  ): 
-  with psycopg.connect(workouts_url) as conn:
-    with conn.cursor() as cur:
-      result = cur.execute(
-        """
+
+@router.get("/api/workouts/all", responses={404: {"model": Message}})
+def get_all_exercises(response: Response):
+    with psycopg.connect(workouts_url) as conn:
+        with conn.cursor() as cur:
+            result = cur.execute(
+                """
         SELECT json_build_object(
           'id', exercises.id,
           'name', exercises.name,
@@ -45,34 +42,28 @@ def get_all_exercises(
         )
         FROM exercises;
         """,
-      ).fetchall()
+            ).fetchall()
 
-      json_result = {}
-      exercise_list = []
-      for exercise in result:
-        exercise_list.append(exercise[0])
-      json_result["exercises"] = exercise_list
+            json_result = {}
+            exercise_list = []
+            for exercise in result:
+                exercise_list.append(exercise[0])
+            json_result["exercises"] = exercise_list
 
-      if result is None:
-        response.status_code = status.HTTP_404_NOT_FOUND
-        return {"message": "Error fetching."}
-      
-      else:
-        return json_result
+            if result is None:
+                response.status_code = status.HTTP_404_NOT_FOUND
+                return {"message": "Error fetching."}
+
+            else:
+                return json_result
 
 
-@router.get(
-  '/api/workouts/{exercise_id}',
-  responses = {404: {'model': Message}}
-)
-def get_exercise_by_id(
-  exercise_id: int,
-  response: Response
-  ): 
-  with psycopg.connect(workouts_url) as conn:
-    with conn.cursor() as cur:
-      result = cur.execute(
-        """
+@router.get("/api/workouts/{exercise_id}", responses={404: {"model": Message}})
+def get_exercise_by_id(exercise_id: int, response: Response):
+    with psycopg.connect(workouts_url) as conn:
+        with conn.cursor() as cur:
+            result = cur.execute(
+                """
         SELECT json_build_object(
           'id', exercises.id,
           'name', exercises.name,
@@ -86,31 +77,30 @@ def get_exercise_by_id(
         FROM exercises
         WHERE exercises.id = %s;
         """,
-        [exercise_id],
-      ).fetchone()
+                [exercise_id],
+            ).fetchone()
 
-      json_result = {}
-      json_result["exercises"] = result[0]
+            json_result = {}
+            json_result["exercises"] = result[0]
 
-      if result is None:
-        response.status_code = status.HTTP_404_NOT_FOUND
-        return {"message": "Error fetching."}
-      
-      else:
-        return json_result
+            if result is None:
+                response.status_code = status.HTTP_404_NOT_FOUND
+                return {"message": "Error fetching."}
 
+            else:
+                return json_result
 
 
 @router.get(
-  '/api/workouts/guest/random-wheel',
+    "/api/workouts/guest/random-wheel",
 )
 def get_random_workout_wheel(
-  response: Response,
-  ):
-  with psycopg.connect(workouts_url) as conn:
-    with conn.cursor() as cur:
-      result = cur.execute(
-        """
+    response: Response,
+):
+    with psycopg.connect(workouts_url) as conn:
+        with conn.cursor() as cur:
+            result = cur.execute(
+                """
         SELECT json_build_object(
           'id', exercises.id,
           'name', exercises.name,
@@ -125,34 +115,34 @@ def get_random_workout_wheel(
         ORDER BY random()
         LIMIT 10;
         """,
-      ).fetchall()
+            ).fetchall()
 
-      list_for_json = []
-      for item in result:
-        list_for_json.append(item[0])
-      # json_result = {}
-      # json_result["exercises"] = list_for_json
+            list_for_json = []
+            for item in result:
+                list_for_json.append(item[0])
+            # json_result = {}
+            # json_result["exercises"] = list_for_json
 
-      if result is None:
-        response.status_code = status.HTTP_404_NOT_FOUND
-        return {"message": "Error fetching."}
-      
-      else:
-        return list_for_json
+            if result is None:
+                response.status_code = status.HTTP_404_NOT_FOUND
+                return {"message": "Error fetching."}
+
+            else:
+                return list_for_json
 
 
 @router.get(
-  '/api/workouts/filtered/random-wheel',
+    "/api/workouts/filtered/random-wheel",
 )
 def get_filtered_random_workout_wheel_for_logged_in_users(
-  target,
-  equipment,
-  response: Response,
-  ):
-  with psycopg.connect(workouts_url) as conn:
-    with conn.cursor() as cur:
-      result = cur.execute(
-        """
+    target,
+    equipment,
+    response: Response,
+):
+    with psycopg.connect(workouts_url) as conn:
+        with conn.cursor() as cur:
+            result = cur.execute(
+                """
         SELECT json_build_object(
           'id', exercises.id,
           'name', exercises.name,
@@ -168,35 +158,36 @@ def get_filtered_random_workout_wheel_for_logged_in_users(
           AND (equipment = %s)
         ORDER BY random();
         """,
-        [target, equipment]
-      ).fetchall()
+                [target, equipment],
+            ).fetchall()
 
-      list_for_json = []
-      for item in result:
-        list_for_json.append(item[0])
-      json_result = {}
-      json_result["exercises"] = list_for_json
+            list_for_json = []
+            for item in result:
+                list_for_json.append(item[0])
+            json_result = {}
+            json_result["exercises"] = list_for_json
 
-      if result is None:
-        response.status_code = status.HTTP_404_NOT_FOUND
-        return {"message": "Error fetching."}
-      
-      else:
-        return json_result
+            if result is None:
+                response.status_code = status.HTTP_404_NOT_FOUND
+                return {"message": "Error fetching."}
+
+            else:
+                return json_result
+
 
 @router.get(
-  '/api/workouts/filtered/',
+    "/api/workouts/filtered/",
 )
 def get_filtered_workout_list_for_logged_in_users(
-  target,
-  equipment,
-  response: Response,
-  ):
-  
-  with psycopg.connect(workouts_url) as conn:
-    with conn.cursor() as cur:
-      result = cur.execute(
-        """
+    target,
+    equipment,
+    response: Response,
+):
+
+    with psycopg.connect(workouts_url) as conn:
+        with conn.cursor() as cur:
+            result = cur.execute(
+                """
         SELECT json_build_object(
           'id', exercises.id,
           'name', exercises.name,
@@ -213,49 +204,43 @@ def get_filtered_workout_list_for_logged_in_users(
         ORDER BY intensity, length_of_workout asc
         LIMIT 100;
         """,
-        [target, equipment]
-      ).fetchall()
+                [target, equipment],
+            ).fetchall()
 
-      list_for_json = []
-      for item in result:
-        list_for_json.append(item[0])
-      json_result = {}
-      json_result["exercises"] = list_for_json
+            list_for_json = []
+            for item in result:
+                list_for_json.append(item[0])
+            json_result = {}
+            json_result["exercises"] = list_for_json
 
-      if result is None:
-        response.status_code = status.HTTP_404_NOT_FOUND
-        return {"message": "Error fetching."}
-      
-      else:
-        return json_result
+            if result is None:
+                response.status_code = status.HTTP_404_NOT_FOUND
+                return {"message": "Error fetching."}
 
-  # if target:
-  #   target_filter = 'target = ' + target
-  # if intensity:
-  #   intensity_filter = 'intensity = ' + str(intensity)
-  # where_clause = ''
-  # if target_filter or intensity_filter:
-  #   res = 'WHERE '
-  #   if target_filter:
-  #     res += target_filter
-  #     if intensity_filter:
-  #       res += ' AND ' + intensity_filter
-  #   else:
-  #       res += intensity_filter
+            else:
+                return json_result
+
+    # if target:
+    #   target_filter = 'target = ' + target
+    # if intensity:
+    #   intensity_filter = 'intensity = ' + str(intensity)
+    # where_clause = ''
+    # if target_filter or intensity_filter:
+    #   res = 'WHERE '
+    #   if target_filter:
+    #     res += target_filter
+    #     if intensity_filter:
+    #       res += ' AND ' + intensity_filter
+    #   else:
+    #       res += intensity_filter
 
 
-@router.post(
-  '/api/workouts/completed_workouts',
-  responses = {404: {'model': Message}}
-)
-def get_completed_workouts_for_user(
-  exercise_ids: list[int],
-  response: Response
-  ): 
-  with psycopg.connect(workouts_url) as conn:   
-    with conn.cursor() as cur:
-      result = cur.execute(
-        """
+@router.post("/api/workouts/completed_workouts", responses={404: {"model": Message}})
+def get_completed_workouts_for_user(exercise_ids: list[int], response: Response):
+    with psycopg.connect(workouts_url) as conn:
+        with conn.cursor() as cur:
+            result = cur.execute(
+                """
         SELECT json_build_object(
           'id', exercises.id,
           'name', exercises.name,
@@ -269,19 +254,19 @@ def get_completed_workouts_for_user(
         FROM exercises
         WHERE exercises.id = ANY(%s);
         """,
-        [exercise_ids],
-      ).fetchall()
+                [exercise_ids],
+            ).fetchall()
 
-      json_result = {}
-      json_list = []
-      for exercise in result:
-        json_list.append(exercise[0])
-      json_result["exercises"] = json_list
+            json_result = {}
+            json_list = []
+            for exercise in result:
+                json_list.append(exercise[0])
+            json_result["exercises"] = json_list
 
-      if result is None:
-        response.status_code = status.HTTP_404_NOT_FOUND
-        return {"message": "Error fetching."}
-      
-      else:
-        # return json_result
-        return json_result
+            if result is None:
+                response.status_code = status.HTTP_404_NOT_FOUND
+                return {"message": "Error fetching."}
+
+            else:
+                # return json_result
+                return json_result

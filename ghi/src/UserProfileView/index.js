@@ -115,7 +115,7 @@ function UserProfileView (){
         <div className="container">
           <div className="main-body">
             {/* Breadcrumb */}
-            <nav aria-label="breadcrumb" className="main-breadcrumb">
+            {/* <nav aria-label="breadcrumb" className="main-breadcrumb">
               <ol className="breadcrumb">
                 <li className="breadcrumb-item">
                   <a href="index.html">Home</a>
@@ -127,7 +127,7 @@ function UserProfileView (){
                   User Profile
                 </li>
               </ol>
-            </nav>
+            </nav> */}
             {/* /Breadcrumb */}
             <div className="row gutters-sm">
               <div className="col-md-4 mb-3">
@@ -150,12 +150,22 @@ function UserProfileView (){
                           Booty Coins Earned: {userData?.coins}
                         </p>
                       </div>
+                      <div className="row">
+                      <div className="col-sm-12">
+                        <a
+                          className="btn btn-info "
+                          target="__blank"
+                          href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">
+                          Edit Profile
+                        </a>
+                      </div>
+                    </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="col-md-8">
-                <div className="card mb-3">
+                {/* <div className="card mb-3">
                   <div className="card-body">
                     <div className="row">
                       <div className="col-sm-3">
@@ -206,7 +216,7 @@ function UserProfileView (){
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="row gutters-sm">
                   <div className="col-sm-12 mb-3">
                     <div className="card h-100">

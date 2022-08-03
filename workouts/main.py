@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from routers import exercises
 from fastapi.middleware.cors import CORSMiddleware
+
 # # pool = ConnectionPool(conninfo=os.environ["DATABASE_URL"])
 
 app = FastAPI()

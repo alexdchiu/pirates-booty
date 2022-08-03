@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React from 'react';
 import './App.css';
 import SignUpForm from './SignUpForm';
 import Nav from './Nav';
@@ -18,9 +19,9 @@ function App() {
     <Nav />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        {/* <Route path= "/WheelSpinner">
+        {/* {/* <Route path= "/WheelSpinner">
           <Route path="" element={<WheelSpinner />} />
-        </Route> */}
+        </Route> */} 
           {/* <Route path="/saved-workouts"> 
               <Route path="/" element={<SavedWorkouts />} />
             </Route>

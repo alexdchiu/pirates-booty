@@ -210,7 +210,7 @@ def get_filtered_workout_list_for_logged_in_users(
         FROM exercises
         WHERE (target = %s)
           AND (equipment = %s)        
-        ORDER BY length_of_workout asc
+        ORDER BY intensity, length_of_workout asc
         LIMIT 100;
         """,
         [target, equipment]

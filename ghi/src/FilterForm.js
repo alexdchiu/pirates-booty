@@ -24,7 +24,7 @@ function FilterForm ({workouts}) {
         setWheel(false)
         setList(false)
         e.preventDefault()
-        const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/filtered/random-wheel?target=${target}&equipment=${equipment}`;
+        const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/filtered/?target=${target}&equipment=${equipment}`;
         // const res = await fetch(url);   
         // if(res.ok){
         //     const data = await res.json();

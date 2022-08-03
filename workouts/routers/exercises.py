@@ -146,7 +146,7 @@ def get_random_workout_wheel(
 )
 def get_filtered_random_workout_wheel_for_logged_in_users(
   target,
-  intensity,
+  equipment,
   response: Response,
   ):
   with psycopg.connect(workouts_url) as conn:
@@ -165,10 +165,10 @@ def get_filtered_random_workout_wheel_for_logged_in_users(
         )
         FROM exercises
         WHERE (target = %s)
-          AND (intensity = %s)
+          AND (equipment = %s)
         ORDER BY random();
         """,
-        [target, intensity]
+        [target, equipment]
       ).fetchall()
 
       list_for_json = []
@@ -189,7 +189,7 @@ def get_filtered_random_workout_wheel_for_logged_in_users(
 )
 def get_filtered_workout_list_for_logged_in_users(
   target,
-  intensity,
+  equipment,
   response: Response,
   ):
   
@@ -209,11 +209,11 @@ def get_filtered_workout_list_for_logged_in_users(
         )
         FROM exercises
         WHERE (target = %s)
-          AND (intensity = %s)        
+          AND (equipment = %s)        
         ORDER BY length_of_workout asc
         LIMIT 100;
         """,
-        [target,intensity]
+        [target, equipment]
       ).fetchall()
 
       list_for_json = []

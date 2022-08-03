@@ -3,11 +3,10 @@ import WheelSpinner from './WheelSpinner'
 import WorkoutsList from './WorkoutsList'
 
 function FilterForm ({workouts}) {
-    const [targets, setTargets] = useState([])
-    const [intensities, setIntensity] = useState([])
-    const [intensityOccurences, setIntensityOccurences] = useState({})
     const [target, setTarget] = useState('')
-    const [intensity, setIntense] = useState('')
+    const [equipment, setEquipment] = useState('')
+    const [listOfEquipment, setListOfEquipment] = useState([])
+    const [equipmentOccurrences, setEquipmentOccurrences] = useState({})
     const [result, setResult] = useState([])
     const [showWheel, setWheel] = useState(false)
     const [showList, setList] = useState(false)
@@ -17,21 +16,6 @@ function FilterForm ({workouts}) {
     let listOfTargets = Array.from(new Set(workoutsList?.map(({target}) => target)))
     // console.log('targets', listOfTargets)
 
-// for dynamic with API call
-    // useEffect(()=> {
-    //     async function getDropDownValues() {
-    //         const list_url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/guest/random-wheel`;
-    //         const response = await fetch(list_url);
-    //         if (response.ok){
-    //             const data = await response.json();
-    //             const uniqueIntensity= Array.from(data.reduce((map, obj)=> map.set(obj.intensity, obj), new Map()).values())        
-    //             const uniqueTargets= Array.from(data.reduce((map, obj)=> map.set(obj.target, obj), new Map()).values())        
-    //             setTargets(uniqueTargets)
-    //             setIntensity(uniqueIntensity)
-    //         }
-    //     }
-    //     getDropDownValues();
-    // }, [])
     useEffect ( () => {
         workoutsFilteredByTarget(workoutsList)
     }, [target])
@@ -40,7 +24,7 @@ function FilterForm ({workouts}) {
         setWheel(false)
         setList(false)
         e.preventDefault()
-        const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/filtered/random-wheel?target=${target}&intensity=${intensity}`;
+        const url = `${process.env.REACT_APP_WORKOUTS}/api/workouts/filtered/random-wheel?target=${target}&equipment=${equipment}`;
         // const res = await fetch(url);   
         // if(res.ok){
         //     const data = await res.json();
@@ -73,26 +57,26 @@ function FilterForm ({workouts}) {
         
         lst?.forEach(element => {
             if (element.target === target) {
-                var intensity = element.intensity.toString()
-                if (intensity in filteredObj) {
-                    filteredObj[intensity] += 1
+                var equipment = element.equipment
+                if (equipment in filteredObj) {
+                    filteredObj[equipment] += 1
                 } else {
-                    filteredObj[intensity] = 1
+                    filteredObj[equipment] = 1
                 }
             }
         });
 
         lst?.filter((workout) => {
-            if (workout.target === target && !filteredList.includes(workout.intensity)){
-                filteredList.push(workout.intensity)
+            if (workout.target === target && !filteredList.includes(workout.equipment)){
+                filteredList.push(workout.equipment)
                 filteredList.sort(function(a,b) {
                     return a-b
                 })
             }
         })
 
-        setIntensity(filteredList)
-        setIntensityOccurences(filteredObj)
+        setListOfEquipment(filteredList)
+        setEquipmentOccurrences(filteredObj)
     }
     
 
@@ -143,13 +127,13 @@ function FilterForm ({workouts}) {
                             )
                         })}
                     </select></p>
-                    {(intensities.length > 0) && (
-                        <p><label>Desired Intensity:</label>
-                        <select onChange={(e)=>setIntense(e.target.value)} className="form-select" aria-label="Default select example" value={intensity}>
+                    {(listOfEquipment.length > 0) && (
+                        <p><label>Required Equipment:</label>
+                        <select onChange={(e)=>setEquipment(e.target.value)} className="form-select" aria-label="Default select example" value={equipment}>
                         <option value="" disabled selected>Select your option</option>
-                        {intensities.map(intensity => {
+                        {listOfEquipment.map(equipment => {
                             return(
-                                <option key={intensity} value={intensity}>Intensity: {intensity} - (Results: {intensityOccurences[intensity.toString()]})</option> 
+                                <option key={equipment} value={equipment}>{equipment} - (Results: {equipmentOccurrences[equipment.toString()]})</option> 
                             )
                         })}
                         </select>

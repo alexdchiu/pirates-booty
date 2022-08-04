@@ -328,3 +328,9 @@ justify-content: center;
 .link{
   text-decoration: none;
 }
+
+.edit-profile{
+  display: flex;
+  border:1px solid red;
+  justify-content: center;
+}

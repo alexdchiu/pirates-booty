@@ -4,7 +4,25 @@ A reflection on any design conversations that you had
 At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
+## August 2, 2022
+Today I worked on:
+* Trying to get the completed workouts to show on a user profile and changing the filter form.
+
+- Picking up from yesterday and with a fresh set of eyes / good night's rest, I was able to think about why we were having issues with the POST request when trying to create a new instance of a completed workout that was linked to a user. I realized that we needed to use the user encoder and voila it worked. 
+- Getting the completed workouts for a user to show on the user profile page was a bit more complicated for me. First we had to do a fetch for a user profile / data. Then we had to pass to another function where we filter the list of all workouts to only include results that matched the user ID and create a new list that matched but only had the IDs of the filtered list of workouts. Lastly, we had pass this list of IDs to another function that performed a fetch to the workout api to get the workout data for each workout with an ID in the list that was passed in. I was having issues since the last operation relies on the previous operation which relies on the first operation and was having issues with getting awaits to work in succession. Ultimately, it took a lot of trial and error and reading up about await and then and eventually I was able to get them to successfully chain together so that we are able to display the workout history of a user. Lastly with this information, I used a React component that I found online called a ListGroup where I could map out over the list and dynamically show a list of workouts (instead of a table). Tables were very restrictive with what you could do with rows or data in the rows. By using ListGroup, I was able to easily create links within the list so users could click and have a modal pop up that showed the workout details. 
+- After discussing with the team, we decided that it might be more practical that a user would filter for equipment instead of intensity. To make this change, we had to go and change the workout API to handle equipment instead of intensity which was easy enough. Lastly, I had to change the front-end JSX everything was dynamically populated with intensity. This was really confusing since a lot of things were similarly named, but by pulling up the old file in gitLab and doing searches for variable names, I was eventually able to get it to work. My head hurts.
+
+
+## August 1, 2022
+Today I worked on:
+* Trying to get the post command to the user database to work so we could populate rows of workout IDs.
+
+- Shelen built out the model / view / URL but we were having some issues with the post request itself. First we had to change up the body to dynamically include the workout ID and also to stringify it. Then we got stuck with the request itself which kept spitting out 405 errors. We tried playing with a lot of different things, but after a while of trying with no success, Vivian pointed out that we were missing a back slash at the end of the URL......sad. But it works! Next we need to figure out how to enter a user ID as well to match so we can ultimately filter it to show a specific user's workout history.
+
+
+
 ## July 31, 2022
+Today I worked on:
 * Worked on getting state to update on user profile. Filtered form list to have link for workout detail modal to pop up. Get # of exercises for a given intensity to show on filter form.
 
 - There was an issue where on the user profile, the state of the user wasn't being refreshed so even after a user completed a workout, the number of coins was not being updated. After trying to play around with the auth component trying to get that to do another call, I ended up adding the getUserData function to the userprofile component and doing it on this component level. Not ideal, but it works.

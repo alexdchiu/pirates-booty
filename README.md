@@ -20,10 +20,20 @@ The people we expect to use this are those of all skill / fitness levels who are
 <!-- will revisit -->
 
 ## Functionality
-
 Setting the project up with Docker and ensuring everything functions correctly. 
-make sure a migration is done in the Accounts CLI on docker to ensure django creates the databases correctly. 
 
+Build two databases first after the clone;
+Docker volume create postgres-data
+Docker volume create pgadmin 
+run the build of the docker project
+docker-compose up --build 
+
+
+Ensure a migration is done in the Accounts CLI on docker to ensure django creates the databases correctly. 
+
+python manage.py makemigrations
+and 
+python manage.py migrate
 
 
 - designate amount time you have to workout 

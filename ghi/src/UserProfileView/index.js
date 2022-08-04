@@ -135,7 +135,7 @@ function UserProfileView (){
                   <div className="card-body">
                     <div className="d-flex flex-column align-items-center text-center">
                       <img
-                        src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                        src={user.picture_url}
                         alt="Admin"
                         className="rounded-circle"
                         width={150}

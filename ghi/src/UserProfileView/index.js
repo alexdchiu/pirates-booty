@@ -44,7 +44,7 @@ function UserProfileView (){
     </nav>
     {/* /Breadcrumb */}
 
-    <div className="row gutters-sm">
+    <div className="row profile gutters-sm">
       <div className="col-md-4 mb-3">
         <div className="card">
           <div className="card-body">
@@ -85,7 +85,7 @@ function UserProfileView (){
         </div>
       </div>
           </div>
-          <div className="row gutters-sm">
+          <div className="row history gutters-sm">
           <div className="col-sm-12 mb-3">
             <div className="card h-100">
               <div className="card-body">

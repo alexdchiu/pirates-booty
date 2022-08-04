@@ -52,14 +52,14 @@ export function EditProfile (){
     }
     
     return(
-    <div className="profile-container">
-  <div className="main-body">
-    <h1>Update Profile</h1>
+    <div className="profile-edit-container">
+  <div className="edit-main-body">
+ 
     <div className="row gutters-sm">
-
       <div className="col-md-8">
-        <div className="card mb-3">
-          <div className="card-body">
+        <div className="edit-card mb-3">   
+        <h1>Update Profile</h1>
+          <div className="edit-card-body">
             <div className="row">
               <div className="col-sm-3">
               <input
@@ -67,6 +67,7 @@ export function EditProfile (){
                 type="text"
                 name="first_name"
                 placeholder="first name"
+                defaultValue={user.first_name}
                 value={values.first_name} 
                 />
               </div>

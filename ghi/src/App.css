@@ -250,13 +250,23 @@ p.error{
   color:black;
 }
 
-/* Profile page div */
+/* Profile page CSS: */
 .profile-container{
+  display: flex;
+  justify-content: center;
   margin: 100px auto;
   width: 790px;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);  border-radius: 1%;
   height: 45vh;
-  background: rgb(215, 241, 254);
+}
+
+.main-body{
+  align-items: center;
+}
+
+.profile{
+  display: flex;
+  justify-content: center;
+  width:800px
 }
 
 /* Cursor for list of workout in Filtered Search */
@@ -329,3 +339,35 @@ justify-content: center;
   text-decoration: none;
 }
 
+.profile-edit-container{
+  display:flex;
+  justify-content: center;
+}
+
+.edit-card{
+margin-top:50%;
+width:350px;
+padding: 15%;
+background-color: white;
+box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);  border-radius: 1%;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+
+.edit-card h1 {
+  padding-bottom: 20px;
+}
+
+.link, .btn-info{
+  color:black;
+}
+
+.link:hover{
+  color:rgb(28, 59, 218)
+}
+
+.btn-info:hover{
+  color:rgb(28, 59, 218)
+}

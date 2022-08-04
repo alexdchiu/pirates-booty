@@ -81,13 +81,13 @@ def get_exercise_by_id(exercise_id: int, response: Response):
             ).fetchone()
 
             json_result = {}
-            json_result["exercises"] = result[0]
 
             if result is None:
                 response.status_code = status.HTTP_404_NOT_FOUND
                 return {"message": "Error fetching."}
 
             else:
+                json_result["exercises"] = result[0]
                 return json_result
 
 
@@ -143,21 +143,21 @@ def get_filtered_random_workout_wheel_for_logged_in_users(
         with conn.cursor() as cur:
             result = cur.execute(
                 """
-        SELECT json_build_object(
-          'id', exercises.id,
-          'name', exercises.name,
-          'body_part', exercises.body_part,
-          'target', exercises.target,
-          'equipment', exercises.equipment,
-          'intensity', exercises.intensity,
-          'length_of_workout', exercises.length_of_workout,
-          'gif_url', exercises.gif_url
-        )
-        FROM exercises
-        WHERE (target = %s)
-          AND (equipment = %s)
-        ORDER BY random();
-        """,
+            SELECT json_build_object(
+            'id', exercises.id,
+            'name', exercises.name,
+            'body_part', exercises.body_part,
+            'target', exercises.target,
+            'equipment', exercises.equipment,
+            'intensity', exercises.intensity,
+            'length_of_workout', exercises.length_of_workout,
+            'gif_url', exercises.gif_url
+            )
+            FROM exercises
+            WHERE (target = %s)
+            AND (equipment = %s)
+            ORDER BY random();
+            """,
                 [target, equipment],
             ).fetchall()
 
@@ -172,7 +172,7 @@ def get_filtered_random_workout_wheel_for_logged_in_users(
                 return {"message": "Error fetching."}
 
             else:
-                return json_result
+                return result
 
 
 @router.get(

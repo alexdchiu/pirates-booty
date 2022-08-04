@@ -4,6 +4,14 @@ A reflection on any design conversations that you had
 At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
+## August 3, 2022
+Today I worked on:
+* Cleaning up some front end and incorporating other changes teammates made into our working branch.
+
+- Today I worked on incorporating changes we made to the user / completed workout models so that we could enter dates for a completed workout. Then I worked on getting it to show on the front end which was a bit complicated since we were doing multiple fetches to different databases / tables so I had to re-manipulate data so that a date associated with a workout ID / user ID would show.
+- Our team also worked with Andrew on trying to figure out why our main branch was corrupted. Hopefully we didn't scare him off with the problems we were having.
+- Lastly I incorporated other styling changes we made across the site into our working branch.
+
 ## August 2, 2022
 Today I worked on:
 * Trying to get the completed workouts to show on a user profile and changing the filter form.

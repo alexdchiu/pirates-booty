@@ -329,8 +329,3 @@ justify-content: center;
   text-decoration: none;
 }
 
-.edit-profile{
-  display: flex;
-  border:1px solid red;
-  justify-content: center;
-}

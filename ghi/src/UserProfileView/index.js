@@ -96,13 +96,13 @@ function UserProfileView (){
             'dateCompleted': lst[i].date.substring(0,10)
             // 'dateCompleted': lst[i].date
           })
-          console.log('completedWorkoutsAndDates', completedWorkoutsAndDates)
+          // console.log('completedWorkoutsAndDates', completedWorkoutsAndDates)
         }
         setCompletedWorkouts(completedWorkoutsAndDates)
       })
     }
     
-    console.log('userCompleted', completedWorkouts)
+    // console.log('userCompleted', completedWorkouts)
 
     useEffect(
       () => {
@@ -135,7 +135,7 @@ function UserProfileView (){
                   <div className="card-body">
                     <div className="d-flex flex-column align-items-center text-center">
                       <img
-                        src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                        src={user.picture_url}
                         alt="Admin"
                         className="rounded-circle"
                         width={150}
@@ -154,9 +154,8 @@ function UserProfileView (){
                       <div className="col-sm-12">
                         <a
                           className="btn btn-info "
-                          target="__blank"
-                          href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">
-                          Edit Profile
+                          target="__blank">
+                          <Link className="link" to="/profile/edit/">Edit Profile</Link>
                         </a>
                       </div>
                     </div>
@@ -257,7 +256,7 @@ function UserProfileView (){
                         
                         <Modal show={show} onHide={handleClose}>
                           <Modal.Header closeButton>
-                            <Modal.Title>
+                            <Modal.Title >
                               {user.first_name}'s Completed Workout Details
                             </Modal.Title>
                           </Modal.Header>

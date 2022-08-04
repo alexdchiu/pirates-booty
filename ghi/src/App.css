@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 
+@media (min-width: 576px){
+  .container{
+    max-width: none;
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -370,4 +376,5 @@ text-align: center;
 
 .btn-info:hover{
   color:rgb(28, 59, 218)
+
 }

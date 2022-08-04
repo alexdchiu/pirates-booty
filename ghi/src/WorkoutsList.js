@@ -40,12 +40,12 @@ function WorkoutsList({exercises}) {
   }
 
   return (
-    <div className="outer-div">
-      <div className="list-container">
-          {/* <h4 className>Exercises</h4> */}
+    <div className="workoutslist-outer-div">
+      <div className="workoutslist-container">
+          <h4 className>Exercises</h4>
           <table className="table table-striped">
             <thead>
-              <tr className="WorkoutsList">Exercises</tr>
+              {/* <tr className="WorkoutsList">Exercises</tr> */}
             </thead>
             <thead>
               <tr>

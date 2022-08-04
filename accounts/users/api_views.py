@@ -93,6 +93,28 @@ def api_user_change(request, pk):
 
 
 
+@require_http_methods(["DELETE", "PUT", "GET"])
+def api_user_change(request, pk):
+    if request.method == "DELETE":
+            count, _ = User.objects.filter(id=pk).delete()
+            return JsonResponse({"deleted": count > 0})
+    elif request.method == "PUT":
+        content = json.loads(request.body)
+        user = User.objects.filter(id=pk).update(**content)
+        return JsonResponse(
+            user,
+            encoder=AccountModelEncoder,
+            safe=False,
+        )
+    else:
+        user = User.objects.get(id=pk)
+        return JsonResponse(
+            user,
+            encoder=AccountModelEncoder,
+            safe=False,
+        )
+
+
 # @require_http_methods(["GET"])
 def api_user_token(request):
     # print("request", request)
@@ -103,6 +125,8 @@ def api_user_token(request):
             return JsonResponse({"token": token})
     response = JsonResponse({"token": None})
     return response
+
+
 
 
 @require_http_methods(["GET"])
@@ -140,6 +164,7 @@ def api_current_user(request, username):
             "first_name": user.first_name,
             "last_name": user.last_name,
             "coins": user.coins,
+            "picture_url": user.picture_url,
         })
 
 
@@ -162,4 +187,7 @@ def api_user_complete_workout(request):
             encoder=CompleteWorkoutEncoder,
             safe=False,
         )
+<<<<<<< HEAD
 
+=======
+>>>>>>> vivian

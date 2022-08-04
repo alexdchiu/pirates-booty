@@ -12,4 +12,5 @@ urlpatterns = [
     path("account/leaderboard/", api_leaderboard, name="api_leaderboard"),
     path("accounts/me/token/", api_user_token, name="api_token"),
     path("account/<str:username>", api_current_user, name="api_current_user")
+
 ]

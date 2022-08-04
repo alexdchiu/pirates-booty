@@ -9,7 +9,6 @@ import '../react-wheel-of-prizes/index.css'
 import WorkoutDetailView from '../WorkoutDetailView'
 import SignupModal from '../SignupModal/index.js'
 
-
 const WheelSpinner = ({segments}) => {
   const {user, token} = useContext(AuthContext)
   // console.log(segments)

@@ -1,5 +1,7 @@
 import React, {useEffect, useState } from "react";
 import { useAuthContext, getUserData } from '../Auth';
+import {Link} from "react-router-dom"
+import { EditProfile } from "./edit";
 
 // edit user data
 // get completed workouts data
@@ -9,13 +11,9 @@ import { useAuthContext, getUserData } from '../Auth';
 // upon completion -> add workout id to list on user profile
 
 
-
-
-
 function UserProfileView (){
     const { user, token } = useAuthContext();
     const [userData, setUserData] = useState(null);
-    
     async function getUserData(username) {
       const usernameurl = `${process.env.REACT_APP_USERS}/users/account/${username}`;
       try {
@@ -39,13 +37,13 @@ function UserProfileView (){
 
     const newLocal = "breadcrumb-item";
     return(
-        <div className="container">
+        <div className="profile-container">
   <div className="main-body">
     {/* Breadcrumb */}
     <nav aria-label="breadcrumb" className="main-breadcrumb">
       <ol className="breadcrumb">
         <li className="breadcrumb-item">
-          <a href="index.html">Home</a>
+          <a href="/">Home</a>
         </li>
         <li className="breadcrumb-item">
           <a href="javascript:void(0)">User</a>
@@ -62,7 +60,7 @@ function UserProfileView (){
           <div className="card-body">
             <div className="d-flex flex-column align-items-center text-center">
               <img
-                src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                src={user.picture_url}
                 alt="Admin"
                 className="rounded-circle"
                 width={150}
@@ -99,48 +97,29 @@ function UserProfileView (){
               <div className="col-sm-3">
                 <h6 className="mb-0">Full Name</h6>
               </div>
-              <div className="col-sm-9 text-secondary">Kenneth Valdez</div>
+              <div className="col-sm-9 text-secondary">{user.first_name} {user.last_name}</div>
             </div>
             <hr />
             <div className="row">
               <div className="col-sm-3">
                 <h6 className="mb-0">Email</h6>
               </div>
-              <div className="col-sm-9 text-secondary">fip@jukmuh.al</div>
+              <div className="col-sm-9 text-secondary">{user.email}</div>
             </div>
             <hr />
             <div className="row">
               <div className="col-sm-3">
-                <h6 className="mb-0">Phone</h6>
+                <h6 className="mb-0">Username</h6>
               </div>
-              <div className="col-sm-9 text-secondary">(239) 816-9029</div>
+              <div className="col-sm-9 text-secondary">{user.username}</div>
             </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Mobile</h6>
-              </div>
-              <div className="col-sm-9 text-secondary">(320) 380-4539</div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Address</h6>
-              </div>
-              <div className="col-sm-9 text-secondary">
-                Bay Area, San Francisco, CA
-              </div>
-            </div>
-            <hr />
             <div className="row">
               <div className="col-sm-12">
-                <a
-                  className="btn btn-info "
+                <button
+                  className="btn btn-info"
                   target="__blank"
-                  href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills"
-                >
-                  Edit
-                </a>
+                ><Link className="link" to="/profile/edit/">Edit</Link>
+                </button>
               </div>
             </div>
           </div> */}

@@ -41,19 +41,9 @@ function UserProfileView (){
   <div className="main-body">
     {/* Breadcrumb */}
     <nav aria-label="breadcrumb" className="main-breadcrumb">
-      <ol className="breadcrumb">
-        <li className="breadcrumb-item">
-          <a href="/">Home</a>
-        </li>
-        <li className="breadcrumb-item">
-          <a href="javascript:void(0)">User</a>
-        </li>
-        <li className="breadcrumb-item active" aria-current="page">
-          User Profile
-        </li>
-      </ol>
     </nav>
     {/* /Breadcrumb */}
+
     <div className="row gutters-sm">
       <div className="col-md-4 mb-3">
         <div className="card">
@@ -65,55 +55,37 @@ function UserProfileView (){
                 className="rounded-circle"
                 width={150}
               />
-              <div className="mt-3">
+                <div className="mt-3">
                 <h4>{userData?.first_name} {userData?.last_name}</h4>
                 {/* <p className="text-secondary mb-1">Full Stack Developer</p> */}
                 <p className="text-muted font-size-sm">
                   {userData?.email}
                 </p>
                 <p className="text-muted font-size-sm">
-                  Booty Coins Earned: {userData?.coins}
+                🪙 Booty Coins: {userData?.coins}
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="col-md-8">
-        <div className="card mb-3">
-          <div className="card-body">
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Full Name</h6>
-              </div>
-              <div className="col-sm-9 text-secondary">{user.first_name} {user.last_name}</div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Email</h6>
-              </div>
-              <div className="col-sm-9 text-secondary">{user.email}</div>
-            </div>
-            <hr />
-            <div className="row">
-              <div className="col-sm-3">
-                <h6 className="mb-0">Username</h6>
-              </div>
-              <div className="col-sm-9 text-secondary">{user.username}</div>
-            </div>
-            <div className="row">
+              <div className="row">
               <div className="col-sm-12">
                 <button
                   className="btn btn-info"
                   target="__blank"
                 ><Link className="link" to="/profile/edit/">Edit</Link>
                 </button>
+                <span> </span>
+                <button
+                  className="btn btn-info"
+                  target="__blank"
+                ><Link className="link" to="/profile/delete/">Delete</Link>
+                </button>
               </div>
+            </div>
             </div>
           </div>
         </div>
-        <div className="row gutters-sm">
+      </div>
+          </div>
+          <div className="row gutters-sm">
           <div className="col-sm-12 mb-3">
             <div className="card h-100">
               <div className="card-body">
@@ -135,10 +107,31 @@ function UserProfileView (){
             </div>
           </div>
         </div>
+        </div>
+        {/* <div className="row gutters-sm">
+          <div className="col-sm-12 mb-3">
+            <div className="card h-100">
+              <div className="card-body">
+                <h6 className="d-flex align-items-center mb-3">
+                  <i className="material-icons text-info mr-2">Workout History</i>
+                </h6>
+                <small>to show list of workouts here?</small>
+                <div className="progress mb-3" style={{ height: 5 }}>
+                  <div
+                    className="progress-bar bg-primary"
+                    role="progressbar"
+                    style={{ width: "80%" }}
+                    aria-valuenow={80}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> */}
       </div>
-    </div>
-  </div>
-</div>
+
     )
 }
 

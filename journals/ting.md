@@ -1,3 +1,10 @@
+## August 4, 2022
+- created 2 unit tests to see if users app is installed and if user model exists. Had to go into pgadmin to allow accounts to be able to create database in order for the unit test to work. 
+
+## August 3, 2022
+- finished edit page and also 
+- implemented dynamic picture url with help from team
+
 ## August 1, 2022
 - fixed wheel css to be center-aligned by adding a few div to wrap the wheel in and used flexbox justify content to center
 - fixed leaderboard css and filtered search css

@@ -11,6 +11,7 @@ import WorkoutsList from './WorkoutsList';
 import { AuthProvider, useAuthContext, useToken } from './Auth';
 import UserProfileView from './UserProfileView';
 import React, {useState, useEffect} from 'react'
+import { EditProfile } from './UserProfileView/edit';
 
 function App() {
   const { user, token } = useAuthContext();
@@ -44,6 +45,9 @@ function App() {
             </Route>
             <Route path="/profile">
               <Route path="" element={<UserProfileView />} />
+            </Route>
+            <Route path="/profile/edit">
+              <Route path="" element={<EditProfile />} />
             </Route>
         <Route path="/signup">
           <Route path="new" element={<SignUpForm />} />

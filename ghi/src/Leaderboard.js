@@ -55,9 +55,9 @@ function Leaderboard() {
     return (
         <div className="outer-div">
             <div className="list-container">
-                <table className="table table-striped">
+                <h1 className="leaderboard-h1">LEADERBOARD</h1>
+                <table width="100%" className="table table-striped">
                     <thead>
-                        <tr className="leaderboard"><th>LEADERBOARD</th></tr>
                         <tr>
                             <th scope="col">Medal</th>
                             <th scope="col">Username</th>

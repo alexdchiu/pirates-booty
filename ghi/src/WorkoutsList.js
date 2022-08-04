@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import SignupModal from './SignupModal/index.js'
 import {Link} from 'react-router-dom'
-
+import { addCoin, addCompletedWorkout } from './helpers/Workouts';
 
 function WorkoutsList({exercises}) {
   const {user, token} = useContext(AuthContext)
@@ -22,30 +22,18 @@ function WorkoutsList({exercises}) {
 
   const completeWorkout = async (e) => {
     e.preventDefault()
-    const userId = user.id;
-    const url = `${process.env.REACT_APP_USERS}/users/account/${userId}/`;
-    const fetchConfig = {
-      method: "put",
-      headers: {"Content-Type": "application/json"}
-    }
-    const response = await fetch(url, fetchConfig);
-    if (response.ok) {
-      setPopup(true)
-      console.log("Success - Added one coin")
-    } else {
-      console.log("No - success it did not work")
-    }
-
+    addCoin(user).then(setPopup(true))
+    addCompletedWorkout(selectedExercise, user)
     handleClose()
   }
 
   return (
-    <div className="outer-div">
-      <div className="list-container">
-          {/* <h4 className>Exercises</h4> */}
+    <div className="workoutslist-outer-div">
+      <div className="workoutslist-container">
+          <h4 className>Exercises</h4>
           <table className="table table-striped">
             <thead>
-              <tr className="WorkoutsList">Exercises</tr>
+              {/* <tr className="WorkoutsList">Exercises</tr> */}
             </thead>
             <thead>
               <tr>
@@ -61,11 +49,11 @@ function WorkoutsList({exercises}) {
                 exercises.map(filtered => {
                   return(
                     <tr key={filtered.id}>
-                      <td onClick={() => handleShow(filtered)} className="text-primary">{filtered.name}</td>
-                      <td>{filtered.target}</td>
-                      <td>{filtered.equipment}</td>
-                      <td>{filtered.intensity}</td>
-                      <td>{filtered.length_of_workout} mins</td>
+                      <td onClick={() => handleShow(filtered)} className="text-primary text-capitalize">{filtered.name}</td>
+                      <td className="text-capitalize">{filtered.target}</td>
+                      <td className="text-capitalize">{filtered.equipment}</td>
+                      <td className="text-capitalize">{filtered.intensity}</td>
+                      <td className="text-capitalize">{filtered.length_of_workout} mins</td>
                     </tr>
                   )
                 })

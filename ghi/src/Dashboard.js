@@ -7,10 +7,10 @@ return (
     
     <div className="px-4 py-5 my-5 text-center">
        <ul className="nav nav-pills nav-justified">
-  <li class="nav-item">
+  <li className="nav-item">
     <a className="nav-link active" aria-current="page" href="#">Save Workouts</a>
   </li>
-  <li class="nav-item">
+  <li className="nav-item">
     <a className="nav-link" href="#">More Workouts</a>
   </li>
   <li className="nav-item">

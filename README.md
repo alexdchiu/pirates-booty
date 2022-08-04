@@ -21,6 +21,11 @@ The people we expect to use this are those of all skill / fitness levels who are
 
 ## Functionality
 
+Setting the project up with Docker and ensuring everything functions correctly. 
+make sure a migration is done in the Accounts CLI on docker to ensure django creates the databases correctly. 
+
+
+
 - designate amount time you have to workout 
   - maybe make this a user input feature only to input time needed to complete
 - designate targeted body part(s)

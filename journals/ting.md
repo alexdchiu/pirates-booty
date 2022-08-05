@@ -1,13 +1,19 @@
+## August 5, 2022
+- final check on project with team, fixed some linter issues, helped with tests
+- finializing branch and changes
+- fixed data-model.md file
+
 ## August 4, 2022
 - created 2 unit tests to see if users app is installed and if user model exists. Had to go into pgadmin to allow accounts to be able to create database in order for the unit test to work. 
-- formated profile css and edit profile css 
-- fixed issue with jumping ring on sign up page
+- formated profile css and edit profile css
+- fixed issue with jumping ring on sign up page by removing media screen css
+- realized edit profile page input gets automatically update even if input is blank, which erased the original data. Will try to fix this issue later. 
 
 ## August 3, 2022
-- finished edit page and also 
+- Had trouble understand how to pull user id and plug it in the PUT request URL to make it dynamic. Had some assistance from group regarding how to use the useAuthcontext from before to call the user id. Finally got the edit profile page to work! However if the input is left blank, then it will automatically update to blank input, which will then show a blank profile page. 
 - implemented dynamic picture url with help from team
 
-## August 1, 2022
+## August 1-2, 2022
 - fixed wheel css to be center-aligned by adding a few div to wrap the wheel in and used flexbox justify content to center
 - fixed leaderboard css and filtered search css
 - enhanced login and sign up form css 

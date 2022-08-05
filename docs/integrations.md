@@ -2,5 +2,4 @@
 
 ## Title 
 
-- workout data by bodypart
-- GIF_url with example of workout
+- pull data from a third party workout API that includes bodyparts, equipments, gifURLs, name of workouts, target areas, intensity and length of workouts.

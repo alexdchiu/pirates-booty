@@ -1,3 +1,16 @@
+## Augus 5, 2022
+Today I worked on:
+* Today was a fresh start with my unit tests and they worked great! I ended up making 3 unit tests and started getting into a great rhythm. Im confident in knowing how to set them up and make my own with some guidance. We met up as team to go over our site and make sure any last minute little things like formatting get fixed. We also are planning to get our journals and documentation in a good place. 
+
+
+
+## August 4, 2022
+Today I worked on:
+* React unit testing, again. This process has been very challenging to navigate on my own. I consulted the SEIR's and it seemed like they were not sure how to do it either, so it was hard to find guidance. After half a day wasted I decided to shelf it for now and just do the unit tests the rest of my group was doing. However, when I started working on those I encountered a configure bug that a SEIR had trouble handling as well. Ultimately I decided to start over and create another branch and ended up with Perla3 as my new branch. 
+
+
+
+
 ## August 3, 2022
 Today I worked on:
 * React unit testing. I am still having trouble getting my testing to work. I spent many hours scouring documentation of all types and even consulted a SEIR with no luck. However, I did start a new React project and was able to get a sample test to pass, so I will be using that as a reference and as a source for debugging. 

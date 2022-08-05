@@ -1,4 +1,4 @@
-## Augus 5, 2022
+## August 5, 2022
 Today I worked on:
 * Today was a fresh start with my unit tests and they worked great! I ended up making 3 unit tests and started getting into a great rhythm. Im confident in knowing how to set them up and make my own with some guidance. We met up as team to go over our site and make sure any last minute little things like formatting get fixed. We also are planning to get our journals and documentation in a good place. 
 

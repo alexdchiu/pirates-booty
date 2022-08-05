@@ -1,4 +1,5 @@
 from ast import Mod
+from re import I
 from django.test import TestCase, Client
 
 class FeatureTests(TestCase):
@@ -27,6 +28,8 @@ class FeatureTests(TestCase):
             self.assertIn("users.apps.UsersConfig", INSTALLED_APPS)
         except ModuleNotFoundError:
             self.fail("Could not find 'users' installed in 'accounts'")
+
+# Perla's unit Tests 
 
     def test_completed_workout_model_exists(self):
         try:

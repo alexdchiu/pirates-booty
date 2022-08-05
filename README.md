@@ -26,14 +26,14 @@ The people we expect to use this are those of all skill / fitness levels who are
     - Docker volume create postgres-data
     - Docker volume create pgadmin
 3. Run the build of the docker project:
-  - docker-compose up --build
-  - or if with m1 chip: 
-    - DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose build 
-    - docker-compose up
+    - docker-compose up --build
+    - or if with m1 chip: 
+      - DOCKER_DEFAULT_PLATFORM=linux/amd64 docker-compose build 
+      - docker-compose up
 4. Perform a migration in the Accounts microservice so that models are correct:
-  - Through Docker, CLI into the accounts microservice and run:
-    - python manage.py makemigrations
-    - python manage.py migrate
+    - Through Docker, CLI into the accounts microservice and run:
+      - python manage.py makemigrations
+      - python manage.py migrate
 5. The project should be up and running. Enjoy!
 
 ###### To run tests:

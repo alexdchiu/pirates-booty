@@ -2,10 +2,10 @@
 
 
 
-# Graphical Human Interface(Main Page)
-This is the main page you first see that will allow you to spin for a workout. Have login and sign up
+# Graphical Human Interface(Main Page/Wheel Spinner Page)
+This is the main page you first see that will allow you to spin for a workout. Have to sign up / login to see workout detail
 links at the bottom of page;
-[Main Page]()
+[Main Page/Wheel Spinner]()
 
 
 )
@@ -19,26 +19,20 @@ This is the page that allows you to sign up for an account in order to later log
 [Sign Up]()
 
 
-# User Dashboard
-This is the page that has several tabs to save workouts, gives you additional workouts you can filter
-from, gives you a status based on workouts completed, shows accumulated booty;
-[User Dashboard]()
-
-
-# Spin for a Quick Workout, What will you Get?
-This is the page you will see when you spin after being logged in to an account and would like to filter
-the workouts that you see in the spinner; 
-[Spinner]()
+# User Profile
+This is the page that has user's account information, list of workouts completed, 
+accumulated booty and can also allow user to update account information as well as delete account
+[User Profile]()
 
 
 # Select Your Own Workout
-This is the page that gives you the option to filter workouts, select workouts, and view
-favorite workouts.
-[Selections]()  
+This is the page that gives you the option to filter workouts, view list of workouts based on selection
+[Filtered Search]()  
 
-# Booty Status Page
-This is the page where you would view your booty status, and future leader-board rankings.
-[Booty]() 
+
+# Leaderboard Page
+This is the page where you would view leader-board rankings.
+[Leaderboard]() 
 
 
 

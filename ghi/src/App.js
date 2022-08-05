@@ -6,7 +6,6 @@ import LoginForm from './LoginForm';
 import MainPage from './MainPage';
 import FilterForm from './FilterForm';
 import Leaderboard from './Leaderboard';
-import Dashboard from './Dashboard';
 import WorkoutsList from './WorkoutsList';
 import { AuthProvider, useAuthContext, useToken } from './Auth';
 import UserProfileView from './UserProfileView';
@@ -58,9 +57,6 @@ function App() {
         </Route>
             <Route path="/login">
               <Route path="" element={<LoginForm />} />
-            </Route>
-            <Route path="/dashboard">
-              <Route path="" element={<Dashboard />} />
             </Route>
           </Routes>
     </AuthProvider>

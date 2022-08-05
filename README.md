@@ -10,7 +10,7 @@ The best workout application for bootys of all types and backgrounds.
 
 ## Design
 
-* [API design](docs/apis.md)
+* [API design](docs/api.md)
 * [Data model](docs/data-model.md)
 * [GHI](docs/ghi.md)
 * [Integrations](docs/integrations.md)

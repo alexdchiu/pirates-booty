@@ -1,8 +1,5 @@
-( will contain a description of the domain or database schema with the properties that you'll collect with their data types; describe the entities/value objects that we're storing in the database)
-
 # Data models
-
-
+Entity: Account model
 
 # second level heading ; 
 
@@ -21,16 +18,5 @@
 |first_name| string | no | no |
 |last_name| string | no | no |
 |email| string | yes | no |
-|birthday| date | no | no |
-
-## Workout
-| Name | Type | Unique | Optional |
-|-|-|-|-|
-|Bodypart| string | no | no |
-|Name| string | no | no |
-|Target| string | no | no |
-|Gif_url| string | no | no |
-|equipment| string | no | no |
-|intensity | int | no | no |
-|likes| int | no | no |
-|length| int | no | no |  
+|coins| integer | no | no |
+|picture_url| string | no | no |

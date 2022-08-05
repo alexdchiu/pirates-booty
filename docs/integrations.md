@@ -1,6 +1,3 @@
-(will list what kinds of data you'll need to integrate with outside of your application using anti-corruption layers)
+## Integrations 
 
-## Title 
-
-- workout data by bodypart
-- GIF_url with example of workout
+- pull data from a separate workout API / database that includes bodyparts, equipments, gifURLs, name of workouts, target areas, intensity and length of workouts.

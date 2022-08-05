@@ -377,3 +377,20 @@ text-align: center;
 .btn-info:hover{
   color:rgb(28, 59, 218)
 }
+
+@media (min-width: 576px) {}
+@media (min-width: 768px) {
+  #canvas {
+    padding-left: 100px;
+  }
+}
+@media (min-width: 992px) {
+  #canvas {
+    padding-left: 200px;
+  }
+}
+@media (min-width:1200px) {
+  #canvas {
+    padding-left: 400px;
+  }
+}

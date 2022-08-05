@@ -78,10 +78,10 @@ const WheelSpinner = ({segments}) => {
         </Modal.Header>
       </Modal>    
       
-      <Modal show={show} onHide={handleClose}>
+      <Modal className='test' show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
-            {token ? 'AHOY!!!' : 'ARGH!!!'}
+            <p><b><em>{token ? 'AHOY!!!' : 'ARGH!!!'}</em></b></p>
             <p>{token && 'Here is your randomly selected workout!'}</p>
           </Modal.Title>
         </Modal.Header>

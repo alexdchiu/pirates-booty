@@ -4,13 +4,13 @@ from django.test import TestCase
 class FeatureTests(TestCase):
     def test_black_installed(self):
         try:
-            import black
+            import black  # noqa: F401
         except ModuleNotFoundError:
             self.fail("Could not find 'black' installed in the environment")
 
     def test_flake8_installed(self):
         try:
-            import flake8
+            import flake8  # noqa: F401
         except ModuleNotFoundError:
             self.fail("Could not find 'flake8' installed in the environment")
 
@@ -30,7 +30,7 @@ class FeatureTests(TestCase):
 
     def test_completed_workout_model_exists(self):
         try:
-            from users.models import Completed_Workout
+            from users.models import Completed_Workout  # noqa: F401
         except ModuleNotFoundError:
             self.fail("could not find 'users.models.Completed_Workout")
 
@@ -53,7 +53,7 @@ class FeatureTests(TestCase):
 
     def test_completed_workout_model_has_user_related_name_of_users(self):
         try:
-            from users.models import models, Completed_Workout
+            from users.models import models, Completed_Workout  # noqa: F401
 
             user = Completed_Workout.user
             self.assertEqual(

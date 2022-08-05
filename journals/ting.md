@@ -1,6 +1,7 @@
 ## August 4, 2022
 - created 2 unit tests to see if users app is installed and if user model exists. Had to go into pgadmin to allow accounts to be able to create database in order for the unit test to work. 
-- format profile css and edit profile css 
+- formated profile css and edit profile css 
+- fixed issue with jumping ring on sign up page
 
 ## August 3, 2022
 - finished edit page and also 

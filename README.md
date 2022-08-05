@@ -19,7 +19,7 @@ The best workout application for bootys of all types and backgrounds.
 The people we expect to use this are those of all skill / fitness levels who are interested in working out with the potential of receiving booty (rewards) for accomplishments.
 <!-- will revisit -->
 
-## Functionality
+## Setting up
 Setting the project up with Docker and ensuring everything functions correctly. 
 
 Build two databases first after the clone;
@@ -30,13 +30,23 @@ docker-compose up --build
 
 
 Ensure a migration is done in the Accounts CLI on docker to ensure django creates the databases correctly. 
-
 python manage.py makemigrations
 and 
 python manage.py migrate
 
+## Functionality
 
-- designate amount time you have to workout 
+This website is designed so that users can create an account, log in, and have a wheel that populates an external API to showcase either a random workout, or a filtered workout selection based off of desired targeted muscle and intensity. 
+Users earn a coin after a completed workout and can see where they rank against other users on the Leaderboard. 
+On the user profile page, a user can update their profile picture, change their email, and update their first and last name. 
+They have the ability to delete their account on the user profile page.
+Completed workouts also populate on the users profile page so that you can return to a workout if it was something you enjoyed. 
+
+
+
+
+
+<!-- - designate amount time you have to workout 
   - maybe make this a user input feature only to input time needed to complete
 - designate targeted body part(s)
 - intensity / sweat rating (maybe make this a user input feature only)
@@ -51,9 +61,9 @@ python manage.py migrate
   - no ability to filter workout types -> encourage guests to sign up
 - more workouts you do, the more pirates booty you accrue and you can exchange for prizes
   - create personalized tracker for booty based on # of workouts done
-  - how do we make it so people can't cheat the system (click on workouts pretend like they've done them? maybe this is thinking too far?)
+  - how do we make it so people can't cheat the system (click on workouts pretend like they've done them? maybe this is thinking too far?) -->
 
-stretch goals:
+<!-- stretch goals:
 - filter out equipment by 
 - social aspect
   - able to join groups
@@ -63,4 +73,4 @@ stretch goals:
 - create prize API
 - try to find API that gives random facts about nutrition and workout
 - diet / nutrition
-- food tracker
+- food tracker -->

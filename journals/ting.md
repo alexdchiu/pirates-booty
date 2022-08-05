@@ -1,7 +1,7 @@
 ## August 5, 2022
 - final check on project with team, fixed some linter issues, helped with tests
 - finializing branch and changes
-- fixed data-model.md file
+- fixed data-model.md and ghi.md files
 
 ## August 4, 2022
 - created 2 unit tests to see if users app is installed and if user model exists. Had to go into pgadmin to allow accounts to be able to create database in order for the unit test to work. 

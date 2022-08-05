@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path
 from .api_views import (
     api_user,
     api_user_change,

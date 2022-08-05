@@ -1,6 +1,4 @@
-from ast import Mod
-from re import I
-from django.test import TestCase, Client
+from django.test import TestCase
 
 
 class FeatureTests(TestCase):

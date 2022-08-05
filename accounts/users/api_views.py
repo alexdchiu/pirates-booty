@@ -1,13 +1,7 @@
-from pyexpat import model
 import djwto.authentication as auth
-from datetime import date
-from datetime import datetime, time
 from django.utils.timezone import datetime
-from django.shortcuts import render
-from django.db import IntegrityError
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
-from django.utils import timezone
 import json
 
 # Create your views here.

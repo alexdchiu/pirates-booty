@@ -1,6 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser, PermissionsMixin
-from django.core.validators import int_list_validator
+from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):

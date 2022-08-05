@@ -4,6 +4,15 @@ A reflection on any design conversations that you had
 At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
+## August 4, 2022
+Today I worked on:
+* Incorporating new components teammate built into the working branch. Also fixing some state issues on the userprofile page.
+
+- imported edit / delete components
+- added default profile picture
+- fixed state issue on userprofile where after an update name was lagging
+
+
 ## August 3, 2022
 Today I worked on:
 * Cleaning up some front end and incorporating other changes teammates made into our working branch.

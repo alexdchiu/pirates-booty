@@ -14,8 +14,6 @@ export function EditProfile (){
         picture_url: "",
     })
 
-    console.log(user)
-
 
     const handleChange = e => {
         setValues({
@@ -54,83 +52,76 @@ export function EditProfile (){
     }
     
     return(
-    <div className="profile-container">
-  <div className="main-body">
-    <h1>Update Profile</h1>
-    <div className="row gutters-sm">
-
-      <div className="col-md-8">
-        <div className="card mb-3">
-          <div className="card-body">
-            <div className="row">
-              <div className="col-sm-3">
-              <input
-              onChange={handleChange}
-                type="text"
-                name="first_name"
-                placeholder="first name"
-                defaultValue={user.first_name}
-                value={values.first_name} 
-                />
-              </div>
-            </div>
-            <br />
-            <div className="row">
-              <div className="col-sm-3">
-              <input
-              onChange={handleChange}
-                type="text"
-                name="last_name"
-                placeholder="last name"
-                defaultValue={user.last_name}
-                value={values.last_name} 
-                />
-              </div>
-            </div>
-            <br />
-            <div className="row">
-              <div className="col-sm-3">
-              <input
-              onChange={handleChange}
-                type="text"
-                name="email"
-                placeholder="email"
-                defaultValue={user.email}
-                value={values.email} 
-                />
-              </div>
-            </div>
-            <br />
-            <div className="row">
-              <div className="col-sm-3">
-              <input
-              onChange={handleChange}
-                type="text"
-                name="picture_url"
-                placeholder="picture URL"
-                defaultValue={user.picture_url}
-                value={values.picture_url} 
-                />
-              </div>
-            </div>
-            <br></br>
-            <div className="row">
-              <div className="col-sm-12">
-                <button
-                onClick={handleFormSubmit}
-                  className="btn btn-info"
-                  target="__blank"
-                >UPDATE
-                </button>
+    <div className="profile-edit-container">
+      <div className="edit-main-body">
+      <div className="row gutters-sm">
+          <div className="col-md-8">
+            <div className="edit-card mb-3">
+            <h1>Update Profile</h1>
+              <div className="edit-card-body">
+                <div className="row">
+                  <div className="col-sm-3">
+                  <input
+                  onChange={handleChange}
+                    type="text"
+                    name="first_name"
+                    placeholder="first name"
+                    value={values.first_name} 
+                    />
+                  </div>
+                </div>
+                <br />
+                <div className="row">
+                  <div className="col-sm-3">
+                  <input
+                  onChange={handleChange}
+                    type="text"
+                    name="last_name"
+                    placeholder="last name"
+                    value={values.last_name} 
+                    />
+                  </div>
+                </div>
+                <br />
+                <div className="row">
+                  <div className="col-sm-3">
+                  <input
+                  onChange={handleChange}
+                    type="text"
+                    name="email"
+                    placeholder="email"
+                    value={values.email} 
+                    />
+                  </div>
+                </div>
+                <br />
+                <div className="row">
+                  <div className="col-sm-3">
+                  <input
+                  onChange={handleChange}
+                    type="text"
+                    name="picture_url"
+                    placeholder="picture URL"
+                    value={values.picture_url} 
+                    />
+                  </div>
+                </div>
+                <br></br>
+                <div className="row">
+                  <div className="col-sm-12">
+                    <button
+                    onClick={handleFormSubmit}
+                      className="btn btn-info"
+                      target="__blank"
+                    >UPDATE
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  </div>
-</div>
     )
 }
-

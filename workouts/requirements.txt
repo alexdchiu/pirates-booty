@@ -3,3 +3,4 @@ uvicorn[standard]==0.17.6
 psycopg[binary,pool]==3.0.14
 pytest==7.1.2
 postgres==4.0
+flake8==5.0.4

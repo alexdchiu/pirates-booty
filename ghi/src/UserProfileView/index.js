@@ -106,13 +106,14 @@ function UserProfileView (){
 
     useEffect(
       () => {
+        console.log('user', user)
         getUserData(user.username)
       }, []
     )
 
 
     return(
-        <div className="container">
+        <div className="profile-container">
           <div className="main-body">
             {/* Breadcrumb */}
             {/* <nav aria-label="breadcrumb" className="main-breadcrumb">
@@ -129,14 +130,14 @@ function UserProfileView (){
               </ol>
             </nav> */}
             {/* /Breadcrumb */}
-            <div className="row gutters-sm">
+            <div className="row profile gutters-sm">
               <div className="col-md-4 mb-3">
                 <div className="card">
                   <div className="card-body">
                     <div className="d-flex flex-column align-items-center text-center">
                       <img
-                        src={user.picture_url}
-                        alt="Admin"
+                        src={userData?.picture_url === null ? 'https://shortpixel.com/img/robot_lookleft_wink_big.png': userData?.picture_url}
+                        alt="Please edit your profile to include a picture."
                         className="rounded-circle"
                         width={150}
                       />
@@ -147,16 +148,18 @@ function UserProfileView (){
                           {userData?.email}
                         </p>
                         <p className="text-muted font-size-sm">
-                          Booty Coins Earned: {userData?.coins}
+                          🪙 Booty Coins Earned: {userData?.coins}
                         </p>
                       </div>
                       <div className="row">
                       <div className="col-sm-12">
-                        <a
-                          className="btn btn-info "
-                          target="__blank">
-                          <Link className="link" to="/profile/edit/">Edit Profile</Link>
-                        </a>
+                        <button className="btn btn-info" target="__blank">
+                          <Link className="link" to="/profile/edit/">Edit</Link>
+                        </button>
+                        <span> </span>
+                        <button className="btn btn-info" target="__blank">
+                          <Link className="link" to="/profile/delete/">Delete</Link>
+                        </button>
                       </div>
                     </div>
                     </div>
@@ -216,12 +219,12 @@ function UserProfileView (){
                     </div>
                   </div>
                 </div> */}
-                <div className="row gutters-sm">
+                <div className="row history gutters-sm">
                   <div className="col-sm-12 mb-3">
                     <div className="card h-100">
                       <div className="card-body">
                         <h6 className="d-flex align-items-center mb-3">
-                          <i className="material-icons text-info mr-2">{user.first_name}'s Workout History</i>
+                          <i className="material-icons text-info mr-2">{userData?.first_name}'s Workout History</i>
                         </h6>
                         <small>(Click a workout for details)</small>
                         <div className="progress mb-3" style={{ height: 5 }}>

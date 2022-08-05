@@ -12,6 +12,7 @@ import { AuthProvider, useAuthContext, useToken } from './Auth';
 import UserProfileView from './UserProfileView';
 import React, {useState, useEffect} from 'react'
 import { EditProfile } from './UserProfileView/edit';
+import { DeleteView } from './UserProfileView/delete';
 
 function App() {
   const { user, token } = useAuthContext();
@@ -48,6 +49,9 @@ function App() {
             </Route>
             <Route path="/profile/edit">
               <Route path="" element={<EditProfile />} />
+            </Route>
+            <Route path="/profile/delete">
+              <Route path="" element={<DeleteView />} />
             </Route>
         <Route path="/signup">
           <Route path="new" element={<SignUpForm />} />

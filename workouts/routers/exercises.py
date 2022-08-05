@@ -1,4 +1,3 @@
-from unicodedata import name
 from fastapi import APIRouter, Response, status
 from pydantic import BaseModel
 import psycopg
@@ -200,7 +199,7 @@ def get_filtered_workout_list_for_logged_in_users(
         )
         FROM exercises
         WHERE (target = %s)
-          AND (equipment = %s)        
+          AND (equipment = %s)
         ORDER BY intensity, length_of_workout asc
         LIMIT 100;
         """,
@@ -235,8 +234,14 @@ def get_filtered_workout_list_for_logged_in_users(
     #       res += intensity_filter
 
 
-@router.post("/api/workouts/completed_workouts", responses={404: {"model": Message}})
-def get_completed_workouts_for_user(exercise_ids: list[int], response: Response):
+@router.post(
+    "/api/workouts/completed_workouts",
+    responses={404: {"model": Message}}
+            )
+def get_completed_workouts_for_user(
+        exercise_ids: list[int],
+        response: Response,
+        ):
     with psycopg.connect(workouts_url) as conn:
         with conn.cursor() as cur:
             result = cur.execute(

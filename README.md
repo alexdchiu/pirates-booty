@@ -23,8 +23,8 @@ The people we expect to use this are those of all skill / fitness levels who are
 ###### Setting the project up with Docker and ensuring everything functions correctly:
 1. Clone the directory.
 2. Create two volumes after the clone;
-  - Docker volume create postgres-data
-  - Docker volume create pgadmin
+    - Docker volume create postgres-data
+    - Docker volume create pgadmin
 3. Run the build of the docker project:
   - docker-compose up --build
   - or if with m1 chip: 

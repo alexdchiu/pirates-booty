@@ -34,6 +34,12 @@ python manage.py makemigrations
 and 
 python manage.py migrate
 
+To run the tests for workouts or users. 
+For workouts; run the command ' python -m pytest '
+For Accounts; run the command ' python manage.py test ' 
+
+If you get an error that says that you don't have permissions to create a Database; you need to get into the pgadmin server and add permissions allow it to create a database. 
+
 ## Functionality
 
 This website is designed so that users can create an account, log in, and have a wheel that populates an external API to showcase either a random workout, or a filtered workout selection based off of desired targeted muscle and intensity. 

@@ -48,7 +48,9 @@ The people we expect to use this are those of all skill / fitness levels who are
 ## Functionality
 - This application was designed to utilize two databases, one for accounts and one for workouts. The workouts database should self populate from a provided SQL file and scripts. The accounts database is set up for user interaction via CRUD operations. 
 - On the home page, users are able to spin a wheel which is populated with a random list of workouts via a fetch to the workout API. However, once the wheel stops spinning, only logged in users will be able to see the workout details. Guests are given a prompt to either sign up for an account or log in to an existing account.
-- Logged in users also can perform a filtered search for workouts. They can select a targeted muscle and then select the required equipment for an exercise to generate results. The required equipment options are dynamically populated based on the target muscle. After both target and equipment are selected, a query is made to the workout API to return all results that match the selected options. The results then either can populate a wheel to give the user a random workout from that list or a list for a user to pick from.
+- Logged in users also can perform a filtered search for workouts. They can select a targeted muscle and then select the required equipment for an exercise to generate results. The required equipment options are dynamically populated based on the target muscle selection. After both target and equipment are selected, a query is made to the workout API to return all results that match the selected options. The results then either can:
+  - populate a wheel spinner to give the user a random workout from this list of filtered workouts
+  - populate a list so a user can select their own workout from this list of filtered workouts
 - From the workout modal that pops up, a user then can click a button to indicate a workout has been complete. This then earns the user a booty coin.
   - These actions do two things:
     1. creates a new instance of a completed workout that is associated with a given user

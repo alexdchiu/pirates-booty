@@ -2,184 +2,387 @@
 
 # APIs
 
+## get all users
 
-## create user profile
+* **Method**: `GET`
+* **Path**: /users/account
+
+Output:
+```json
+{
+	"user": [
+		{
+			"id": int,
+			"username": str,
+			"email": str,
+			"first_name": str,
+			"last_name": str,
+			"password": str,
+			"picture_url": str,
+			"coins": int
+		},
+		{
+			"id": int,
+			"username": str,
+			"email": str,
+			"first_name": str,
+			"last_name": str,
+			"password": str,
+			"picture_url": str,
+			"coins": int
+		}
+	]
+}
+```
+
+- Returns all users.
+
+
+## create a user
+
 * **Method**: `POST`
-* **Path**: /api/user/create
+* **Path**: /users/account
 
 Input:
-
 ```json
 {
 	"username": str,
-	"password": str,
 	"email": str,
+	"password": str,
 	"first_name": str,
-	"last_name": str,
-	"birthdate": date,
+	"last_name": str
 }
 ```
 
-Allow users to create a new profile.
-
-
-## user profile view
-* **Method**: `GET`
-* **Path**: /api/user/profile
 
 Output:
-
 ```json
 {
 	"username": str,
-	"password": str,
 	"email": str,
+	"password": str,
+	"first_name": str,
+	"last_name": str
+}
+```
+
+- Creates a user instance.
+
+
+## create a user
+
+* **Method**: `POST`
+* **Path**: /users/account/<int:pk>
+
+Input:
+```json
+{
 	"first_name": str,
 	"last_name": str,
-	"birthdate": date,
-	"workouts_completed": list,
-	"liked_workouts": list,
-	"workouts_disliked": list,
-	"booty_points": int,
-}
-```
-
-Allow users to see their profile details and lists of workouts completed, workouts they like, and hide workouts they do not want to see. Also allow users to see how many booty points they've accumulated to date.
-
-
-## user spin the wheel for workout
-
-* **Method**: `GET`
-* **Path**: /api/user/workouts/wheel
-
-Input:
-
-```json
-{
-  "bodyPart": str | none,
-	"intensity": int | none,
-	"length_of_workout": int | none,
+	"email": str,
+	"picture_url": str 
 }
 ```
 
 
 Output:
-
 ```json
 {
-  "bodyPart": str,
-	"equipment": str,
-	"gifUrl": str,
-	"id": int,
-	"name": str,
-	"target": str,
-	"intensity": int,
-	"length_of_workout": int,
-	"likes": int
+	"username": str,
+	"coins": int,
+	"picture_url": str,
+	"first_name": str,
+	"last_name": str
 }
 ```
 
-Allow users to spin a wheel to get a random workout based on filter of bodyPart, intensity and length_of_workout.
+- Update a user profile.
 
 
-## user view of workouts list
+## delete a user
+
+* **Method**: `DELETE`
+* **Path**: /users/account/<int:pk>
+
+- Delete a user profile.
+
+
+## get users for leaderboard
 
 * **Method**: `GET`
-* **Path**: /api/user/workouts/list
+* **Path**: /users/account/leaderboard>
 
-Input:
-
-```json
-{
-  "bodyPart": str | none,
-	"intensity": int | none,
-	"length_of_workout": int | none,
-}
-```
 
 Output:
-
 ```json
 {
-  "bodyPart": str,
-	"equipment": str,
-	"gifUrl": str,
-	"id": int,
-	"name": str,
-	"target": str,
-	"intensity": int,
-	"length_of_workout": int,
-	"likes": int
+	"username": str,
+	"coins": int,
+	"picture_url": str,
+	"first_name": str,
+	"last_name": str
 }
 ```
 
-Allow users to see list of workouts to pick from
+- Get all users to use to populate leaderboard
 
 
-## user like or do not show workout
+## add a coin for a completed workout
+
 * **Method**: `PUT`
-* **Path**: /api/user/workouts/like_or_do_not_show
+* **Path**: /users/account/<int:pk>
 
 Input:
+	id: int
 
+Output:
 ```json
 {
-	"liked_workout": bool,
-	"do_not_show_workout": bool,
+	"username": str,
+	"coins": int,
+	"picture_url": str,
+	"first_name": str,
+	"last_name": str
 }
 ```
 
-Allow users to say they liked a workout or if they do not want to see it anymore.
+- Add a coin to a user.
 
 
-## guest spin the wheel for workout
+## get current user info
 
 * **Method**: `GET`
-* **Path**: /api/workouts/wheel
+* **Path**: /users/account/<str:username>
+
+Input:
+	username: str
+
+Output:
+```json
+{
+	"id": int,
+	"username": str,
+	"email": str,
+	"first_name": str,
+	"last_name": str,
+	"coins": int,
+	"picture_url": str
+}
+```
+
+- Get current user data.
+
+## get all completed workouts
+
+* **Method**: `GET`
+* **Path**: /users/account/completed
+
+Output:
+```json
+{
+	"workout_id": int,
+	"date": str,
+	"user": obj
+}
+```
+
+- Get all instances of completed workouts.
+
+
+## create a new completed workout
+
+* **Method**: `POST`
+* **Path**: /users/account/completed
+
+Input:
+```json
+{
+	"workout_id": int,
+	"date": str,
+	"user": obj
+}
+```
+
+Output:
+```json
+{
+	"workout_id": int,
+	"date": str,
+	"user": obj
+}
+```
+
+- Create a new instance of a completed workout for a user.
+
+
+## get all workouts
+
+* **Method**: `GET`
+* **Path**: /api/workouts/all
 
 Output:
 
 ```json
 {
-  "bodyPart": str,
-	"id": int,
+  "id": int,
 	"name": str,
+	"body_part": str,
 	"target": str,
-	"intensity": int,
-	"length_of_workout": int,
-	"likes": int
-}
-```
-
-Allow guests to spin a wheel to get a random workout based on filter of bodyPart, intensity and length_of_workout. Does not share GIF so guests do not know what the actual workout is.
-
-
-## workout detail view
-
-* **Method**: `GET`
-* **Path**: /api/user/workouts/id:pk
-
-Input:
-```json
-{
-	"id": int,
-}
-```
-
-Output:
-
-```json
-{
-  "bodyPart": str,
 	"equipment": str,
-	"gifUrl": str,
-	"id": int,
-	"name": str,
-	"target": str,
 	"intensity": int,
 	"length_of_workout": int,
-	"likes": int
+	"gif_url": str
 }
 ```
 
-Allow users to see details of a workout.
+- Returns all workouts.
+
+
+## get workout by ID
+
+* **Method**: `GET`
+* **Path**: /api/workouts/{id}
+
+Input:
+
+```json
+{
+  "id": int,
+}
+```
+
+
+Output:
+
+```json
+{
+  "id": int,
+	"name": str,
+	"body_part": str,
+	"target": str,
+	"equipment": str,
+	"intensity": int,
+	"length_of_workout": int,
+	"gif_url": str
+}
+```
+
+- Returns a workout by ID.
+
+
+## random workouts for spinner wheel
+
+* **Method**: `GET`
+* **Path**: /api/workouts/guest/random-wheel
+
+
+
+Output:
+
+```json
+{
+  [
+		{"id": int,
+		"name": str,
+		"body_part": str,
+		"target": str,
+		"equipment": str,
+		"intensity": int,
+		"length_of_workout": int,
+		"gif_url": str,
+		},
+		{"id": int,
+		"name": str,
+		"body_part": str,
+		"target": str,
+		"equipment": str,
+		"intensity": int,
+		"length_of_workout": int,
+		"gif_url": str,
+		}
+	]
+}
+```
+
+- Returns 10 random workouts to populate the spinner wheel. 
+
+
+## all workouts for given target muscle and equipment
+
+* **Method**: `GET`
+* **Path**: /api/workouts/filtered/?target={target}&equipment={equipment}
+
+Input:
+ target = str
+ equipment = str
+
+Output:
+
+```json
+	{
+		"exercises": [
+			{
+				"id": int,
+				"name": str,
+				"body_part": str,
+				"target": str,
+				"equipment": str,
+				"intensity": int,
+				"length_of_workout": int,
+				"gif_url": str,
+			},
+			{
+				"id": int,
+				"name": str,
+				"body_part": str,
+				"target": str,
+				"equipment": str,
+				"intensity": int,
+				"length_of_workout": int,
+				"gif_url": str,
+			}
+		]
+	}
+```
+
+- Returns all workouts for given target and equipment to populate spinner wheel or list.
+
+
+## all completed workouts for a given user
+
+* **Method**: `POST`
+* **Path**: /api/workouts/completed_workouts
+
+Input:
+ exercise_ids: list[int]
+
+Output:
+
+```json
+	{
+		"exercises": [
+			{
+				"id": int,
+				"name": str,
+				"body_part": str,
+				"target": str,
+				"equipment": str,
+				"intensity": int,
+				"length_of_workout": int,
+				"gif_url": str,
+			},
+			{
+				"id": int,
+				"name": str,
+				"body_part": str,
+				"target": str,
+				"equipment": str,
+				"intensity": int,
+				"length_of_workout": int,
+				"gif_url": str,
+			}
+		]
+	}
+```
+
+- Returns all workouts for a given list of workout IDs.

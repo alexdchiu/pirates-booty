@@ -119,8 +119,6 @@ def get_random_workout_wheel(
             list_for_json = []
             for item in result:
                 list_for_json.append(item[0])
-            # json_result = {}
-            # json_result["exercises"] = list_for_json
 
             if result is None:
                 response.status_code = status.HTTP_404_NOT_FOUND
@@ -128,50 +126,6 @@ def get_random_workout_wheel(
 
             else:
                 return list_for_json
-
-
-@router.get(
-    "/api/workouts/filtered/random-wheel",
-)
-def get_filtered_random_workout_wheel_for_logged_in_users(
-    target,
-    equipment,
-    response: Response,
-):
-    with psycopg.connect(workouts_url) as conn:
-        with conn.cursor() as cur:
-            result = cur.execute(
-                """
-            SELECT json_build_object(
-            'id', exercises.id,
-            'name', exercises.name,
-            'body_part', exercises.body_part,
-            'target', exercises.target,
-            'equipment', exercises.equipment,
-            'intensity', exercises.intensity,
-            'length_of_workout', exercises.length_of_workout,
-            'gif_url', exercises.gif_url
-            )
-            FROM exercises
-            WHERE (target = %s)
-            AND (equipment = %s)
-            ORDER BY random();
-            """,
-                [target, equipment],
-            ).fetchall()
-
-            list_for_json = []
-            for item in result:
-                list_for_json.append(item[0])
-            json_result = {}
-            json_result["exercises"] = list_for_json
-
-            if result is None:
-                response.status_code = status.HTTP_404_NOT_FOUND
-                return {"message": "Error fetching."}
-
-            else:
-                return result
 
 
 @router.get(
@@ -200,8 +154,7 @@ def get_filtered_workout_list_for_logged_in_users(
         FROM exercises
         WHERE (target = %s)
           AND (equipment = %s)
-        ORDER BY intensity, length_of_workout asc
-        LIMIT 100;
+        ORDER BY intensity, length_of_workout asc;
         """,
                 [target, equipment],
             ).fetchall()
@@ -218,20 +171,6 @@ def get_filtered_workout_list_for_logged_in_users(
 
             else:
                 return json_result
-
-    # if target:
-    #   target_filter = 'target = ' + target
-    # if intensity:
-    #   intensity_filter = 'intensity = ' + str(intensity)
-    # where_clause = ''
-    # if target_filter or intensity_filter:
-    #   res = 'WHERE '
-    #   if target_filter:
-    #     res += target_filter
-    #     if intensity_filter:
-    #       res += ' AND ' + intensity_filter
-    #   else:
-    #       res += intensity_filter
 
 
 @router.post("/api/workouts/completed_workouts", responses={404: {"model": Message}})
@@ -270,5 +209,4 @@ def get_completed_workouts_for_user(
                 return {"message": "Error fetching."}
 
             else:
-                # return json_result
                 return json_result

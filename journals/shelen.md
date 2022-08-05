@@ -28,3 +28,6 @@ the entirety of the backend should be completed at this point.
 today i attempted to create a delete page but after a merge i had some issues getting react to deploy correctly again. someone else is assisting me with viewing it on the front end to ensure that its working correctly. 
 today and tomorrow are just about finishing tests and trying to get everything buttoned up for tomorrow. 
 we still need to create one singular branch to have people deploy from and complete the readme. 
+
+08/05:  
+today is submission day and we're spending the day doing final button up on small aspects of the website as well as getting the readme finished. 

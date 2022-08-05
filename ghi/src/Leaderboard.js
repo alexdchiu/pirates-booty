@@ -43,7 +43,7 @@ function Leaderboard() {
             const response = await fetch(url);
             if (response.ok) {
                 const data = await response.json();
-                console.log("inside effect", data)
+                // console.log("inside effect", data)
                 setLeaders(data);
             }
         }

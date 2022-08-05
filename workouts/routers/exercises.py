@@ -234,14 +234,11 @@ def get_filtered_workout_list_for_logged_in_users(
     #       res += intensity_filter
 
 
-@router.post(
-    "/api/workouts/completed_workouts",
-    responses={404: {"model": Message}}
-            )
+@router.post("/api/workouts/completed_workouts", responses={404: {"model": Message}})
 def get_completed_workouts_for_user(
-        exercise_ids: list[int],
-        response: Response,
-        ):
+    exercise_ids: list[int],
+    response: Response,
+):
     with psycopg.connect(workouts_url) as conn:
         with conn.cursor() as cur:
             result = cur.execute(

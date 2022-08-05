@@ -28,12 +28,12 @@ def test_get_random_workout_wheel_returns_200():
 def test_get_filtered_random_workout_wheel_returns_200():
     response = client.get(
         "/api/workouts/filtered/random-wheel?target=abs&equipment=body%20weight"
-                        )
+    )
     assert response.status_code == 200
 
 
 def test_completed_workouts_for_user_returns_422():
-    url = ("/api/workouts/completed_workouts")
+    url = "/api/workouts/completed_workouts"
     payload = [1, 2, 3]
     response = client.post(url, data=json.dumps(payload))
     assert response.status_code == 200
@@ -47,7 +47,7 @@ def test_completed_workouts_for_user_returns_422():
                 "equipment": "body weight",
                 "intensity": 1,
                 "length_of_workout": 30,
-                "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0001.gif"
+                "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0001.gif",
             },
             {
                 "id": 2,
@@ -57,7 +57,7 @@ def test_completed_workouts_for_user_returns_422():
                 "equipment": "body weight",
                 "intensity": 9,
                 "length_of_workout": 15,
-                "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0002.gif"
+                "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0002.gif",
             },
             {
                 "id": 3,
@@ -67,7 +67,7 @@ def test_completed_workouts_for_user_returns_422():
                 "equipment": "body weight",
                 "intensity": 6,
                 "length_of_workout": 15,
-                "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0003.gif"
-            }
+                "gif_url": "http://d205bpvrqc9yn1.cloudfront.net/0003.gif",
+            },
         ]
-        }
+    }

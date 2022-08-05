@@ -4,13 +4,21 @@ A reflection on any design conversations that you had
 At least one ah-ha! moment that you had during your coding, however small
 
 Keep your journal in reverse chronological order. Always put new entries at the top.
+## August 5, 2022
+Today I worked on:
+* Getting the project ready for submission.
+
+- We huddled as a group to help one another with tests. 
+- Finalizing submission branch.
+
 ## August 4, 2022
 Today I worked on:
-* Incorporating new components teammate built into the working branch. Also fixing some state issues on the userprofile page.
+* Incorporating new components teammate built into the working branch. Also fixing some state issues on the userprofile page. Built unit tests for workout DB.
 
-- imported edit / delete components
-- added default profile picture
-- fixed state issue on userprofile where after an update name was lagging
+- We built additional components (user profile edit / delete) that I needed to merge into my branch. Given all the issues that we've had with git merges to date, I've had to do them manually onto my branch since this seems to be the working branch at the moment. 
+- Once the manual merge was done, I worked on getting a default profile picture to show with some JSX logic / conditionals. Now, users can update their profile with a image URL and that will show instead, but by default it will show the stock photo I built into the code. 
+- Another small issue that came up after we imported the edit / delete componenets was that there was a user state issue on the userprofile component where after an update, the user's name was lagging. Fixed this by changing the state variable we were using since we had already experienced this issue elsewhere so the user properties are now all correctly updating whenever the profile page loads.
+- Lastly, I had to set up my tests for our project submission - this was a little more challenging than anticipated, but ultimately was able to get 6 tests working for the workout database / api. 
 
 
 ## August 3, 2022

@@ -9,6 +9,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.utils import timezone
 import json
+
 # Create your views here.
 
 from common.json import ModelEncoder
@@ -17,13 +18,7 @@ from .models import User, Completed_Workout
 
 class AccountModelEncoder(ModelEncoder):
     model = User
-    properties = [
-        "username", 
-        "coins",
-        "picture_url",
-        "first_name",
-        "last_name"
-    ]
+    properties = ["username", "coins", "picture_url", "first_name", "last_name"]
 
 
 class AccountDetailModelEncoder(ModelEncoder):
@@ -36,20 +31,16 @@ class AccountDetailModelEncoder(ModelEncoder):
         "last_name",
         "password",
         "picture_url",
-        "coins"
+        "coins",
     ]
+
 
 class CompleteWorkoutEncoder(ModelEncoder):
     model = Completed_Workout
-    properties = [
-        "workout_id",
-        "date",
-        "user"
-    ]
+    properties = ["workout_id", "date", "user"]
     encoders = {
         "user": AccountDetailModelEncoder(),
     }
-
 
 
 @require_http_methods(["GET", "POST"])
@@ -74,8 +65,8 @@ def api_user(request):
 @require_http_methods(["DELETE", "PUT", "GET"])
 def api_user_change(request, pk):
     if request.method == "DELETE":
-            count, _ = User.objects.filter(id=pk).delete()
-            return JsonResponse({"deleted": count > 0})
+        count, _ = User.objects.filter(id=pk).delete()
+        return JsonResponse({"deleted": count > 0})
     elif request.method == "PUT":
         content = json.loads(request.body)
         user = User.objects.filter(id=pk).update(**content)
@@ -142,10 +133,11 @@ def api_current_user(request, username):
             "last_name": user.last_name,
             "coins": user.coins,
             "picture_url": user.picture_url,
-        })
+        }
+    )
 
 
-@require_http_methods(['POST', 'GET'])
+@require_http_methods(["POST", "GET"])
 def api_user_complete_workout(request):
     if request.method == "GET":
         completed_workout_list = Completed_Workout.objects.all()
@@ -164,7 +156,7 @@ def api_user_complete_workout(request):
         except User.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid user ID"},
-                status = 400,
+                status=400,
             )
         completed_workout = Completed_Workout.objects.create(**content)
         return JsonResponse(
@@ -172,4 +164,3 @@ def api_user_complete_workout(request):
             encoder=CompleteWorkoutEncoder,
             safe=False,
         )
-

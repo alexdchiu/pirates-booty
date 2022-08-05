@@ -6,23 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('users', '0005_completed_workout_user'),
+        ("users", "0005_completed_workout_user"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='completed_workout',
-            name='date',
+            model_name="completed_workout",
+            name="date",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='user',
-            name='picture_url',
+            model_name="user",
+            name="picture_url",
             field=models.URLField(null=True),
         ),
         migrations.AlterField(
-            model_name='completed_workout',
-            name='workout_id',
+            model_name="completed_workout",
+            name="workout_id",
             field=models.IntegerField(),
         ),
     ]

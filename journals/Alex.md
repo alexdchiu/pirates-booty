@@ -8,8 +8,10 @@ Keep your journal in reverse chronological order. Always put new entries at the 
 Today I worked on:
 * Getting the project ready for submission.
 
-- We huddled as a group to help one another with tests. 
-- Finalizing submission branch.
+- Today was a busy day. Last sprint before project submission. Our group huddled up and tried to figure out last remaining tasks.
+- Started by trying to clean up files, using black + flake8. Then worked on merging everyones tests into my working branch.
+- Then worked on beefing up the readme file to help users understand how to get the application to properly work.
+- Lastly, worked on updated the api.md file and then merging everyone elses edits and journals to my branch.
 
 ## August 4, 2022
 Today I worked on:

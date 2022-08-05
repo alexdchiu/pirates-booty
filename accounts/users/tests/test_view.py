@@ -50,6 +50,27 @@ class FeatureTests(TestCase):
             self.fail("Could not find 'completed_workout.models.Completed_Workout'")
         except AttributeError:
             self.fail("Could not find 'Completed_Workout.workout_id'")
+
+    def test_completed_workout_model_has_user_related_name_of_users(self):
+        try:
+            from users.models import models, Completed_Workout
+            user = Completed_Workout.user
+            self.assertEqual(
+            user.field.related_query_name(),
+            "users",
+            msg="Completed_Workout.users should have a related name of 'users'",
+
+        )
+        except ModuleNotFoundError:
+            self.fail("Could not find 'Completed_Workout.models'")
+        except ImportError:
+            self.fail("Could not find 'users.models.Completed_Workout'")
+        except AttributeError:
+            self.fail("Could not find 'Completed_Workout.user'")
+
+
+
+    
         
 
             

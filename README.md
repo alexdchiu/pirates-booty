@@ -21,7 +21,7 @@ The people we expect to use this are those of all skill / fitness levels who are
 
 ## Setting up
 ###### Setting the project up with Docker and ensuring everything functions correctly:
-1. Clone the directory.
+1. Clone the directory from the "main-submission" branch.
 2. Create two volumes after the clone;
     - Docker volume create postgres-data
     - Docker volume create pgadmin

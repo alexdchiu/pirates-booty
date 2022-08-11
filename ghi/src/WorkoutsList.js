@@ -63,13 +63,13 @@ function WorkoutsList({exercises}) {
       </div>
       <Modal show={popup}>
         <Modal.Header>
-          <Modal.Title>You earned a coin!</Modal.Title>
-          <Button variant="primary" onClick={handlePopupClose}>Close</Button>
+          <Modal.Title className="justify-center">You earned a coin!</Modal.Title>
         </Modal.Header>
+        <Button variant="primary" onClick={handlePopupClose}>Close</Button>
       </Modal>    
       
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+      <Modal className='test' show={show} onHide={handleClose} style={{justifyContent: 'center', textAlign: 'center'}}>
+        <Modal.Header style={{justifyContent: 'center'}}>
           <Modal.Title>
             AHOY! Here is your selected workout!
           </Modal.Title>
@@ -77,7 +77,7 @@ function WorkoutsList({exercises}) {
         <Modal.Body>
           <WorkoutDetailView workoutDetails={selectedExercise}/>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer style={{justifyContent: 'center'}}>
           <Button variant="secondary" onClick={completeWorkout} >
             Complete Workout
           </Button>

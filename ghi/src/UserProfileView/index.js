@@ -257,8 +257,8 @@ function UserProfileView (){
                           </Modal.Header>
                         </Modal>    
                         
-                        <Modal show={show} onHide={handleClose}>
-                          <Modal.Header closeButton>
+                        <Modal className='test' show={show} onHide={handleClose} style={{justifyContent: 'center', textAlign: 'center'}}>
+                          <Modal.Header >
                             <Modal.Title >
                               {user.first_name}'s Completed Workout Details
                             </Modal.Title>
@@ -266,7 +266,7 @@ function UserProfileView (){
                           <Modal.Body>
                             <WorkoutDetailView workoutDetails={selectedExercise}/>
                           </Modal.Body>
-                          <Modal.Footer>
+                          <Modal.Footer style={{justifyContent: 'center'}}>
                             <Button variant="secondary" onClick={completeWorkout} >
                               Complete Workout
                             </Button>

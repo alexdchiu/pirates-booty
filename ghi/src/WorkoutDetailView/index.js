@@ -1,20 +1,22 @@
-import React, { useState }  from 'react'
-
-
+import '../App.css'
 function WorkoutDetailView({workoutDetails}) {
 
 return (
-  <div className="card">
-    <div>
-      <h1 className="text-capitalize">{workoutDetails.name}</h1>
+  <div className="card" style={{flexDirection: 'row', padding: '2rem'}}>
+    <div className='col-6'>
+      <h2 className="text-capitalize">{workoutDetails.name}</h2>
+      <div className="card-body" style={{padding: '3rem'}}>
+        <p className="card-text text-capitalize">Targeted Muscle: {workoutDetails.target}</p> 
+        <p className="card-text text-capitalize">Necessary Equipment: {workoutDetails.equipment}</p>
+        <p className="card-text text-capitalize">Workout Intensity: {workoutDetails.intensity}</p>
+        <p className="card-text">Length of Workout: {workoutDetails.length_of_workout} mins</p>
+      </div>
     </div>
-    <img className="card-img-top" src={workoutDetails.gif_url} alt="loading..."/>
-    <div className="card-body">
-      <p className="card-text text-capitalize" >Targeted Muscle: {workoutDetails.target}</p>
-      <p className="card-text text-capitalize">Necessary Equipment: {workoutDetails.equipment}</p>
-      <p className="card-text text-capitalize">Workout Intensity: {workoutDetails.intensity}</p>
-      <p className="card-text text-capitalize">Length of Workout: {workoutDetails.length_of_workout}</p>
+    <div className="col-6">
+      <img className="card-img-top" src={workoutDetails.gif_url} alt="loading..."/>
     </div>
+    
+    
   </div>
 );
 }

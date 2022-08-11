@@ -6,6 +6,7 @@ import {AuthContext} from '../Auth.js'
 
 import WheelComponent from 'react-wheel-of-prizes'
 import '../react-wheel-of-prizes/index.css' 
+import '../App.css'
 import WorkoutDetailView from '../WorkoutDetailView'
 import SignupModal from '../SignupModal/index.js'
 import { addCoin, addCompletedWorkout } from '../helpers/Workouts.js'
@@ -73,13 +74,13 @@ const WheelSpinner = ({segments}) => {
       
       <Modal show={popup}>
         <Modal.Header>
-          <Modal.Title>You earned a coin!</Modal.Title>
-          <Button variant="primary" onClick={handlePopupClose}>Close</Button>
+          <Modal.Title className="justify-center">You earned a coin!</Modal.Title>
         </Modal.Header>
+        <Button variant="primary" onClick={handlePopupClose}>Close</Button>
       </Modal>    
       
-      <Modal className='test' show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+      <Modal className='test' show={show} onHide={handleClose} style={{justifyContent: 'center', textAlign: 'center'}}>
+        <Modal.Header style={{justifyContent: 'center'}}>
           <Modal.Title>
             <p><b><em>{token ? 'AHOY!!!' : 'ARGH!!!'}</em></b></p>
             <p>{token && 'Here is your randomly selected workout!'}</p>
@@ -88,7 +89,7 @@ const WheelSpinner = ({segments}) => {
         <Modal.Body>
           {token ? (<WorkoutDetailView workoutDetails={winnerObj}/>) : (<SignupModal />)}
         </Modal.Body>
-        {token &&(<Modal.Footer>
+        {token &&(<Modal.Footer style={{justifyContent: 'center'}}>
           <Button variant="secondary" onClick={completeWorkout} >
             Complete Workout
           </Button>

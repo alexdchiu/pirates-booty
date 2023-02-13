@@ -94,15 +94,12 @@ function UserProfileView (){
           completedWorkoutsAndDates.push({
             'workout': listOfWorkouts[i],
             'dateCompleted': lst[i].date.substring(0,10)
-            // 'dateCompleted': lst[i].date
           })
-          // console.log('completedWorkoutsAndDates', completedWorkoutsAndDates)
         }
         setCompletedWorkouts(completedWorkoutsAndDates)
       })
     }
     
-    // console.log('userCompleted', completedWorkouts)
 
     useEffect(
       () => {
@@ -115,21 +112,6 @@ function UserProfileView (){
     return(
         <div className="profile-container">
           <div className="main-body">
-            {/* Breadcrumb */}
-            {/* <nav aria-label="breadcrumb" className="main-breadcrumb">
-              <ol className="breadcrumb">
-                <li className="breadcrumb-item">
-                  <a href="index.html">Home</a>
-                </li>
-                <li className="breadcrumb-item">
-                  <a href="javascript:void(0)">User</a>
-                </li>
-                <li className="breadcrumb-item active" aria-current="page">
-                  User Profile
-                </li>
-              </ol>
-            </nav> */}
-            {/* /Breadcrumb */}
             <div className="row profile gutters-sm">
               <div className="col-md-4 mb-3">
                 <div className="card">
@@ -143,7 +125,6 @@ function UserProfileView (){
                       />
                       <div className="mt-3">
                         <h4>{userData?.first_name} {userData?.last_name}</h4>
-                        {/* <p className="text-secondary mb-1">Full Stack Developer</p> */}
                         <p className="text-muted font-size-sm">
                           {userData?.email}
                         </p>
@@ -167,58 +148,6 @@ function UserProfileView (){
                 </div>
               </div>
               <div className="col-md-8">
-                {/* <div className="card mb-3">
-                  <div className="card-body">
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <h6 className="mb-0">Full Name</h6>
-                      </div>
-                      <div className="col-sm-9 text-secondary">Kenneth Valdez</div>
-                    </div>
-                    <hr />
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <h6 className="mb-0">Email</h6>
-                      </div>
-                      <div className="col-sm-9 text-secondary">fip@jukmuh.al</div>
-                    </div>
-                    <hr />
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <h6 className="mb-0">Phone</h6>
-                      </div>
-                      <div className="col-sm-9 text-secondary">(239) 816-9029</div>
-                    </div>
-                    <hr />
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <h6 className="mb-0">Mobile</h6>
-                      </div>
-                      <div className="col-sm-9 text-secondary">(320) 380-4539</div>
-                    </div>
-                    <hr />
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <h6 className="mb-0">Address</h6>
-                      </div>
-                      <div className="col-sm-9 text-secondary">
-                        Bay Area, San Francisco, CA
-                      </div>
-                    </div>
-                    <hr />
-                    <div className="row">
-                      <div className="col-sm-12">
-                        <a
-                          className="btn btn-info "
-                          target="__blank"
-                          href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills"
-                        >
-                          Edit
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
                 <div className="row history gutters-sm">
                   <div className="col-sm-12 mb-3">
                     <div className="card h-100">
